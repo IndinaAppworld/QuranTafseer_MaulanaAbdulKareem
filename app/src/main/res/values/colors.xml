@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#b78431</color>
+    <color name="colorPrimaryDark">#5d3a27</color>
+    <color name="colorSurahParaBG">#f6ecd3</color>
+    <color name="colorGreenDark">#43695B</color>
+    <color name="colorLightBrown">#d3d3d3</color>
+    <color name="colorGreenLight">#F0F0DE</color>
+    <color name="colroGold">#A0946E</color>
+    <color name="colroGoldDark">#b8a877</color>
+    <color name="colorYellow">#FDB329</color>
+</resources>

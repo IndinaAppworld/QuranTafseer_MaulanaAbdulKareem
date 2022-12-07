@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+   
+                
+                <dimen name="hedertextsize">28dp</dimen>
+                  <dimen name="hedertextsize_urdu">38dp</dimen>
+                <dimen name="menuitemsize">33dip</dimen>
+    <dimen name="menuitemsize_urdu">39dip</dimen>
+    <dimen name="maintitlefont_urdu">49dip</dimen>
+    <dimen name="maintitlefont">45dip</dimen>
+    <dimen name="maintitlefont_arabic">47dip</dimen>
+  <dimen name="popupmenufont">35dip</dimen>
+        <dimen name="langfont">15dip</dimen>
+        <dimen name="aglapichlapadding">30dip</dimen>
+
+                <dimen name="favdim">40dip</dimen>
+                        <dimen name="addfontsize">25sp</dimen>
+                        
+                        <dimen name="viewtitle">40sp</dimen>
+                        <dimen name="viewdesc">35sp</dimen>
+                        <dimen name="viewref">20dp</dimen>
+    <dimen name="viewref_urdu">25dp</dimen>
+
+    <dimen name="gallaryheight">300dp</dimen>
+
+</resources>

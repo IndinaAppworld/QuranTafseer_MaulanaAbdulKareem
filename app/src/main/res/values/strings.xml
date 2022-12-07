@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Tafseer Quran</string>
+    <string name="title_activity_sub_menu">SubMenuActivity</string>
+
+    <string name="aboutus"></string>
+    <string name="dua1urdu"><b>دعا</b></string>
+    <string name="dua2urdu"><b>کی فہرست</b></string>
+    <string name="duaein"><b>دعائیں</b></string>
+    <string name="pasandida"><b>پسندیدہ</b></string>
+    <string name="colorPickerCancel">Cancel</string>
+    <string name="colorPickerConfirm">Confirm</string>
+</resources>
