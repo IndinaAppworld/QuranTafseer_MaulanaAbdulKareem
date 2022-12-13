@@ -113,11 +113,16 @@ public class QuranFragement extends Fragment {
         final TextView txtTranslation[]=new TextView[TOTAL_ROW];
         final ArabicTextView txtArabicTextView[]=new ArabicTextView[TOTAL_ROW];
         final View view_row[]=new View[TOTAL_ROW];
+        final View viewLineHorizontal[]=new View[TOTAL_ROW];
+        final View viewLineVertical[]=new View[TOTAL_ROW];
         String temp_translation="";
         String finalTasfeeer="";
         for(int i=0;i<TOTAL_ROW;i++)
         {
             view_row[i]=View.inflate(getActivity(),R.layout.inflate_quran_page,null);
+
+            viewLineHorizontal[i]=view_row[i].findViewById(R.id.viewLineHorizontal);
+            viewLineVertical[i]=view_row[i].findViewById(R.id.viewLineVertical);
 
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
             txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtUrdu);
@@ -173,6 +178,9 @@ public class QuranFragement extends Fragment {
 
                             txtTranslation[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
                             txtArabicTextView[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+
+                            viewLineVertical[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+                            viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
 
                         }
                         txtTafseer.setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));

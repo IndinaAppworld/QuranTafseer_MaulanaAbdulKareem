@@ -48,6 +48,8 @@ import android.view.MenuItem;
 import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -169,8 +171,10 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
         findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
         findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+         
     }
 
+    EditText txtPageNo;
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
     public void openSettingScreen(int type)
@@ -377,6 +381,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         layout_setting_surahparalist.setVisibility(View.INVISIBLE);
         ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+        ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);
         scroll_setting.scrollTo(0,0);
         layout_general_setting.setVisibility(View.VISIBLE);
@@ -388,6 +393,8 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 if(((LinearLayout)findViewById(R.id.layout_language_list)).getVisibility()==View.GONE)
                 {
                     ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.VISIBLE);
+                    ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+                    ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
                 }
                 else {
                     ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
@@ -429,6 +436,10 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 if(((LinearLayout)findViewById(R.id.layout_color_list)).getVisibility()==View.GONE)
                 {
                     ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.VISIBLE);
+
+                    ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+                    ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
+
                 }
                 else {
                     ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
@@ -436,9 +447,52 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             }
         });
 
+        findViewById(R.id.layout_gotopage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(((LinearLayout)findViewById(R.id.layout_enterpage)).getVisibility()==View.GONE)
+                {
+                    ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.VISIBLE);
+                    ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+                    ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+                }
+                else {
+                    ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
+                }
+            }
+        });
+
         findViewById(R.id.layout_translationColor).setOnClickListener(new TextClickListener(0));
         findViewById(R.id.layout_arabicColor).setOnClickListener(new TextClickListener(1));
         findViewById(R.id.layout_lineColor).setOnClickListener(new TextClickListener(2));
+
+        final EditText txtPageNo=(EditText)findViewById(R.id.txtPageNo);
+        findViewById(R.id.btnGotoPage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                if(txtPageNo.getText().toString().trim().length()>0)
+//                {
+//                    if(Integer.parseInt(txtPageNo.getText().toString().trim())>TOTAL)
+//                    {
+//                        Toast.makeText(getApplicationContext(),"Page Should be less than "+TOTAL,Toast.LENGTH_SHORT).show();
+//                    }
+//                    else
+//                    {
+//                        openSettingScreen(-1);
+//                        pager.setCurrentItem(TOTAL-(Integer.parseInt(txtPageNo.getText().toString().trim())-1));
+////                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+////                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//                    }
+//                }
+//                else
+//                {
+//                    Toast.makeText(getApplicationContext(),"Please enter Page No.",Toast.LENGTH_SHORT).show();
+//                }
+            }
+        });
+
     }
     public void changeLanguage(){
 
