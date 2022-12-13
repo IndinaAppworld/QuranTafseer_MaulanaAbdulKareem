@@ -43,7 +43,7 @@ public class CipherNormal extends TextView
 	{
 		if(!isInEditMode() && mTypeFace == null)
 		{
-			mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "Poppins-Medium.ttf");
+			mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/BLKCHCRY.ttf");
 		}
 
 		if(!isInEditMode())

@@ -14,7 +14,11 @@
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<LinearLayout
+    android:id="@+id/data"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
 
 
@@ -26,6 +30,18 @@
 
 
     </LinearLayout>
+
+
+    <com.indapp.fonts.GujaratiTextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/txtTafseerGujarati"
+        android:padding="10dp"
+        android:textColor="@color/colorSurahParaBG"
+        android:textSize="@dimen/menuitemsize_urdu"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
     </ScrollView>
 
 </LinearLayout>

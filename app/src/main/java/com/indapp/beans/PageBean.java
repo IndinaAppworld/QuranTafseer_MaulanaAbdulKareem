@@ -3,6 +3,20 @@ package com.indapp.beans;
 public class PageBean {
     String PARA_NO;
 
+    public String getTAFSEER() {
+        return TAFSEER;
+    }
+
+    public void setTAFSEER(String TAFSEER) {
+        this.TAFSEER = TAFSEER;
+    }
+
+    public void setQURAN_AYAT(String QURAN_AYAT) {
+        this.QURAN_AYAT = QURAN_AYAT;
+    }
+
+    String TAFSEER;
+
     public String getPARA_NO() {
         return PARA_NO;
     }

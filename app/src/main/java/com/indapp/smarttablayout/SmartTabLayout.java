@@ -35,6 +35,7 @@ import androidx.core.view.ViewCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
 import com.indapp.qurantafseer_maulanaabdulkareem.R;
 import com.indapp.utils.Constants1;
@@ -68,9 +69,9 @@ public class SmartTabLayout extends HorizontalScrollView {
   private static final boolean DEFAULT_DISTRIBUTE_EVENLY = false;
   private static final int TITLE_OFFSET_DIPS = 24;
   private static final int TITLE_OFFSET_AUTO_CENTER = -1;
-  private static final int TAB_VIEW_PADDING_DIPS = 16;
+  private static final int TAB_VIEW_PADDING_DIPS = 10;
   private static final boolean TAB_VIEW_TEXT_ALL_CAPS = true;
-  private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
+  private static final int TAB_VIEW_TEXT_SIZE_SP = 10;
   private static final int TAB_VIEW_TEXT_COLOR = 0xFC000000;
   private static final int TAB_VIEW_TEXT_MIN_WIDTH = 0;
   private static final boolean TAB_CLICKABLE = true;
@@ -357,11 +358,17 @@ public class SmartTabLayout extends HorizontalScrollView {
 //    else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.HINDI))
 //      textView= new HindiFont(getContext());
 //    else
+
+      if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+        textView= new GujaratiTextView(getContext());
+        else //if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
       textView= new UrduTextView(getContext());
 
 
     textView.setGravity(Gravity.CENTER);
+
     textView.setText(title);
+
     textView.setTextColor(tabViewTextColors);
     textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, tabViewTextSize);
 //    textView.setTypeface(Typeface.DEFAULT_BOLD);

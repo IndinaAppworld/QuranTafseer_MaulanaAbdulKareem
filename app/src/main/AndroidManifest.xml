@@ -14,7 +14,7 @@
         android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem"
         tools:targetApi="31">
         <activity
-            android:name=".QuranActivity"
+        android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem.NoActionBar">
@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".QuranActivity" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

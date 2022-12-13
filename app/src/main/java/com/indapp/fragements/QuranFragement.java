@@ -26,6 +26,8 @@ import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,11 +49,11 @@ public class QuranFragement extends Fragment {
 
 
     Runnable r6;
-
+    int GROUP_NO;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.quran_fragment, container, false);
-        int GROUP_NO=getArguments().getInt(PAGENO_ID)+1;
+        GROUP_NO=getArguments().getInt(PAGENO_ID)+1;
         Log.v(Constants1.TAG, "**************GROUP_NO******************" + GROUP_NO);
 
 //        SELECT QA.PARA_NO,QA.SURA_NO,QA.QURAN_AYAT_NO,QA.SURA_AYAT_NO, QA.AYAT,
@@ -64,11 +66,12 @@ public class QuranFragement extends Fragment {
         Cursor cursor = Constants1.databaseHandler.getData("SELECT QA.PARA_NO,QA.SURA_NO,QA.QURAN_AYAT_NO,QA.SURA_AYAT_NO, QA.AYAT,\n" +
                 "QP.PARA_NAME,\n" +
                 "QS.SURA_NAME,\n" +
-                "QT.TRANSLATION_"+Constants1.LANGUAGE+"\n" +
+                "QT.TRANSLATION_"+Constants1.LANGUAGE+",\n" +
+                "QT.TAFSEER_"+Constants1.LANGUAGE+"\n" +
                 "from QURAN_ARABIC QA, QURAN_PARA QP, QURAN_SURA QS, QURAN_TRANSLATION QT\n" +
                 "where QA.PARA_NO =  QP.ID and QA.GROUP_NO="+GROUP_NO+" and QA.SURA_NO = QS.ID\n" +
                 "and QA.ID=QT.ID", Constants1.sqLiteDatabase);
-        String PARA_NO,SURA_NO,QURAN_AYAT_NO,SURA_AYAT_NO,QURAN_AYAT,PARA_NAME,SURA_NAME,TRANSALATION;
+        String PARA_NO,SURA_NO,QURAN_AYAT_NO,SURA_AYAT_NO,QURAN_AYAT,PARA_NAME,SURA_NAME,TRANSALATION,TAFSEER="";
         ArrayList<PageBean> pageBeanArrayList=new ArrayList<>();
         PageBean tempPageBean;
         if(cursor!=null) {
@@ -83,6 +86,7 @@ public class QuranFragement extends Fragment {
                 PARA_NAME=""+cursor.getString(5);
                 SURA_NAME=""+cursor.getString(6);
                 TRANSALATION=""+cursor.getString(7);
+                TAFSEER=""+cursor.getString(8);
 
                 Log.v(Constants1.TAG,"PARA_NO: "+PARA_NO+"\nSURA_NO: "+SURA_NO+"\nPARA_NAME: "+PARA_NAME+"\nSURA_NAME:  "+SURA_NAME+"\nPARA_NAME:  "+PARA_NAME+"\nQURA_AYAT: "+QURAN_AYAT+"\nTRANSALATION: "+TRANSALATION);
 
@@ -94,18 +98,23 @@ public class QuranFragement extends Fragment {
                 tempPageBean.setPARA_NAME(PARA_NAME);
                 tempPageBean.setSURA_NAME(SURA_NAME);
                 tempPageBean.setTRANSALATION(TRANSALATION);
+//                if(TAFSEER!=null && TAFSEER.trim().length()>0)
+                tempPageBean.setTAFSEER(TAFSEER);
+//                else tempPageBean.setTAFSEER("");
 
                 pageBeanArrayList.add(tempPageBean);
             }
         }
         ScrollView scrollViewNested=(ScrollView)view1.findViewById(R.id.scrollViewNested);
         LinearLayout contentLayout=(LinearLayout)view1.findViewById(R.id.contentLayout);
+        TextView txtTafseer=(TextView)view1.findViewById(R.id.txtTafseerGujarati);
 
         int TOTAL_ROW=pageBeanArrayList.size();
         final TextView txtTranslation[]=new TextView[TOTAL_ROW];
         final ArabicTextView txtArabicTextView[]=new ArabicTextView[TOTAL_ROW];
         final View view_row[]=new View[TOTAL_ROW];
         String temp_translation="";
+        String finalTasfeeer="";
         for(int i=0;i<TOTAL_ROW;i++)
         {
             view_row[i]=View.inflate(getActivity(),R.layout.inflate_quran_page,null);
@@ -118,6 +127,13 @@ public class QuranFragement extends Fragment {
             txtArabicTextView[i]=(ArabicTextView)view_row[i].findViewById(R.id.txtArabic);
 
             temp_translation=pageBeanArrayList.get(i).getTRANSALATION();
+            if(pageBeanArrayList.get(i).getTAFSEER()!=null && pageBeanArrayList.get(i).getTAFSEER().trim().length()>0 &&
+                    pageBeanArrayList.get(i).getTAFSEER().trim().equalsIgnoreCase("null")==false) {
+                if(finalTasfeeer.length()>0)
+                finalTasfeeer = finalTasfeeer+"\n\n"+ pageBeanArrayList.get(i).getTAFSEER();
+                else finalTasfeeer = pageBeanArrayList.get(i).getTAFSEER();
+            }
+
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             {
                 temp_translation=temp_translation.replaceAll("0","૦").replaceAll("1","૧")
@@ -130,11 +146,20 @@ public class QuranFragement extends Fragment {
 
             txtTranslation[i].setOnClickListener(new TextClickListener(0));
             txtArabicTextView[i].setOnClickListener(new TextClickListener(1));
-
             contentLayout.addView(view_row[i]);
-
             Log.v(Constants1.TAG,"----------"+i);
         }
+
+        if(finalTasfeeer.trim().length()>0) {
+            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+                finalTasfeeer = finalTasfeeer.replaceAll("0", "૦").replaceAll("1", "૧")
+                        .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                        .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+            }
+            txtTafseer.setText(finalTasfeeer);
+        }
+        else txtTafseer.setVisibility(View.GONE);
+
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -150,6 +175,7 @@ public class QuranFragement extends Fragment {
                             txtArabicTextView[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
 
                         }
+                        txtTafseer.setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                     };
                 });
             }
