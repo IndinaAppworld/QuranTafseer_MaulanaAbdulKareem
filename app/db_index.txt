@@ -1,0 +1,19 @@
+CREATE INDEX "index_arabic" ON "QURAN_ARABIC" (
+	"ID",
+	"PARA_NO",
+	"SURA_NO",
+	"GROUP_NO"
+);
+
+CREATE INDEX "index_para" ON "QURAN_PARA" (
+	"ID",
+	"PARA_NAME",
+	"START_GROUP_NO"
+);
+CREATE INDEX "index_sura" ON "QURAN_SURA" (
+	"ID",
+	"START_GROUP_NO"
+);
+CREATE INDEX "index_trans" ON "QURAN_TRANSLATION" (
+	"ID"
+);

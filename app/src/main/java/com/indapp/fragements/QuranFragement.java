@@ -53,7 +53,7 @@ public class QuranFragement extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.quran_fragment, container, false);
-        GROUP_NO=getArguments().getInt(PAGENO_ID)+1;
+        GROUP_NO=getArguments().getInt(PAGENO_ID);
         Log.v(Constants1.TAG, "**************GROUP_NO******************" + GROUP_NO);
 
 //        SELECT QA.PARA_NO,QA.SURA_NO,QA.QURAN_AYAT_NO,QA.SURA_AYAT_NO, QA.AYAT,
@@ -63,6 +63,8 @@ public class QuranFragement extends Fragment {
 //        from QURAN_ARABIC QA, QURAN_PARA QP, QURAN_SURA QS, QURAN_TRANSLATION QT
 //        where QA.PARA_NO =  QP.ID and QA.GROUP_NO=1276 and QA.SURA_NO = QS.ID
 //        and QA.ID=QT.ID
+
+
         Cursor cursor = Constants1.databaseHandler.getData("SELECT QA.PARA_NO,QA.SURA_NO,QA.QURAN_AYAT_NO,QA.SURA_AYAT_NO, QA.AYAT,\n" +
                 "QP.PARA_NAME,\n" +
                 "QS.SURA_NAME,\n" +

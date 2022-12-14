@@ -17,6 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/imgSearch"
+            android:tint="#ffffff"
+            android:src="@drawable/search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <com.indapp.fonts.UrduTextView
 
             android:id="@+id/txtQuranTitle"
@@ -126,83 +135,87 @@
     </androidx.viewpager.widget.ViewPager>
 
 
-    <LinearLayout
-        android:orientation="vertical"
-
-        android:visibility="invisible"
-        android:id="@+id/layout_setting"
-        android:background="@color/colorSurahParaBG"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-        <RelativeLayout
-            android:visibility="invisible"
-            android:id="@+id/layout_setting_header"
-            android:padding="5dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:background="@color/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.indapp.fonts.UrduTextView
-                android:id="@+id/txtTitleSettingUrdu"
-                android:textColor="#ffffff"
-                android:text="سورتوں کی فہرست"
-                android:layout_centerInParent="true"
-                android:textSize="@dimen/menuitemsize_urdu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <com.indapp.fonts.GujaratiTextView
-                android:id="@+id/txtTitleSettingGujarati"
-                android:textColor="#ffffff"
-                android:text="سورتوں کی فہرست"
-                android:layout_centerInParent="true"
-                android:textSize="@dimen/menuitemsize_urdu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:layout_marginRight="10dp"
-                android:id="@+id/imgSettingClose"
-                app:tint="@color/colorPrimaryDark"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/close_button_white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-        <ScrollView
-            android:visibility="gone"
-            android:id="@+id/scroll_setting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
         <LinearLayout
+            android:id="@+id/layout_setting"
 
-            android:id="@+id/layout_setting_surahparahlist"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:background="@color/colorSurahParaBG"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+
+            <RelativeLayout
+                android:id="@+id/layout_setting_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="invisible">
+
+                <com.indapp.fonts.UrduTextView
+                    android:id="@+id/txtTitleSettingUrdu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="سورتوں کی فہرست"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/menuitemsize_urdu" />
+
+                <com.indapp.fonts.GujaratiTextView
+                    android:id="@+id/txtTitleSettingGujarati"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="سورتوں کی فہرست"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/menuitemsize_urdu" />
+
+                <ImageView
+                    android:id="@+id/imgSettingClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/close_button_white"
+                    app:tint="@color/colorPrimaryDark" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/scroll_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+
+                        android:id="@+id/layout_setting_surahparahlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/include_general_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <include layout="@layout/include_setting" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
-
-    <LinearLayout
-        android:visibility="gone" android:id="@+id/include_general_setting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <include layout="@layout/include_setting"/>
-    </LinearLayout>
-</LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

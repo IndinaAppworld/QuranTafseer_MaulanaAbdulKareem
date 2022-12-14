@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -48,6 +49,7 @@ import android.view.MenuItem;
 import android.view.ViewParent;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -98,18 +100,6 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         }
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE=Constants1.sp.getString("language",Constants1.GUJARATI);
-        Log.v(Constants1.TAG,"Language--->"+Constants1.LANGUAGE);
-
-//        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-//        {
-//            Constants1.editor.putString("language",Constants1.GUJARATI);
-//            Constants1.editor.commit();
-//        }
-//        else
-//        {
-//            Constants1.editor.putString("language",Constants1.URDU);
-//            Constants1.editor.commit();
-//        }
 
 
         setContentView(R.layout.activity_main);
@@ -145,7 +135,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         });
         txtTitleSettingUrdu=(UrduTextView)findViewById(R.id.txtTitleSettingUrdu);
         txtTitleSettingGujarati=(GujaratiTextView) findViewById(R.id.txtTitleSettingGujarati);
-        changeLanguage();
+//        changeLanguage();
 
         imgSettingClose=(ImageView)findViewById(R.id.imgSettingClose);
         imgSettingClose.setOnClickListener(new View.OnClickListener() {
@@ -254,6 +244,26 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     layout_setting_header.setVisibility(View.INVISIBLE);
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+
+//                            InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                            //Find the currently focused view, so we can grab the correct window token from it.
+//                            View view = getCurrentFocus();
+//                            //If no view currently has focus, create a new one, just so we can grab a window token from it
+//                            if (view == null) {
+//                                view = new View(QuranActivity.this);
+//                            }
+//                            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+
+                        }
+                    }, 100);
+
                 }
 
                 @Override
@@ -407,11 +417,18 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
                 if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
                 {
-
                     Constants1.LANGUAGE=Constants1.URDU;
                     Constants1.editor.putString("language",Constants1.URDU);
                     Constants1.editor.commit();
                     changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            setTabs();
+                        }
+                    }, 500);
                 }
             }
         });
@@ -425,6 +442,16 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                     Constants1.editor.putString("language",Constants1.GUJARATI);
                     Constants1.editor.commit();
                     changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            setTabs();
+                        }
+                    }, 500);
+
+
                 }
             }
         });
@@ -468,28 +495,46 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         findViewById(R.id.layout_lineColor).setOnClickListener(new TextClickListener(2));
 
         final EditText txtPageNo=(EditText)findViewById(R.id.txtPageNo);
+        txtPageNo.setText("");
+        txtPageNo.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
+                        || actionId == EditorInfo.IME_ACTION_DONE) {
+
+
+
+                    // Do your action
+                    return true;
+                }
+                return true;
+            }
+        });
+
         findViewById(R.id.btnGotoPage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                if(txtPageNo.getText().toString().trim().length()>0)
-//                {
-//                    if(Integer.parseInt(txtPageNo.getText().toString().trim())>TOTAL)
-//                    {
-//                        Toast.makeText(getApplicationContext(),"Page Should be less than "+TOTAL,Toast.LENGTH_SHORT).show();
-//                    }
-//                    else
-//                    {
-//                        openSettingScreen(-1);
-//                        pager.setCurrentItem(TOTAL-(Integer.parseInt(txtPageNo.getText().toString().trim())-1));
-////                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-////                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-//                    }
-//                }
-//                else
-//                {
-//                    Toast.makeText(getApplicationContext(),"Please enter Page No.",Toast.LENGTH_SHORT).show();
-//                }
+                if(txtPageNo.getText().toString().trim().length()>0)
+                {
+                    if(Integer.parseInt(txtPageNo.getText().toString().trim())>TOTAL)
+                    {
+                        Toast.makeText(getApplicationContext(),"Page Should be less than "+TOTAL,Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        openSettingScreen(-1);
+                        pager.setCurrentItem(TOTAL-(Integer.parseInt(txtPageNo.getText().toString().trim())));
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Please enter Page No.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -518,6 +563,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
         }
+
     }
     public class ItemClickListener implements View.OnClickListener {
         int pos;
@@ -529,7 +575,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         }
         public void onClick(View view)
         {
-            pager.setCurrentItem(TOTAL-(Integer.parseInt(start_group_no)-1));
+            pager.setCurrentItem(TOTAL-(Integer.parseInt(start_group_no)));
             openSettingScreen(-1);
         }
     }
@@ -647,14 +693,14 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         pager.setAdapter(pageAdapter);
         ((SmartTabLayout) findViewById(R.id.viewpagertab_urdu)).setViewPager(pager);
-        pager.setCurrentItem(TOTAL);
+        pager.setCurrentItem(TOTAL-Constants1.sp.getInt("last_read",0));
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
                 Cursor cursor = Constants1.databaseHandler.getData("SELECT QP.PARA_NAME, QS.SURA_NAME " +
                         "from QURAN_ARABIC QA, QURAN_PARA QP, QURAN_SURA QS, QURAN_TRANSLATION QT\n" +
-                        "where QA.PARA_NO =  QP.ID and QA.GROUP_NO="+(TOTAL-(position-1))+" and QA.SURA_NO = QS.ID\n" +
+                        "where QA.PARA_NO =  QP.ID and QA.GROUP_NO="+(TOTAL-(position))+" and QA.SURA_NO = QS.ID\n" +
                         "and QA.ID=QT.ID", Constants1.sqLiteDatabase);
 
                 while(cursor.moveToNext())
@@ -662,10 +708,16 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                     txtParaName.setText(""+cursor.getString(0));
                     txtSurahName.setText(""+cursor.getString(1));
                 }
+
+                Log.v(Constants1.TAG,"Last_Read------->"+(TOTAL-position));
+                Constants1.editor.putInt("last_read",(TOTAL-position));
+                Constants1.editor.commit();
             }
 
             @Override
             public void onPageSelected(int position) {
+
+
 
             }
 
@@ -680,7 +732,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     {
         List<Fragment> fList = new ArrayList<Fragment>();
         Vector<String> v=new Vector<String>();
-        for(int i=TOTAL;i>=0;i--)
+        for(int i=TOTAL;i>0;i--)
         fList.add(QuranFragement.newInstance(i,0));
 
         return fList;
@@ -707,11 +759,11 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         {
 
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
-               return ""+(""+(TOTAL-position+1)).replaceAll("0","૦").replaceAll("1","૧")
+               return ""+(""+(TOTAL-position)).replaceAll("0","૦").replaceAll("1","૧")
                        .replaceAll("2","૨").replaceAll("3","૩").replaceAll("4","૪")
                        .replaceAll("5","૫").replaceAll("6","૬").replaceAll("7","૭").replaceAll("8","૮").replaceAll("9","૯");
             else
-            return Constants1.URDU_NUMBERS[TOTAL-position];
+            return Constants1.URDU_NUMBERS[TOTAL-position-1];
 //            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
 //            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
 //                return Constants1.TAB_TIELS_ROMAN[position];
@@ -735,9 +787,11 @@ public boolean dispatchTouchEvent(MotionEvent motionEvent) {
 
         }
         public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
-            n = n * scaleGestureDetector.getScaleFactor();
-            Log.v(Constants1.TAG, "---onScale---");
-            Constants1.editor.putInt("perf_font_size", (int) n).commit();
+            if(layout_setting.getVisibility()!=View.VISIBLE) {
+                n = n * scaleGestureDetector.getScaleFactor();
+                Log.v(Constants1.TAG, "---onScale---");
+                Constants1.editor.putInt("perf_font_size", (int) n).commit();
+            }
             return true;
         }
         public boolean onScaleBegin(ScaleGestureDetector scaleGestureDetector) {
@@ -747,8 +801,10 @@ public boolean dispatchTouchEvent(MotionEvent motionEvent) {
         public void onScaleEnd(ScaleGestureDetector scaleGestureDetector) {
             Log.v(Constants1.TAG, "---onScale End---");
             super.onScaleEnd(scaleGestureDetector);
-            Constants1.editor.putInt("perf_font_size", (int) n).commit();
-            Log.v(Constants1.TAG,"----Font Size-------->"+n);
+            if(layout_setting.getVisibility()!=View.VISIBLE) {
+                Constants1.editor.putInt("perf_font_size", (int) n).commit();
+                Log.v(Constants1.TAG, "----Font Size-------->" + n);
+            }
         }
     }
     /* access modifiers changed from: protected */

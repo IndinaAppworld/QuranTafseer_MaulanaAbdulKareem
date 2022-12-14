@@ -285,6 +285,7 @@
             <com.indapp.fonts.GujaratiTextView
                 android:text=">>"
                 android:textColor="#ffffff"
+                android:imeOptions="actionDone"
                 android:id="@+id/btnGotoPage"
                 android:layout_marginLeft="10dp"
                 android:textSize="@dimen/menuitemsize_urdu"
