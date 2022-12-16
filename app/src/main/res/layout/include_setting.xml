@@ -302,5 +302,41 @@
         android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/layout_bookmark"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!--        Change Text Color-->
+            <com.indapp.fonts.GujaratiTextView
+                android:layout_marginLeft="10dp"
+                android:text="બુક માર્ક"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 </LinearLayout>

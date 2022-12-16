@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:visibility="visible"
-    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="0dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,8 +34,23 @@
 
 
     <com.indapp.fonts.GujaratiTextView
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:id="@+id/txtTafseerGujarati"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:textColor="@color/colorSurahParaBG"
+        android:textSize="@dimen/menuitemsize_urdu"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.indapp.fonts.UrduTextView
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:id="@+id/txtTafseerUrdu"
         android:padding="10dp"
         android:textColor="@color/colorSurahParaBG"
         android:textSize="@dimen/menuitemsize_urdu"

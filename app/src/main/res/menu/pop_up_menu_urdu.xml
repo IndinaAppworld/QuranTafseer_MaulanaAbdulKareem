@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<menu xmlns:android = "http://schemas.android.com/apk/res/android">
+    <item
+        android:id = "@+id/addbookmark"
+        android:title = "بک مارک شامل کریں" />
+    <item
+        android:id = "@+id/removeaddbookmark"
+        android:title = "بک مارک کو ہٹا دیں" />
+    <item
+        android:id = "@+id/copytranslation"
+        android:title = "ترجمہ کاپی کریں"/>
+    <item
+        android:id = "@+id/copyarabic"
+        android:title = "عربی کاپی کریں"/>
+    <item
+        android:id = "@+id/copyarabictranslation"
+        android:title = "کاپی (عربی + ترجمہ)"/>
+    <item
+        android:id = "@+id/sharetranslation"
+        android:title = "بانٹیں ترجمہ"/>
+    <item
+        android:id = "@+id/sharearabic"
+        android:title = "بانٹیں عربی"/>
+    <item
+        android:id = "@+id/sharearabictranslation"
+        android:title = "شیئر کریں (عربی + ترجمہ)"/>
+
+</menu>

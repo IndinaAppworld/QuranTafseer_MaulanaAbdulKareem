@@ -9,6 +9,8 @@
 
     <LinearLayout
 
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:weightSum="2"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -60,6 +62,7 @@
     </LinearLayout>
 
     <View
+
         android:id="@+id/viewLineHorizontal"
         android:layout_marginTop="5dp"
         android:background="#000000"
