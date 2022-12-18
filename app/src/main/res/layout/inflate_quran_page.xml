@@ -9,6 +9,36 @@
 
     <LinearLayout
 
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/layout_bookmarkContent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.indapp.fonts.ArabicTextView
+                android:layout_alignParentLeft="true"
+                android:textColor="#ffffff"
+                android:id="@+id/txtBookmarkSurahName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.indapp.fonts.ArabicTextView
+                android:layout_alignParentRight="true"
+                android:textColor="#ffffff"
+                android:id="@+id/txtBookmarkParaName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    <LinearLayout
+
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:weightSum="2"
@@ -21,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <View
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_alignParentRight="true"
@@ -57,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
+    </LinearLayout>
 
     </LinearLayout>
 

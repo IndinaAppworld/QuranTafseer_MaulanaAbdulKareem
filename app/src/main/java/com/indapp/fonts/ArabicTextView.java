@@ -39,7 +39,6 @@ public class ArabicTextView extends TextView
         // Load and Set Font
         initTypeFace();
     }
-
     private void initTypeFace()
     {
         if(!isInEditMode() && mTypeFace == null)

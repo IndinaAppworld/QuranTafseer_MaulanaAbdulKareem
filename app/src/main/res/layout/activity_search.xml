@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/layout_quran"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:padding="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/imgBack"
+                android:src="@drawable/icon_backarrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.indapp.fonts.UrduTextView
+                android:visibility="gone"
+                android:id="@+id/txtMainTitleUrdu"
+                android:textColor="#ffffff"
+                android:text="تلاش کریں"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.GujaratiTextView
+                android:visibility="gone"
+                android:id="@+id/txtMainTitleGujarati"
+                android:textColor="#ffffff"
+                android:text="શોધો"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/layout_header"
+
+            android:id="@+id/layout_searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <com.indapp.fonts.GujaratiEditText
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="0dp"
+            android:hint="કુરાન, તરજુમા અને તફસીર પર શોધો"
+            android:layout_marginLeft="0dp"
+            android:drawableRight="@drawable/icon_mic"
+
+            android:background="@color/colorSurahParaBG"
+            android:id="@+id/txtSearchGujarati"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.indapp.fonts.UrduEditText
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="right|center_vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+
+            android:drawableLeft="@drawable/icon_mic"
+            android:hint="قرآن، ترجمہ اور تفسیر پر تلاش کریں"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="0dp"
+            android:background="@color/colorSurahParaBG"
+            android:id="@+id/txtSearchUrdu"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ScrollView
+            android:layout_below="@id/layout_searchEditText"
+            android:scrollbars="none"
+            android:id="@+id/scrollViewNested"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/data"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+
+
+                    android:id="@+id/contentLayout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

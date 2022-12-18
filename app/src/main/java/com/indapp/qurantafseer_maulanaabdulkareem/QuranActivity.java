@@ -2,6 +2,7 @@ package com.indapp.qurantafseer_maulanaabdulkareem;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -161,7 +162,15 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
         findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
         findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
-         
+
+        findViewById(R.id.imgSearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setClass(QuranActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     EditText txtPageNo;
@@ -487,6 +496,14 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 else {
                     ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
                 }
+            }
+        });
+        findViewById(R.id.layout_bookmark).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent=new Intent(Intent.ACTION_VIEW);
+            intent.setClass(QuranActivity.this,BookmarkActivity.class);
+            startActivity(intent);
             }
         });
 

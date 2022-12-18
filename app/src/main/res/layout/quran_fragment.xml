@@ -12,7 +12,7 @@
     <ScrollView
         android:scrollbars="none"
         android:id="@+id/scrollViewNested"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <LinearLayout

@@ -18,8 +18,8 @@
     <LinearLayout
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -31,11 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 <!--        Change Translation Language-->
-    <com.indapp.fonts.GujaratiTextView
+    <com.indapp.fonts.CipherNormal
         android:layout_marginLeft="10dp"
         android:layout_gravity="center_vertical"
-        android:text="અનુવાદ ભાષા બદલો"
-        android:textSize="@dimen/menuitemsize_urdu"
+        android:text="Translation/ Tafseer Language"
+        android:textSize="@dimen/menuitemsize"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -99,8 +99,8 @@
         <LinearLayout
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -110,11 +110,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <!--        Change Text Color-->
-            <com.indapp.fonts.GujaratiTextView
+            <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
-                android:text="ટેક્સ્ટનો રંગ બદલો"
+                android:text="Change Color"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/menuitemsize_urdu"
+                android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -151,8 +151,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
                 </LinearLayout>
-                <com.indapp.fonts.GujaratiTextView
-                    android:text="અનુવાદ રંગ"
+                <com.indapp.fonts.CipherNormal
+                    android:text="Translation"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
@@ -179,8 +179,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>
-                <com.indapp.fonts.GujaratiTextView
-                    android:text="અરબી રંગ"
+                <com.indapp.fonts.CipherNormal
+                    android:text="Arabic"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
@@ -207,8 +207,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>
-                <com.indapp.fonts.GujaratiTextView
-                    android:text="રેખા રંગ"
+                <com.indapp.fonts.CipherNormal
+                    android:text="Line/ Hashia"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
@@ -234,8 +234,8 @@
         <LinearLayout
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -245,11 +245,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <!--        Change Text Color-->
-            <com.indapp.fonts.GujaratiTextView
+            <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
-                android:text="પૃષ્ઠ પર જાઓ"
+                android:text="Go to Page"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/menuitemsize_urdu"
+                android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -282,7 +282,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp" />
 
-            <com.indapp.fonts.GujaratiTextView
+            <com.indapp.fonts.CipherNormal
                 android:text=">>"
                 android:textColor="#ffffff"
                 android:imeOptions="actionDone"
@@ -311,8 +311,8 @@
         <LinearLayout
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -322,11 +322,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <!--        Change Text Color-->
-            <com.indapp.fonts.GujaratiTextView
+            <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
-                android:text="બુક માર્ક"
+                android:text="Bookmark"
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/menuitemsize_urdu"
+                android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

@@ -135,15 +135,5 @@ public class SplashActivity extends Activity {
         Intent intent =new Intent(Intent.ACTION_VIEW);
         intent.setClass(SplashActivity.this, QuranActivity.class);
         startActivity(intent);
-//        ActivityAnimator anim = new ActivityAnimator();
-//        try
-//        {
-//            anim.getClass().getMethod("appearTopLeft" + "Animation", Activity.class).invoke(anim, this);
-//        }
-//        catch (Exception e)
-//        {
-//            Toast.makeText(this, "An error occured " + e.toString(), Toast.LENGTH_LONG).show();
-//        }
-
     }
 }
