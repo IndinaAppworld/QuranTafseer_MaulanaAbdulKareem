@@ -52,6 +52,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +84,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     RelativeLayout layout_splash,layout_quran;
     ImageView imgSetting;
     LinearLayout layout_general_setting;
+    CheckBox chkSettingTranslation, getChkSettingTafseer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +173,10 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 startActivity(intent);
             }
         });
+
+        chkSettingTranslation=(CheckBox)findViewById(R.id.chkSettingTranslation);
+        getChkSettingTafseer=(CheckBox)findViewById(R.id.chkSettingTafseer);
+
     }
 
     EditText txtPageNo;

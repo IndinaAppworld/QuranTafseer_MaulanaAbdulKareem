@@ -2,10 +2,7 @@ package com.indapp.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 
 import android.content.Context;
@@ -35,7 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_TITLE = "title";
 
 
-    public static String DB_NAME = "quran_v1.sqlite";
+    public static String DB_NAME = "quran_v2.sqlite";
 //private static String DB_NAME = "test.txt";
     public static String DB_PATH = Environment.getExternalStorageDirectory() + "/appdb/";//"/sdcard/appdb/";
     Context context;

@@ -71,6 +71,8 @@
         <com.indapp.fonts.UrduEditText
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:singleLine="true"
+
             android:gravity="right|center_vertical"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"

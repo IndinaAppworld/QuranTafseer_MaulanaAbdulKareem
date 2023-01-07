@@ -110,26 +110,26 @@ public class QuranFragement extends Fragment {
         }
         ScrollView scrollViewNested=(ScrollView)view1.findViewById(R.id.scrollViewNested);
         LinearLayout contentLayout=(LinearLayout)view1.findViewById(R.id.contentLayout);
-        TextView txtTafseer;
+
 
         String tafseerLineSeperator="\n\n";
 
-        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
-        txtTafseer=(TextView)view1.findViewById(R.id.txtTafseerGujarati);
-        else //if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-        {
-            txtTafseer=(TextView)view1.findViewById(R.id.txtTafseerUrdu);
-            tafseerLineSeperator="\n";
-        }
+//        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+//        txtTafseer=(TextView)view1.findViewById(R.id.txtTafseerGujarati);
+//        else //if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+//        {
+//            txtTafseer=(TextView)view1.findViewById(R.id.txtTafseerUrdu);
+//            tafseerLineSeperator="\n";
+//        }
 
-        txtTafseer.setVisibility(View.VISIBLE);
+//        txtTafseer.setVisibility(View.VISIBLE);
 
         int TOTAL_ROW=pageBeanArrayList.size();
         final TextView txtTranslation[]=new TextView[TOTAL_ROW];
+        final TextView txtTafseer[]=new TextView[TOTAL_ROW];
         final ArabicTextView txtArabicTextView[]=new ArabicTextView[TOTAL_ROW];
         final View view_row[]=new View[TOTAL_ROW];
         final View viewLineHorizontal[]=new View[TOTAL_ROW];
-        final View viewLineVertical[]=new View[TOTAL_ROW];
         String temp_translation="";
         String finalTasfeeer="";
         for(int i=0;i<TOTAL_ROW;i++)
@@ -137,24 +137,29 @@ public class QuranFragement extends Fragment {
             view_row[i]=View.inflate(getActivity(),R.layout.inflate_quran_page,null);
 
             viewLineHorizontal[i]=view_row[i].findViewById(R.id.viewLineHorizontal);
-            viewLineVertical[i]=view_row[i].findViewById(R.id.viewLineVertical);
+
 
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
             {
                 txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtUrdu);
-
+                txtTafseer[i]=(TextView)view_row[i].findViewById(R.id.txtTafseerUrdu);
             }
             else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
-            {txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtGujarati);}
+            {
+                txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtGujarati);
+                txtTafseer[i]=(TextView)view_row[i].findViewById(R.id.txtTafseerGujarati);
+            }
+            txtTafseer[i].setVisibility(View.VISIBLE);
 
             txtArabicTextView[i]=(ArabicTextView)view_row[i].findViewById(R.id.txtArabic);
-
+            finalTasfeeer="";
             temp_translation=pageBeanArrayList.get(i).getTRANSALATION();
             if(pageBeanArrayList.get(i).getTAFSEER()!=null && pageBeanArrayList.get(i).getTAFSEER().trim().length()>0 &&
                     pageBeanArrayList.get(i).getTAFSEER().trim().equalsIgnoreCase("null")==false) {
-                if(finalTasfeeer.length()>0)
-                finalTasfeeer = finalTasfeeer+tafseerLineSeperator+ pageBeanArrayList.get(i).getTAFSEER();
-                else finalTasfeeer = pageBeanArrayList.get(i).getTAFSEER();
+//                if(finalTasfeeer.length()>0)
+//                finalTasfeeer = finalTasfeeer+tafseerLineSeperator+ pageBeanArrayList.get(i).getTAFSEER();
+//                else
+                    finalTasfeeer = pageBeanArrayList.get(i).getTAFSEER();
             }
 
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
@@ -170,6 +175,18 @@ public class QuranFragement extends Fragment {
                         .replaceAll("5","۵").replaceAll("6","۶").replaceAll("7","۷").replaceAll("8","۸").replaceAll("9","۹");
             }
 
+
+            if(finalTasfeeer.trim().length()>0) {
+                if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+                {
+                    finalTasfeeer = finalTasfeeer.replaceAll("0", "૦").replaceAll("1", "૧")
+                            .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                            .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+                }
+                txtTafseer[i].setText(finalTasfeeer.trim());
+            }
+            else txtTafseer[i].setVisibility(View.GONE);
+
             txtTranslation[i].setText(temp_translation);
 
             txtArabicTextView[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
@@ -181,16 +198,7 @@ public class QuranFragement extends Fragment {
             Log.v(Constants1.TAG,"----------"+i);
         }
 
-        if(finalTasfeeer.trim().length()>0) {
-            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
-            {
-                finalTasfeeer = finalTasfeeer.replaceAll("0", "૦").replaceAll("1", "૧")
-                        .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
-                        .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
-            }
-            txtTafseer.setText(finalTasfeeer);
-        }
-        else txtTafseer.setVisibility(View.GONE);
+
 
         new Timer().schedule(new TimerTask() {
             @Override
@@ -206,11 +214,10 @@ public class QuranFragement extends Fragment {
                             txtTranslation[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
                             txtArabicTextView[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
 
-                            viewLineVertical[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
                             viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
-
+                            txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                         }
-                        txtTafseer.setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+
                     };
                 });
             }
