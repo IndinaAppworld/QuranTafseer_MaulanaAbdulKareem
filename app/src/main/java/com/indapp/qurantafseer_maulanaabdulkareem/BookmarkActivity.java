@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewParent;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -50,6 +51,7 @@ public class BookmarkActivity extends Activity {
 
 
     LinearLayout contentLayout;
+    ImageView imgListGridIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +87,35 @@ public class BookmarkActivity extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        imgListGridIcon=(ImageView)findViewById(R.id.imgListGridIcon);
+        if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+        {
+            imgListGridIcon.setImageResource(R.drawable.icon_grid);
+        }
+        else
+        {
+            imgListGridIcon.setImageResource(R.drawable.icon_list);
+        }
+        imgListGridIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+                {
+
+                    Constants1.editor.putString("format","list");
+                    imgListGridIcon.setImageResource(R.drawable.icon_list);
+                }
+                else
+                {
+                    Constants1.editor.putString("format","grid");
+                    imgListGridIcon.setImageResource(R.drawable.icon_grid);
+                }
+                Constants1.editor.commit();
+
+
             }
         });
     }
@@ -164,10 +195,18 @@ public class BookmarkActivity extends Activity {
             final RelativeLayout layout_bookmarkContent[]=new RelativeLayout[TOTAL_ROW];
             final ArabicTextView txtBookmarkSurahName[]=new ArabicTextView[TOTAL_ROW];
             final ArabicTextView txtBookmarkParaName[]=new ArabicTextView[TOTAL_ROW];
+            final LinearLayout layout_grid[]=new LinearLayout[TOTAL_ROW];
+            final LinearLayout layout_list[]=new LinearLayout[TOTAL_ROW];
+            final TextView txtTranslationList[]=new TextView[TOTAL_ROW];
+            final ArabicTextView txtArabicList[]=new ArabicTextView[TOTAL_ROW];
+
             String temp_translation = "";
             String finalTasfeeer = "";
             for (int i = 0; i < TOTAL_ROW; i++) {
                 view_row[i] = View.inflate(this, R.layout.inflate_quran_page, null);
+
+                layout_grid[i]=(LinearLayout) view_row[i].findViewById(R.id.layout_grid);
+                layout_list[i]=(LinearLayout) view_row[i].findViewById(R.id.layout_list);
 
                 viewLineHorizontal[i] = view_row[i].findViewById(R.id.viewLineHorizontal);
                 viewLineVertical[i] = view_row[i].findViewById(R.id.viewLineVertical);
@@ -179,12 +218,17 @@ public class BookmarkActivity extends Activity {
 
                 if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
                     txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtUrdu);
+                    txtTranslationList[i]=(TextView)view_row[i].findViewById(R.id.txtUrduList);
+
 
                 } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                     txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtGujarati);
+                    txtTranslationList[i]=(TextView)view_row[i].findViewById(R.id.txtGujaratiList);
+
                 }
 
                 txtArabicTextView[i] = (ArabicTextView) view_row[i].findViewById(R.id.txtArabic);
+                txtArabicList[i]=(ArabicTextView)view_row[i].findViewById(R.id.txtArabicList);
 
                 temp_translation = pageBeanArrayList.get(i).getTRANSALATION();
 //                if (pageBeanArrayList.get(i).getTAFSEER() != null && pageBeanArrayList.get(i).getTAFSEER().trim().length() > 0 &&
@@ -205,11 +249,15 @@ public class BookmarkActivity extends Activity {
                 }
 
                 txtTranslation[i].setText(temp_translation);
+                txtTranslationList[i].setText(temp_translation);
 
                 txtBookmarkParaName[i].setText(pageBeanArrayList.get(i).getPARA_NAME());
                 txtBookmarkSurahName[i].setText(pageBeanArrayList.get(i).getSURA_NAME());
 
                 txtArabicTextView[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
+                txtArabicList[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
+
+
                 view_row[i].setOnLongClickListener(new RowLongClick(i, pageBeanArrayList.get(i)));
 
                 if (Constants1.sp.contains("bookmark_" + pageBeanArrayList.get(i).getID()))
@@ -237,14 +285,34 @@ public class BookmarkActivity extends Activity {
                                 txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                 txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
 
+                                txtTranslationList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                                txtArabicList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)* 1.3f);
+
+
                                 txtTranslation[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
                                 txtArabicTextView[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+
+                                txtTranslationList[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+                                txtArabicList[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+
 
                                 txtBookmarkSurahName[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
                                 txtBookmarkParaName[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
 
                                 viewLineVertical[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
                                 viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
+
+
+                                if(Constants1.sp.getString("format","list").equalsIgnoreCase("grid"))
+                                {
+                                    layout_grid[i].setVisibility(View.VISIBLE);
+                                    layout_list[i].setVisibility(View.GONE);
+                                }
+                                else
+                                {
+                                    layout_grid[i].setVisibility(View.GONE);
+                                    layout_list[i].setVisibility(View.VISIBLE);
+                                }
 
                             }
 //                            txtTafseer.setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));

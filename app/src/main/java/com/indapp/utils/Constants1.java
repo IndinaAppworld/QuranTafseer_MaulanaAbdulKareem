@@ -15,7 +15,7 @@ public class Constants1 {
     public static SQLiteDatabase sqLiteDatabase;
     public static SharedPreferences sp;
     public static SharedPreferences.Editor editor;
-    public static String prefName="PREF_1";
+    public static String prefName="PREF_2";
     public static void initSharedPref(Context context) {
         if (sp == null) {
             sp = context.getSharedPreferences(prefName, Activity.MODE_PRIVATE);

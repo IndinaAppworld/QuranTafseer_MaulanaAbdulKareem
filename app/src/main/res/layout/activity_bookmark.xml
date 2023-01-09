@@ -44,7 +44,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-
+            <ImageView
+                android:id="@+id/imgListGridIcon"
+                android:layout_marginRight="10dp"
+android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </RelativeLayout>
 

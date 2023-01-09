@@ -60,7 +60,7 @@
             android:hint="કુરાન, તરજુમા અને તફસીર પર શોધો"
             android:layout_marginLeft="0dp"
             android:drawableRight="@drawable/icon_mic"
-
+android:singleLine="true"
             android:background="@color/colorSurahParaBG"
             android:id="@+id/txtSearchGujarati"
             android:textSize="@dimen/menuitemsize_urdu"
@@ -88,7 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         </RelativeLayout>
+
+
         <ScrollView
+
             android:layout_below="@id/layout_searchEditText"
             android:scrollbars="none"
             android:id="@+id/scrollViewNested"

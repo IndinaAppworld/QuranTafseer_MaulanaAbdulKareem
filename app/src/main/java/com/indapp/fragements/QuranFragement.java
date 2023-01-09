@@ -126,10 +126,17 @@ public class QuranFragement extends Fragment {
 
         int TOTAL_ROW=pageBeanArrayList.size();
         final TextView txtTranslation[]=new TextView[TOTAL_ROW];
+        final TextView txtTranslationList[]=new TextView[TOTAL_ROW];
         final TextView txtTafseer[]=new TextView[TOTAL_ROW];
         final ArabicTextView txtArabicTextView[]=new ArabicTextView[TOTAL_ROW];
+        final ArabicTextView txtArabicList[]=new ArabicTextView[TOTAL_ROW];
+
         final View view_row[]=new View[TOTAL_ROW];
         final View viewLineHorizontal[]=new View[TOTAL_ROW];
+        final View viewLineVertical[]=new View[TOTAL_ROW];
+
+        final LinearLayout layout_grid[]=new LinearLayout[TOTAL_ROW];
+        final LinearLayout layout_list[]=new LinearLayout[TOTAL_ROW];
         String temp_translation="";
         String finalTasfeeer="";
         for(int i=0;i<TOTAL_ROW;i++)
@@ -137,21 +144,26 @@ public class QuranFragement extends Fragment {
             view_row[i]=View.inflate(getActivity(),R.layout.inflate_quran_page,null);
 
             viewLineHorizontal[i]=view_row[i].findViewById(R.id.viewLineHorizontal);
-
+            viewLineVertical[i]=view_row[i].findViewById(R.id.viewLineVertical);
+            layout_grid[i]=(LinearLayout) view_row[i].findViewById(R.id.layout_grid);
+            layout_list[i]=(LinearLayout) view_row[i].findViewById(R.id.layout_list);
 
             if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
             {
                 txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtUrdu);
+                txtTranslationList[i]=(TextView)view_row[i].findViewById(R.id.txtUrduList);
                 txtTafseer[i]=(TextView)view_row[i].findViewById(R.id.txtTafseerUrdu);
             }
             else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             {
                 txtTranslation[i]=(TextView)view_row[i].findViewById(R.id.txtGujarati);
+                txtTranslationList[i]=(TextView)view_row[i].findViewById(R.id.txtGujaratiList);
                 txtTafseer[i]=(TextView)view_row[i].findViewById(R.id.txtTafseerGujarati);
             }
             txtTafseer[i].setVisibility(View.VISIBLE);
 
             txtArabicTextView[i]=(ArabicTextView)view_row[i].findViewById(R.id.txtArabic);
+            txtArabicList[i]=(ArabicTextView)view_row[i].findViewById(R.id.txtArabicList);
             finalTasfeeer="";
             temp_translation=pageBeanArrayList.get(i).getTRANSALATION();
             if(pageBeanArrayList.get(i).getTAFSEER()!=null && pageBeanArrayList.get(i).getTAFSEER().trim().length()>0 &&
@@ -184,12 +196,15 @@ public class QuranFragement extends Fragment {
                             .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
                 }
                 txtTafseer[i].setText(finalTasfeeer.trim());
+                viewLineHorizontal[i].setVisibility(View.GONE);
             }
             else txtTafseer[i].setVisibility(View.GONE);
 
             txtTranslation[i].setText(temp_translation);
+            txtTranslationList[i].setText(temp_translation);
 
             txtArabicTextView[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
+            txtArabicList[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
             view_row[i].setOnLongClickListener(new RowLongClick(i,pageBeanArrayList.get(i)));
 
             if(Constants1.sp.contains("bookmark_"+pageBeanArrayList.get(i).getID()))
@@ -211,11 +226,31 @@ public class QuranFragement extends Fragment {
                             txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                             txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)* 1.3f);
 
+                            txtTranslationList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                            txtArabicList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)* 1.3f);
+
                             txtTranslation[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
                             txtArabicTextView[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
 
+                            txtTranslationList[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+                            txtArabicList[i].setTextColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+
                             viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+                            viewLineVertical[i].setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+
                             txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+
+
+                            if(Constants1.sp.getString("format","list").equalsIgnoreCase("grid"))
+                            {
+                                layout_grid[i].setVisibility(View.VISIBLE);
+                                layout_list[i].setVisibility(View.GONE);
+                            }
+                            else
+                            {
+                                layout_grid[i].setVisibility(View.GONE);
+                                layout_list[i].setVisibility(View.VISIBLE);
+                            }
                         }
 
                     };

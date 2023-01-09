@@ -42,6 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.jaredrummler:colorpicker:1.1.0'
     implementation "com.github.skydoves:androidribbon:1.0.4"
-
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
 }

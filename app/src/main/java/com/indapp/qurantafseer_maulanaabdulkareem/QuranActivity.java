@@ -86,6 +86,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     LinearLayout layout_general_setting;
     CheckBox chkSettingTranslation, getChkSettingTafseer;
 
+    ImageView imgListGridIcon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,6 +178,35 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         chkSettingTranslation=(CheckBox)findViewById(R.id.chkSettingTranslation);
         getChkSettingTafseer=(CheckBox)findViewById(R.id.chkSettingTafseer);
 
+        imgListGridIcon=(ImageView)findViewById(R.id.imgListGridIcon);
+        if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+        {
+            imgListGridIcon.setImageResource(R.drawable.icon_grid);
+        }
+        else
+        {
+            imgListGridIcon.setImageResource(R.drawable.icon_list);
+        }
+        imgListGridIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+                {
+
+                    Constants1.editor.putString("format","list");
+                    imgListGridIcon.setImageResource(R.drawable.icon_list);
+                }
+                else
+                {
+                    Constants1.editor.putString("format","grid");
+                    imgListGridIcon.setImageResource(R.drawable.icon_grid);
+                }
+                Constants1.editor.commit();
+
+
+            }
+        });
     }
 
     EditText txtPageNo;
@@ -391,7 +421,20 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             layout_sub_content[i]=(LinearLayout) view_list[i].findViewById(R.id.layout_sub_content);
             txtArabic[i].setText(""+paraListData.get(i).PARA_NAME);
             txtEnglish[i].setText(""+paraListData.get(i).PARA_NAME_ENGLISH);
-            txtNumber[i].setText(""+Constants1.URDU_NUMBERS[i]);
+
+            txtNumber[i].setText(""+(i+1));
+//            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+//            txtNumber[i].setText(""+Constants1.URDU_NUMBERS[i]);
+//            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+//            {
+//                String t=""+i;
+//                t=t.replaceAll("0","૦").replaceAll("1","૧")
+//                    .replaceAll("2","૨").replaceAll("3","૩").replaceAll("4","૪")
+//                    .replaceAll("5","૫").replaceAll("6","૬").replaceAll("7","૭").replaceAll("8","૮").replaceAll("9","૯");
+//
+//                txtNumber[i].setText(""+t);
+//            }
+
             imgArrow[i]=(ImageView)view_list[i].findViewById(R.id.imgArrow);
 
             view_list[i].setOnClickListener(new ItemClickListener(i,paraListData.get(i).getSTART_GROUP()));

@@ -11,9 +11,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewParent;
 import android.view.inputmethod.EditorInfo;
@@ -86,25 +91,53 @@ public class SearchActivity extends Activity {
                 final int DRAWABLE_BOTTOM = 3;
 
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (event.getRawX() >= (txtSearch.getRight() - txtSearch.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())) {
-                        // your action here
-                        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                    if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)){
+                        if (event.getRawX() <= (txtSearch.getLeft() + txtSearch.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width()))
+                        {
+                            // your action here
+                            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 //                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.A);
 
-                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ur");
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ur");
 
-                        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak");
-                        try {
-                            startActivityForResult(intent, 100);
-                        } catch (ActivityNotFoundException a) {
-                            Toast.makeText(getApplicationContext(),
-                                    "Sorry your device not supported",
-                                    Toast.LENGTH_SHORT).show();
+                            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak");
+                            try {
+                                startActivityForResult(intent, 100);
+                            } catch (ActivityNotFoundException a) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Sorry your device not supported",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            return true;
                         }
-                        return true;
                     }
+                    else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+                    {
+                        if (event.getRawX() >= (txtSearch.getRight()- txtSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width()))
+                        {
+                            // your action here
+                            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+//                        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.A);
+
+                            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "gu");
+
+                            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak");
+                            try {
+                                startActivityForResult(intent, 100);
+                            } catch (ActivityNotFoundException a) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Sorry your device not supported",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                            return true;
+                        }
+
+                    }
+
                 }
                 return false;
             }
@@ -114,6 +147,7 @@ public class SearchActivity extends Activity {
         if (inputMethodManager != null) {
             inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         }
+//        txtSearch.setText("ઇબાદત");
 
         txtSearch.setOnEditorActionListener(new EditText.OnEditorActionListener() {
 
@@ -123,6 +157,8 @@ public class SearchActivity extends Activity {
                 if (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
                         || actionId == EditorInfo.IME_ACTION_DONE) {
 
+                    if(txtSearch.getText().toString().length()>3)
+                    {
                     contentLayout.removeAllViews();
                     ;
                     Cursor cursor = Constants1.databaseHandler.getData("SELECT QA.PARA_NO,QA.SURA_NO,QA.QURAN_AYAT_NO,QA.SURA_AYAT_NO, QA.AYAT,\n" +
@@ -182,9 +218,9 @@ public class SearchActivity extends Activity {
                     final ArabicTextView txtBookmarkParaName[] = new ArabicTextView[TOTAL_ROW];
                     String temp_translation = "";
                     String finalTasfeeer = "";
-                    Log.v(Constants1.TAG,"Total Result-->"+TOTAL_ROW);
+                    Log.v(Constants1.TAG, "Total Result-->" + TOTAL_ROW);
                     for (int i = 0; i < TOTAL_ROW; i++) {
-                        Log.v(Constants1.TAG,"Search Counter-->"+i);
+                        Log.v(Constants1.TAG, "Search Counter-->" + i);
                         view_row[i] = View.inflate(SearchActivity.this, R.layout.inflate_search_result_item, null);
 
                         viewLineHorizontal[i] = view_row[i].findViewById(R.id.viewLineHorizontal);
@@ -214,7 +250,7 @@ public class SearchActivity extends Activity {
                                     .replaceAll("5", "۵").replaceAll("6", "۶").replaceAll("7", "۷").replaceAll("8", "۸").replaceAll("9", "۹");
                         }
 
-                        txtTranslation[i].setText(temp_translation);
+
 
                         txtBookmarkParaName[i].setText(pageBeanArrayList.get(i).getPARA_NAME());
                         txtBookmarkSurahName[i].setText(pageBeanArrayList.get(i).getSURA_NAME());
@@ -225,11 +261,34 @@ public class SearchActivity extends Activity {
 //                        if (Constants1.sp.contains("bookmark_" + pageBeanArrayList.get(i).getID()))
 //                            view_row[i].setBackgroundColor(getResources().getColor(R.color.colorSurahParaBG));
 
+
+                        txtTranslation[i].setText(temp_translation);
+
+                        txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                        txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+
+                        txtTranslation[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
+                        txtArabicTextView[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+
+                        txtBookmarkSurahName[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+                        txtBookmarkParaName[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+
+                        viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
+
+
+
+//                        Spannable translationSpan = new SpannableString(temp_translation);
+//
+//
+//                        if(temp_translation.contains(txtSearch.getText().toString().trim()))
+//                        translationSpan.setSpan(new BackgroundColorSpan(Color.YELLOW), 15, 30, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//
+//                        txtTranslation[i].setText(translationSpan);
+
+                        setHighLightedText(txtTranslation[i],txtSearch.getText().toString().trim());
+                        setHighLightedText(txtArabicTextView[i],txtSearch.getText().toString().trim());
                         contentLayout.addView(view_row[i]);
                     }
-
-
-
 
 
                     new Timer().schedule(new TimerTask() {
@@ -259,26 +318,41 @@ public class SearchActivity extends Activity {
                         }
                     }, 0, 100);
 
-
-
-
-
-
-
-
-
-
-
                     // Do your action
                     return false;
 
                 }
+                    else
+                    {
+                        Toast.makeText(SearchActivity.this, "Search Text should be 5 Character Atleast", Toast.LENGTH_SHORT).show();
+                    }
+            }
 
                 return true;
             }
             });
 
+        mScaleDetector = new ScaleGestureDetector(this, new ScaleManager());
+
+
     }
+
+    public void setHighLightedText(TextView tv, String textToHighlight) {
+        String tvt = tv.getText().toString();
+        int ofe = tvt.indexOf(textToHighlight, 0);
+        Spannable wordToSpan = new SpannableString(tv.getText());
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                // set color here
+                wordToSpan.setSpan(new BackgroundColorSpan(0xFFFFFF00), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
+    }
+
     @Override
     public void onActivityResult(int req, int res, Intent result)
     {
@@ -294,4 +368,48 @@ public class SearchActivity extends Activity {
 
         }
     }
+    public boolean dispatchTouchEvent(MotionEvent motionEvent) {
+        mScaleDetector.onTouchEvent(motionEvent);
+        Log.v(Constants1.TAG,"Touch Event");
+        return super.dispatchTouchEvent(motionEvent);
+    }
+    private ScaleGestureDetector mScaleDetector;
+    private class ScaleManager extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+
+        /* renamed from: a  reason: collision with root package name */
+
+
+        /* renamed from: b  reason: collision with root package name */
+
+        private ScaleManager() {
+
+        }
+        public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
+            //if(layout_setting.getVisibility()!=View.VISIBLE)
+            {
+                n = n * scaleGestureDetector.getScaleFactor();
+                Log.v(Constants1.TAG, "---onScale---");
+                Constants1.editor.putInt("perf_font_size", (int) n).commit();
+            }
+            return true;
+        }
+        public boolean onScaleBegin(ScaleGestureDetector scaleGestureDetector) {
+            Log.v(Constants1.TAG, "---onScale Begin---");
+            return super.onScaleBegin(scaleGestureDetector);
+        }
+        public void onScaleEnd(ScaleGestureDetector scaleGestureDetector) {
+            Log.v(Constants1.TAG, "---onScale End---");
+            super.onScaleEnd(scaleGestureDetector);
+            //if(layout_setting.getVisibility()!=View.VISIBLE)
+            {
+                Constants1.editor.putInt("perf_font_size", (int) n).commit();
+                Log.v(Constants1.TAG, "----Font Size-------->" + n);
+            }
+        }
+    }
+    public void onResume() {
+        super.onResume();
+        n = (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT);
+    }
+    float n;
 }
