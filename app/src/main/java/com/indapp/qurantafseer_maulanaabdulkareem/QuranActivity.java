@@ -53,6 +53,7 @@ import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -87,6 +88,10 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     CheckBox chkSettingTranslation, getChkSettingTafseer;
 
     ImageView imgListGridIcon;
+    CheckBox chkTranslationTarjumal;
+    CipherNormal lblArabicOnlyText;
+    GujaratiTextView txtPageNo_Gujarati;
+    UrduTextView txtPageNo_Urdu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +117,10 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
         layout_setting=(LinearLayout) findViewById(R.id.layout_setting);
         mScaleDetector = new ScaleGestureDetector(this, new ScaleManager());
+
+
+        txtPageNo_Gujarati=(GujaratiTextView)findViewById(R.id.txtPageNo_Gujarati);
+        txtPageNo_Urdu=(UrduTextView)findViewById(R.id.txtPageNo_Urdu);
 
         copydatabase();
 
@@ -175,8 +184,8 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             }
         });
 
-        chkSettingTranslation=(CheckBox)findViewById(R.id.chkSettingTranslation);
-        getChkSettingTafseer=(CheckBox)findViewById(R.id.chkSettingTafseer);
+        chkTranslationTarjumal=(CheckBox)findViewById(R.id.chkTranslationTarjuma);
+        lblArabicOnlyText=(CipherNormal)findViewById(R.id.lblArabicOnlyText);
 
         imgListGridIcon=(ImageView)findViewById(R.id.imgListGridIcon);
         if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
@@ -186,6 +195,19 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         else
         {
             imgListGridIcon.setImageResource(R.drawable.icon_list);
+        }
+        if(Constants1.sp.getBoolean("arabic",false))
+        {
+            imgListGridIcon.setVisibility(View.GONE);
+
+            chkTranslationTarjumal.setChecked(false);
+            lblArabicOnlyText.setText("Check to enable Translation/ Tarjuma");
+        }
+        else
+        {
+            chkTranslationTarjumal.setChecked(true);
+            lblArabicOnlyText.setText("Un-Check to read only Arabic Text");
+
         }
         imgListGridIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -513,6 +535,36 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 }
             }
         });
+        chkTranslationTarjumal.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                {
+                    imgListGridIcon.setVisibility(View.VISIBLE);
+                    Constants1.editor.putBoolean("arabic",false);
+                    Constants1.editor.commit();
+                    lblArabicOnlyText.setText("Un-Check to read only Arabic Text");
+                }
+                else
+                {
+                    imgListGridIcon.setVisibility(View.GONE);
+                    Constants1.editor.putBoolean("arabic",true);
+                    Constants1.editor.commit();
+
+                    lblArabicOnlyText.setText("Check to enable Translation/ Tarjuma");
+
+                }
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Do something after 5s = 5000ms
+                        setTabs();
+                    }
+                }, 500);
+            }
+        });
         changeLanguage();
         findViewById(R.id.layout_color).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -552,7 +604,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             public void onClick(View view) {
             Intent intent=new Intent(Intent.ACTION_VIEW);
             intent.setClass(QuranActivity.this,BookmarkActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,100);
             }
         });
 
@@ -617,6 +669,9 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
+
+            txtPageNo_Urdu.setVisibility(View.VISIBLE);
+            txtPageNo_Gujarati.setVisibility(View.GONE);
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
@@ -628,6 +683,9 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
+
+            txtPageNo_Urdu.setVisibility(View.GONE);
+            txtPageNo_Gujarati.setVisibility(View.VISIBLE);
         }
 
     }
@@ -758,7 +816,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         pager = (ViewPager) findViewById(R.id.activity_main_pager);
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         pager.setAdapter(pageAdapter);
-        ((SmartTabLayout) findViewById(R.id.viewpagertab_urdu)).setViewPager(pager);
+//        ((SmartTabLayout) findViewById(R.id.viewpagertab_urdu)).setViewPager(pager);
         pager.setCurrentItem(TOTAL-Constants1.sp.getInt("last_read",0));
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -778,6 +836,12 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 Log.v(Constants1.TAG,"Last_Read------->"+(TOTAL-position));
                 Constants1.editor.putInt("last_read",(TOTAL-position));
                 Constants1.editor.commit();
+
+
+                txtPageNo_Gujarati.setText(""+(""+(TOTAL-position)).replaceAll("0","૦").replaceAll("1","૧")
+                            .replaceAll("2","૨").replaceAll("3","૩").replaceAll("4","૪")
+                            .replaceAll("5","૫").replaceAll("6","૬").replaceAll("7","૭").replaceAll("8","૮").replaceAll("9","૯"));
+                txtPageNo_Urdu.setText(""+Constants1.URDU_NUMBERS[TOTAL-position-1]);
             }
 
             @Override
@@ -908,6 +972,19 @@ public boolean dispatchTouchEvent(MotionEvent motionEvent) {
         else
         {
             finish();
+        }
+    }
+    @Override
+    public void onActivityResult(int req,int res,Intent data)
+    {
+        if(req==100)//Bookmark
+        {
+            if(res==200)
+            {
+                Log.v(Constants1.TAG,"Group No--"+data.getExtras().getString("group"));
+                openSettingScreen(-1);
+                pager.setCurrentItem(TOTAL-(Integer.parseInt(data.getExtras().getString("group"))));
+            }
         }
     }
 

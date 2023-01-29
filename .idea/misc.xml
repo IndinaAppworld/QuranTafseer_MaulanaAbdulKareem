@@ -8,10 +8,14 @@
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/drawable/rounded_bg_brown.xml" value="0.1" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/drawable/rounded_bg_brown_sel.xml" value="0.1" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/drawable/rounded_button_brown.xml" value="0.1" />
+        <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/activity_bookmark.xml" value="0.19010416666666666" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/activity_main.xml" value="0.182518115942029" />
+        <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/activity_search.xml" value="0.1796875" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/activity_splash.xml" value="0.19429347826086957" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/include_setting.xml" value="0.18489583333333334" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/inflate_quran_page.xml" value="0.33" />
+        <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/inflate_quran_page_arabiconly.xml" value="0.18385416666666668" />
+        <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/inflate_search_result_item.xml" value="0.18385416666666668" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/inflate_surah_parah_list.xml" value="0.13958333333333334" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/inflate_surah_parah_sublist.xml" value="0.19429347826086957" />
         <entry key="..\:/Android Project/QuranTafseer_MaulanaAbdulKareem/app/src/main/res/layout/quran_fragment.xml" value="0.15260416666666668" />

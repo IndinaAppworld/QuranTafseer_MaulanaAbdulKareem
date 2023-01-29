@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     >
+    <ImageView
 
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/setting_bg" />
 <LinearLayout
     android:id="@+id/layout_language"
     android:orientation="vertical"
@@ -341,8 +354,75 @@
         android:layout_height="1dp"/>
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/layout_datamanage"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/imgSetting_icon_translate"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/chkTranslationTarjuma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <!--        Change Text Color-->
+            <LinearLayout
+                android:layout_toRightOf="@id/imgSetting_icon_translate"
+                android:layout_toLeftOf="@id/chkTranslationTarjuma"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:text="Show Tranaslation/ Tarjuma"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+                <com.indapp.fonts.CipherNormal
+                    android:id="@+id/lblArabicOnlyText"
+                    android:layout_marginLeft="10dp"
+                    android:text="Un-check if you want to read only Arabic Text"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/addfontsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/layout_share"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -356,29 +436,34 @@
             android:layout_height="wrap_content">
 
 
-            <!--        Change Text Color-->
-            <CheckBox
-                android:layout_marginLeft="10dp"
-                android:text="Translation"
+            <ImageView
+
                 android:layout_gravity="center_vertical"
-                android:textSize="@dimen/menuitemsize"
-                android:id="@+id/chkSettingTranslation"
-                android:textColor="@color/colorPrimaryDark"
+                android:src="@drawable/share_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <CheckBox
+            <!--        Change Translation Language-->
+            <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
-                android:text="Tafseer"
                 android:layout_gravity="center_vertical"
+                android:text="Share App"
                 android:textSize="@dimen/menuitemsize"
-                android:id="@+id/chkSettingTafseer"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-
+        <View
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
     </LinearLayout>
 
+
+
 </LinearLayout>
+
+
+
+</RelativeLayout>

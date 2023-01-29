@@ -3,6 +3,26 @@ package com.indapp.beans;
 public class PageBean {
     String PARA_NO;
 
+    public String getARABIC_SINGLE_PAGE_DATA() {
+        return ARABIC_SINGLE_PAGE_DATA;
+    }
+
+    public void setARABIC_SINGLE_PAGE_DATA(String ARABIC_SINGLE_PAGE_DATA) {
+        this.ARABIC_SINGLE_PAGE_DATA = ARABIC_SINGLE_PAGE_DATA;
+    }
+
+    String ARABIC_SINGLE_PAGE_DATA="";
+
+    public String getGROUP_NO() {
+        return GROUP_NO;
+    }
+
+    public void setGROUP_NO(String GROUP_NO) {
+        this.GROUP_NO = GROUP_NO;
+    }
+
+    String GROUP_NO;
+
     public String getTAFSEER() {
         return TAFSEER;
     }
@@ -81,9 +101,9 @@ public class PageBean {
         this.TRANSALATION = TRANSALATION;
     }
 
-    String SURA_NO;
-    String QURAN_AYAT_NO;
-    String SURA_AYAT_NO;
+    String SURA_NO="";
+    String QURAN_AYAT_NO="";
+    String SURA_AYAT_NO="";
     String QURAN_AYAT;
     String PARA_NAME;
     String SURA_NAME;

@@ -59,12 +59,13 @@
     <LinearLayout
         android:background="@color/colorPrimary"
         android:weightSum="4"
-        android:paddingTop="0dp"
+        android:paddingTop="5dp"
+
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
 
         android:gravity="center_vertical"
-        android:paddingBottom="0dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal"
         android:layout_below="@id/layout_header"
         android:id="@+id/tabLayout"
@@ -87,8 +88,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <com.indapp.fonts.GujaratiTextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:id="@+id/txtPageNo_Gujarati"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.indapp.fonts.UrduTextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:id="@+id/txtPageNo_Urdu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     <com.indapp.smarttablayout.SmartTabLayout
+        android:visibility="gone"
         android:id="@+id/viewpagertab_urdu"
         android:layout_width="match_parent"
         android:layout_gravity="center"
@@ -147,8 +168,8 @@
             android:id="@+id/layout_setting"
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorSurahParaBG"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_setting"
             android:orientation="vertical"
             android:visibility="invisible">
 
