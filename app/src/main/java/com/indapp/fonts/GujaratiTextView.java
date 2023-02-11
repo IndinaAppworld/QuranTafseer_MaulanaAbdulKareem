@@ -44,7 +44,9 @@ public class GujaratiTextView extends TextView
     {
         if(!isInEditMode() && mTypeFace == null)
         {
+//            mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/extrafonttesting/Noori Nastaliq.ttf");
             mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/BHUJ UNICODE.ttf");
+
         }
 
         if(!isInEditMode())

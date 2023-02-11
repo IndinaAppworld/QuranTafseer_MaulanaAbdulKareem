@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -232,8 +233,12 @@ public class QuranFragement extends Fragment {
                     viewLineHorizontal[i].setVisibility(View.GONE);
                 } else txtTafseer[i].setVisibility(View.GONE);
 
+
+
                 txtTranslation[i].setText(temp_translation);
                 txtTranslationList[i].setText(temp_translation);
+//                        +"\n\n<style @font-face {src: url('file:///android_asset/fonts/extrafonttesting/Noori Nastaliq.ttf')}></style><font color='red'>"+Constants1.UNICODE_RAZIALLAHU_ANHA+"---"+Constants1.UNICODE_ALAIHASSALAM+"</font>"));
+//                "* ઔર જબ હમને કહા ફરિશ્તોં સે કે સજદા કરો આદમ \uFDE4 કો તો સબને સજદા કિયા મગર ઇબ્લીસ (શૈતાન) ને ઇસ હુકમ કો કુબૂલ ન કિયા ઔર અપની બળાઈ બતાને લગા ઔર બગાવત કરને વાલોં મેં હો ગયા. (34)");//
 
                 txtArabicTextView[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
                 txtArabicList[i].setText(pageBeanArrayList.get(i).getQURAN_AYAT());
@@ -277,57 +282,64 @@ public class QuranFragement extends Fragment {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
+
+                try {
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
 
 
-                            if (Constants1.sp.getBoolean("arabic", false) == false) {
-                                for (int i = 0; i < pageBeanArrayList.size(); i++) {
-                                    txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-                                    txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+                                if (Constants1.sp.getBoolean("arabic", false) == false) {
+                                    for (int i = 0; i < pageBeanArrayList.size(); i++) {
+                                        txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                                        txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
 
-                                    txtTranslationList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-                                    txtArabicList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+                                        txtTranslationList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                                        txtArabicList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
 
-                                    if (pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
-                                            && pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
-                                        txtTranslation[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
-                                        txtArabicTextView[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+                                        if (pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
+                                                && pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
+                                            txtTranslation[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
+                                            txtArabicTextView[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
 
-                                        txtTranslationList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
-                                        txtArabicList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+                                            txtTranslationList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
+                                            txtArabicList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+                                        }
+
+                                        viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
+                                        viewLineVertical[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
+
+                                        txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+
+                                        if (Constants1.sp.getString("format", "list").equalsIgnoreCase("grid")) {
+                                            layout_grid[i].setVisibility(View.VISIBLE);
+                                            layout_list[i].setVisibility(View.GONE);
+                                        } else {
+                                            layout_grid[i].setVisibility(View.GONE);
+                                            layout_list[i].setVisibility(View.VISIBLE);
+                                        }
                                     }
+                                } else {
 
-                                    viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
-                                    viewLineVertical[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
-
-                                    txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-
-                                    if (Constants1.sp.getString("format", "list").equalsIgnoreCase("grid")) {
-                                        layout_grid[i].setVisibility(View.VISIBLE);
-                                        layout_list[i].setVisibility(View.GONE);
-                                    } else {
-                                        layout_grid[i].setVisibility(View.GONE);
-                                        layout_list[i].setVisibility(View.VISIBLE);
+                                    for (int i = 0; i < pageBeanArrayList.size(); i++) {
+                                        txtArabicFullText[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+                                        if (pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
+                                                && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
+                                            txtArabicFullText[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
+                                        }
                                     }
                                 }
-                            } else {
-
-                                for (int i = 0; i < pageBeanArrayList.size(); i++) {
-                                    txtArabicFullText[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
-                                    if (pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
-                                            && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
-                                        txtArabicFullText[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
-                                    }
-                                }
+                            } catch (Exception e) {
                             }
                         }
-                        catch (Exception e)
-                        {}
-                    };
-                });
+
+                        ;
+                    });
+                }
+                catch (Exception e)
+                {}
             }
         }, 0, 100);
         return  view1;
@@ -376,18 +388,25 @@ public class QuranFragement extends Fragment {
                             Constants1.editor.commit();
                             Toast.makeText(getActivity(), "Removed from Bookmark", Toast.LENGTH_LONG).show();
                             view.setBackgroundColor(Color.WHITE);
-                        } else if (item.getItemId() == R.id.copyarabic) {
-                            actionOnText(0, pageBean, 0);
-                        } else if (item.getItemId() == R.id.copytranslation) {
-                            actionOnText(1, pageBean, 0);
-                        } else if (item.getItemId() == R.id.copyarabictranslation) {
-                            actionOnText(2, pageBean, 0);
-                        } else if (item.getItemId() == R.id.sharearabic) {
-                            actionOnText(0, pageBean, 1);
-                        } else if (item.getItemId() == R.id.sharetranslation) {
-                            actionOnText(1, pageBean, 1);
-                        } else if (item.getItemId() == R.id.sharearabictranslation) {
+                        }
+//                        else if (item.getItemId() == R.id.copyarabic) {
+//                            actionOnText(0, pageBean, 0);
+//                        } else if (item.getItemId() == R.id.copytranslation) {
+//                            actionOnText(1, pageBean, 0);
+//                        } else if (item.getItemId() == R.id.copyarabictranslation) {
+//                            actionOnText(2, pageBean, 0);
+//                        }
+//                        else if (item.getItemId() == R.id.sharearabic) {
+//                            actionOnText(0, pageBean, 1);
+//                        }
+//                        else if (item.getItemId() == R.id.sharetranslation) {
+//                            actionOnText(1, pageBean, 1);
+//                        }
+                        else if (item.getItemId() == R.id.sharearabictranslation) {
                             actionOnText(2, pageBean, 1);
+                        }
+                        else if (item.getItemId() == R.id.sharearabictranslationtafseer) {
+                            actionOnText(3, pageBean, 1);
                         }
                         return true;
 
@@ -396,6 +415,9 @@ public class QuranFragement extends Fragment {
                 if (Constants1.sp.contains("bookmark_" + pageBean.getID()))
                     p.getMenu().removeItem(R.id.addbookmark);
                 else p.getMenu().removeItem(R.id.removeaddbookmark);
+
+                if(pageBean.getTAFSEER()!=null && pageBean.getTAFSEER().trim().length()==0)
+                    p.getMenu().removeItem(R.id.sharearabictranslationtafseer);
 
                 p.show();
             }
@@ -409,17 +431,33 @@ public class QuranFragement extends Fragment {
     }
     public void actionOnText(int actionOn,PageBean pageBean,int actionType)
     {
-        String translation="";
+        String translation="",tafseer="";
         if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
             translation= pageBean.getTRANSALATION().replaceAll("0", "૦").replaceAll("1", "૧")
                     .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
                     .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+
+
+            if (pageBean.getTAFSEER() != null && pageBean.getTAFSEER().trim().length() > 0 &&
+                    pageBean.getTAFSEER().trim().equalsIgnoreCase("null") == false) {
+                tafseer = "તફસીર: "+pageBean.getTAFSEER().replaceAll("0", "૦").replaceAll("1", "૧")
+                        .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                        .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");;
+            }
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
         {
             translation=pageBean.getTRANSALATION().replaceAll("0","۰").replaceAll("1","۱")
                 .replaceAll("2","۲").replaceAll("3","۳").replaceAll("4","۴")
                 .replaceAll("5","۵").replaceAll("6","۶").replaceAll("7","۷").replaceAll("8","۸").replaceAll("9","۹");
+
+
+            if (pageBean.getTAFSEER() != null && pageBean.getTAFSEER().trim().length() > 0 &&
+                    pageBean.getTAFSEER().trim().equalsIgnoreCase("null") == false) {
+                tafseer ="تفسیر: "+ pageBean.getTAFSEER().replaceAll("0","۰").replaceAll("1","۱")
+                        .replaceAll("2","۲").replaceAll("3","۳").replaceAll("4","۴")
+                        .replaceAll("5","۵").replaceAll("6","۶").replaceAll("7","۷").replaceAll("8","۸").replaceAll("9","۹");
+            }
         }
 
         String selectedText="";
@@ -427,6 +465,7 @@ public class QuranFragement extends Fragment {
         if(actionOn==0)selectedText=pageBean.getQURAN_AYAT();
         else if(actionOn==1)selectedText=translation;
         else if(actionOn==2)selectedText=pageBean.getQURAN_AYAT()+"\n\n"+translation;
+        else if(actionOn==3)selectedText=pageBean.getQURAN_AYAT()+"\n\n"+translation+"\n\n"+tafseer;
 
         selectedText=selectedText+"\n\n["+pageBean.getPARA_NAME()+", "+pageBean.getSURA_NAME()+"]";
 

@@ -7,23 +7,29 @@
     <item
         android:id = "@+id/removeaddbookmark"
         android:title = "بک مارک کو ہٹا دیں" />
-    <item
-        android:id = "@+id/copytranslation"
-        android:title = "ترجمہ کاپی کریں"/>
-    <item
-        android:id = "@+id/copyarabic"
-        android:title = "عربی کاپی کریں"/>
-    <item
-        android:id = "@+id/copyarabictranslation"
-        android:title = "کاپی (عربی + ترجمہ)"/>
-    <item
-        android:id = "@+id/sharetranslation"
-        android:title = "بانٹیں ترجمہ"/>
-    <item
-        android:id = "@+id/sharearabic"
-        android:title = "بانٹیں عربی"/>
+<!--    <item-->
+<!--        android:id = "@+id/copytranslation"-->
+<!--        android:title = "ترجمہ کاپی کریں"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/copyarabic"-->
+<!--        android:title = "عربی کاپی کریں"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/copyarabictranslation"-->
+<!--        android:title = "کاپی (عربی + ترجمہ)"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/copyarabictranslationtafseer"-->
+<!--        android:title = "کاپی (عربی + ترجمہ+ تفسیر)"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/sharetranslation"-->
+<!--        android:title = "بانٹیں ترجمہ"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/sharearabic"-->
+<!--        android:title = "بانٹیں عربی"/>-->
     <item
         android:id = "@+id/sharearabictranslation"
         android:title = "شیئر کریں (عربی + ترجمہ)"/>
+    <item
+        android:id = "@+id/sharearabictranslationtafseer"
+        android:title = "شیئر کریں (عربی + ترجمہ+ تفسیر)"/>
 
 </menu>

@@ -6,22 +6,25 @@
     <item
         android:id = "@+id/removeaddbookmark"
         android:title = "બુકમાર્ક દૂર કરો" />
-    <item
-        android:id = "@+id/copytranslation"
-        android:title = "અનુવાદની નકલ કરો"/>
-    <item
-        android:id = "@+id/copyarabic"
-        android:title = "અરબી નકલ કરો"/>
-    <item
-        android:id = "@+id/copyarabictranslation"
-        android:title = "અનુવાદ + અરબી નકલ કરો"/>
-    <item
-        android:id = "@+id/sharetranslation"
-        android:title = "શેર અનુવાદ"/>
+<!--    <item-->
+<!--        android:id = "@+id/copytranslation"-->
+<!--        android:title = "અનુવાદની નકલ કરો"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/copyarabic"-->
+<!--        android:title = "અરબી નકલ કરો"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/copyarabictranslation"-->
+<!--        android:title = "અનુવાદ + અરબી નકલ કરો"/>-->
+<!--    <item-->
+<!--        android:id = "@+id/sharetranslation"-->
+<!--        android:title = "શેર અનુવાદ"/>-->
     <item
         android:id = "@+id/sharearabic"
         android:title = "અરબી શેર કરો"/>
     <item
         android:id = "@+id/sharearabictranslation"
         android:title = "અનુવાદ+અરબી શેર કરો"/>
+    <item
+        android:id = "@+id/sharearabictranslationtafseer"
+        android:title = "અનુવાદ+અરબી+તફસીર શેર કરો"/>
 </menu>

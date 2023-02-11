@@ -133,7 +133,7 @@ public class SplashActivity extends Activity {
     {
         finish();
         Intent intent =new Intent(Intent.ACTION_VIEW);
-        intent.setClass(SplashActivity.this, QuranActivity.class);
+        intent.setClass(SplashActivity.this, MenuScreenActivity.class);
         startActivity(intent);
     }
 }

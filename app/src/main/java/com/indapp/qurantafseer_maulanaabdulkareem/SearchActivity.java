@@ -367,6 +367,10 @@ public class SearchActivity extends Activity {
             ArrayList<String> matches = result.getStringArrayListExtra(
                     RecognizerIntent.EXTRA_RESULTS);
             txtSearch.setText(""+matches.get(0));
+            for(int i=0;i<matches.size();i++)
+            {
+                Log.v(Constants1.TAG,"TEXT Serach--->"+matches.get(i));
+            }
             InputMethodManager inputMethodManager = (InputMethodManager) getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputMethodManager != null) {
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);

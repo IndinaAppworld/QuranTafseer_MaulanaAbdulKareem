@@ -9,11 +9,10 @@
     >
 
                 <com.indapp.fonts.ArabicTextView
+                    android:gravity="center_horizontal"
                     android:justificationMode="inter_word"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
                     android:textColor="#000000"
                     android:id="@+id/txtArabicFullText"
                     android:layout_width="match_parent"

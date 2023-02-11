@@ -388,18 +388,24 @@ public class BookmarkActivity extends Activity {
                                 Constants1.editor.commit();
                                 Toast.makeText(BookmarkActivity.this, "Removed from Bookmark", Toast.LENGTH_LONG).show();
                                 view.setVisibility(View.GONE);
-                            } else if (item.getItemId() == R.id.copyarabic) {
-                                actionOnText(0, pageBean, 0);
-                            } else if (item.getItemId() == R.id.copytranslation) {
-                                actionOnText(1, pageBean, 0);
-                            } else if (item.getItemId() == R.id.copyarabictranslation) {
-                                actionOnText(2, pageBean, 0);
-                            } else if (item.getItemId() == R.id.sharearabic) {
-                                actionOnText(0, pageBean, 1);
-                            } else if (item.getItemId() == R.id.sharetranslation) {
-                                actionOnText(1, pageBean, 1);
-                            } else if (item.getItemId() == R.id.sharearabictranslation) {
+                            }
+//                            else if (item.getItemId() == R.id.copyarabic) {
+//                                actionOnText(0, pageBean, 0);
+//                            } else if (item.getItemId() == R.id.copytranslation) {
+//                                actionOnText(1, pageBean, 0);
+//                            } else if (item.getItemId() == R.id.copyarabictranslation) {
+//                                actionOnText(2, pageBean, 0);
+//                            } else if (item.getItemId() == R.id.sharearabic) {
+//                                actionOnText(0, pageBean, 1);
+//                            }
+//                            else if (item.getItemId() == R.id.sharetranslation) {
+//                                actionOnText(1, pageBean, 1);
+//                            }
+                            else if (item.getItemId() == R.id.sharearabictranslation) {
                                 actionOnText(2, pageBean, 1);
+                            }
+                            else if (item.getItemId() == R.id.sharearabictranslationtafseer) {
+                                actionOnText(3, pageBean, 1);
                             }
                             return true;
 
@@ -408,6 +414,9 @@ public class BookmarkActivity extends Activity {
                     if (Constants1.sp.contains("bookmark_" + pageBean.getID()))
                         p.getMenu().removeItem(R.id.addbookmark);
                     else p.getMenu().removeItem(R.id.removeaddbookmark);
+
+                    if(pageBean.getTAFSEER()!=null && pageBean.getTAFSEER().trim().length()==0)
+                        p.getMenu().removeItem(R.id.sharearabictranslationtafseer);
 
                     p.show();
                 }
@@ -421,22 +430,38 @@ public class BookmarkActivity extends Activity {
         }
         public void actionOnText ( int actionOn, PageBean pageBean,int actionType)
         {
-            String translation = "";
+            String translation = "",tafseer="";
             if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                 translation = pageBean.getTRANSALATION().replaceAll("0", "૦").replaceAll("1", "૧")
                         .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
                         .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+
+
+                if (pageBean.getTAFSEER() != null && pageBean.getTAFSEER().trim().length() > 0 &&
+                        pageBean.getTAFSEER().trim().equalsIgnoreCase("null") == false) {
+                    tafseer = "તફસીર: "+pageBean.getTAFSEER().replaceAll("0", "૦").replaceAll("1", "૧")
+                            .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                            .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");;
+                }
+
             } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
                 translation = pageBean.getTRANSALATION().replaceAll("0", "۰").replaceAll("1", "۱")
                         .replaceAll("2", "۲").replaceAll("3", "۳").replaceAll("4", "۴")
                         .replaceAll("5", "۵").replaceAll("6", "۶").replaceAll("7", "۷").replaceAll("8", "۸").replaceAll("9", "۹");
+
+                if (pageBean.getTAFSEER() != null && pageBean.getTAFSEER().trim().length() > 0 &&
+                        pageBean.getTAFSEER().trim().equalsIgnoreCase("null") == false) {
+                    tafseer ="تفسیر: "+ pageBean.getTAFSEER().replaceAll("0","۰").replaceAll("1","۱")
+                            .replaceAll("2","۲").replaceAll("3","۳").replaceAll("4","۴")
+                            .replaceAll("5","۵").replaceAll("6","۶").replaceAll("7","۷").replaceAll("8","۸").replaceAll("9","۹");
+                }
             }
 
             String selectedText = "";
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             if (actionOn == 0) selectedText = pageBean.getQURAN_AYAT();
             else if (actionOn == 1) selectedText = translation;
-            else if (actionOn == 2) selectedText = pageBean.getQURAN_AYAT() + "\n\n" + translation;
+            else if (actionOn == 2) selectedText = pageBean.getQURAN_AYAT() + "\n\n" + translation+"\n\n"+tafseer;
 
             selectedText = selectedText + "\n\n[" + pageBean.getPARA_NAME() + ", " + pageBean.getSURA_NAME() + "]";
 
