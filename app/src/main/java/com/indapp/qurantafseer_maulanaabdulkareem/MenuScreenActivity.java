@@ -49,6 +49,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
     LinearLayout layout_setting;
     ImageView imgSettingClose;
 
+    ImageView imgQuran,imgDua;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,14 +69,21 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE=Constants1.sp.getString("language",Constants1.GUJARATI);
         setContentView(R.layout.activity_menu_screen);
+
+        imgQuran=(ImageView)findViewById(R.id.imgQuraan);
+        imgDua=(ImageView)findViewById(R.id.imgDua);
         if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
+            imgQuran.setImageResource(R.drawable.menu_icon1_gujrati);
+            imgDua.setImageResource(R.drawable.menu_icon2_gujrati);
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
         {
+            imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
+            imgDua.setImageResource(R.drawable.menu_icon2_urdu);
         }
 
-        findViewById(R.id.imgQuraan).setOnClickListener(new View.OnClickListener() {
+        imgQuran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(Intent.ACTION_VIEW);
@@ -82,7 +91,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
                 startActivity(intent);
             }
         });
-        findViewById(R.id.imgDua).setOnClickListener(new View.OnClickListener() {
+        imgDua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
@@ -114,6 +123,15 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             }
         });
         scroll_setting=(ScrollView)findViewById(R.id.scroll_setting);
+
+        if(Constants1.sp.getBoolean("tutorial",false)==false)
+        {
+            Intent intent=new Intent(Intent.ACTION_VIEW);
+            intent.setClass(MenuScreenActivity.this,TutorialScreenActivity.class);
+            startActivity(intent);
+            Constants1.editor.putBoolean("tutorial",true);
+            Constants1.editor.commit();
+        }
     }
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
@@ -357,6 +375,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
 
+            imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
+            imgDua.setImageResource(R.drawable.menu_icon2_urdu);
 
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
@@ -370,6 +390,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
 
+            imgQuran.setImageResource(R.drawable.menu_icon1_gujrati);
+            imgDua.setImageResource(R.drawable.menu_icon2_gujrati);
 
         }
     }

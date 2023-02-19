@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_background"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Select Language"
+            android:textSize="@dimen/menuitemsize" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/darker_gray" />
+
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/menuitemsize" />
+
+            <RadioButton
+                android:buttonTint="@color/colorPrimaryDark"
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Gujarati"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/menuitemsize" />
+
+
+
+
+        </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <TextView
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/btnApply"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_width="100dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg_brown"
+                android:text="  Apply  "
+                android:textSize="@dimen/menuitemsize" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:id="@+id/btnCancel"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_width="100dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_bg_brown"
+                android:text="  Cancel  "
+                android:textSize="@dimen/menuitemsize" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:id="@+id/btnCancel"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@drawable/rounded_bg_brown"-->
+<!--                android:text="  Cancel  "-->
+<!--                android:textSize="@dimen/menuitemsize" />-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

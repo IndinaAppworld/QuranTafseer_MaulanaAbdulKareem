@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     >
 
 
@@ -44,8 +45,8 @@
 
     <LinearLayout
         android:layout_below="@id/layout_header"
-        android:padding="10dp"
-        android:background="#ffffff"
+        android:padding="15dp"
+        android:background="@drawable/bg_setting"
         android:weightSum="2"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -55,7 +56,7 @@
         <ImageView
             android:id="@+id/imgQuraan"
             android:scaleType="fitXY"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="6dp"
             android:layout_weight="1"
             android:src="@drawable/menu_icon1_urdu"
             android:layout_width="match_parent"
@@ -64,7 +65,7 @@
         <ImageView
             android:id="@+id/imgDua"
             android:scaleType="fitXY"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:src="@drawable/menu_icon2_urdu"
             android:layout_width="match_parent"

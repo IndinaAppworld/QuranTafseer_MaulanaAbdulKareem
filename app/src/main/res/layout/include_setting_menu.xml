@@ -271,12 +271,90 @@
 
 
         </LinearLayout>
+        <View
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <LinearLayout
+            android:id="@+id/layout_aboutus"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/setting_icon_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--        Change Text Color-->
+                <com.indapp.fonts.CipherNormal
+                    android:layout_marginLeft="10dp"
+                    android:text="About us"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
         <View
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+        <LinearLayout
+            android:id="@+id/layout_tutorial"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/setting_icon_tutorial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--        Change Translation Language-->
+                <com.indapp.fonts.CipherNormal
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Tutorial"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
         <LinearLayout
             android:id="@+id/layout_share"
             android:orientation="vertical"
@@ -316,45 +394,6 @@
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
-        <LinearLayout
-            android:id="@+id/layout_tutorial"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <ImageView
-
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/setting_icon_tutorial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <!--        Change Translation Language-->
-                <com.indapp.fonts.CipherNormal
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:text="Tutorial"
-                    android:textSize="@dimen/menuitemsize"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <View
-                android:background="@color/colorPrimaryDark"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"/>
-        </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/layout_rateapp"
@@ -381,7 +420,7 @@
                 <com.indapp.fonts.CipherNormal
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="Share App"
+                    android:text="Rate App"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.indapp.qurantafseer_maulanaabdulkareem;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -129,11 +131,30 @@ public class SplashActivity extends Activity {
             Toast.makeText(context,""+e,Toast.LENGTH_LONG).show();
         }
     }
+
     public void showDisclaimer()
     {
+        Constants1.initSharedPref(this);
+        if(Constants1.sp.getBoolean("languageDialog",false)==true)
+        {
+            finish();
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setClass(SplashActivity.this, MenuScreenActivity.class);
+            startActivity(intent);
+        }
+        else {
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setClass(SplashActivity.this, LanguageChangeActivity.class);
+            startActivityForResult(intent,100);
+        }
+    }
+    public void onActivityResult(int req,int res,Intent data)
+    {
         finish();
-        Intent intent =new Intent(Intent.ACTION_VIEW);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setClass(SplashActivity.this, MenuScreenActivity.class);
         startActivity(intent);
-    }
+      }
+
 }
