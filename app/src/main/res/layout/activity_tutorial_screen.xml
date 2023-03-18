@@ -6,11 +6,37 @@
     android:layout_height="match_parent"
     >
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:background="#99000000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/txtTutotialText"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:text="This is sample text for tutorial "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@id/header"
+        android:id="@+id/activity_main_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
 
     <RelativeLayout
         android:padding="5dp"
-        android:background="@color/colorPrimaryDark"
-        android:id="@+id/header"
+        android:background="#99000000"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,24 +50,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-            <com.indapp.fonts.UrduTextView
-                android:visibility="gone"
-                android:id="@+id/txtMainTitleUrdu"
-                android:textColor="#ffffff"
-                android:text="ٹیوٹوریل"
-                android:layout_centerInParent="true"
-                android:textSize="@dimen/menuitemsize_urdu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <com.indapp.fonts.GujaratiTextView
-                android:visibility="gone"
-                android:id="@+id/txtMainTitleGujarati"
-                android:textColor="#ffffff"
-                android:text="ટ્યુટોરીયલ"
-                android:layout_centerInParent="true"
-                android:textSize="@dimen/menuitemsize_urdu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <com.indapp.fonts.UrduTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleUrdu"
+            android:textColor="#ffffff"
+            android:text="ٹیوٹوریل"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.indapp.fonts.GujaratiTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleGujarati"
+            android:textColor="#ffffff"
+            android:text="ટ્યુટોરીયલ"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.indapp.fonts.UrduTextView
             android:visibility="visible"
@@ -54,32 +80,6 @@
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
-    <androidx.viewpager.widget.ViewPager
-        android:layout_below="@id/header"
-        android:id="@+id/activity_main_pager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
-    </androidx.viewpager.widget.ViewPager>
-
-
-<RelativeLayout
-    android:background="#99000000"
-    android:layout_alignParentBottom="true"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-    <TextView
-        android:padding="5dp"
-        android:gravity="center_horizontal"
-        android:id="@+id/txtTutotialText"
-        android:textColor="#ffffff"
-        android:textSize="@dimen/menuitemsize_urdu"
-        android:text="This is sample text for tutorial "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
 
 </RelativeLayout>

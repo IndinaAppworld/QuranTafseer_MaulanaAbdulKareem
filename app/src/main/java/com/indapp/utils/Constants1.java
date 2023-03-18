@@ -32,14 +32,20 @@ public class Constants1 {
     public static int TUTORIAL_IMAGES[]={R.drawable.tut_1,
             R.drawable.tut_2,
             R.drawable.tut_3,
-            R.drawable.tut_4};
+            R.drawable.tut_4,
+            R.drawable.tut_5,
+            R.drawable.tut_6,
+            R.drawable.tut_7};
     public static int TUTORIAL_IMAGES_GUJ[]={R.drawable.tut_1_guj,
             R.drawable.tut_2_guj,
             R.drawable.tut_3_guj,
-            R.drawable.tut_4_guj};
+            R.drawable.tut_4_guj,
+            R.drawable.tut_5_guj,
+            R.drawable.tut_6_guj,
+            R.drawable.tut_7_guj};
 
-    public static String TUTORIL_DESCRIPTION_URDU[]={"قرآن مجید کو ترجمہ اور تفسیر کے ساتھ پڑھیں","ترجمہ اور تفسیر کے بغیر قرآن پڑھیں","آیات کو بُک مارک کیا جا سکتا ہے، تفسیر کے ساتھ یا بغیر شیئر کیا جا سکتا ہے۔","آپ کی ترجیحات کے مطابق ایپلیکیشن کو ترتیب دینے کے لیے سیٹنگ کا آپشن دستیاب ہے۔"};
-    public static String TUTORIL_DESCRIPTION_ENGLISH[]={"Read Quran along with the Tarjuma and Tafseer","Read Quran without Translation & Tafseer","Ayat can be bookmarked, shared with or without tafseer","Setting option is available to configure the application as per your preferences"};
-    public static String TUTORIL_DESCRIPTION_GUJARATI[]={"તરજુમા અને તફસીર સાથે કુરાન વાંચો","અનુવાદ અને તફસીર વિના કુરાન વાંચો","આયત બુકમાર્ક કરી શકાય છે, તફસીર સાથે અથવા વગર શેર કરી શકાય છે","તમારી પસંદગીઓ અનુસાર એપ્લિકેશનને ગોઠવવા માટે સેટિંગ વિકલ્પ ઉપલબ્ધ છે"};
+    public static String TUTORIL_DESCRIPTION_URDU[]={"قرآن مجید کو ترجمہ اور تفسیر کے ساتھ پڑھیں","ترجمہ اور تفسیر کے بغیر قرآن پڑھیں","آیات کو بُک مارک کیا جا سکتا ہے، تفسیر کے ساتھ یا بغیر شیئر کیا جا سکتا ہے۔","آپ پارہ کی فہرست دیکھ سکتے ہیں",  "آپ سورہ کی فہرست دیکھ سکتے ہیں",  "آیات، تفسیر اور ترجمہ تلاش کرنے کا آپشن دستیاب ہے", "آپ کی ترجیحات کے مطابق ایپلیکیشن کو ترتیب دینے کے لیے سیٹنگ کا آپشن دستیاب ہے۔" };
+    public static String TUTORIL_DESCRIPTION_ENGLISH[]={"Read Quran along with the Tarjuma and Tafseer","Read Quran without Translation & Tafseer","Ayat can be bookmarked, shared with or without tafseer","You are able to view the list of parah","You are able to view the list of Surah","Option to search on Ayat, Tafseer & translation is available","Setting option is available to configure the application as per your preferences",""};
+    public static String TUTORIL_DESCRIPTION_GUJARATI[]={"તરજુમા અને તફસીર સાથે કુરાન વાંચો","અનુવાદ અને તફસીર વિના કુરાન વાંચો","આયત બુકમાર્ક કરી શકાય છે, તફસીર સાથે અથવા વગર શેર કરી શકાય છે","તમે પરહની સૂચિ જોવા માટે સક્ષમ છો","તમે સૂરાની સૂચિ જોવા માટે સક્ષમ છો","આયત, તફસીર અને અનુવાદ શોધવાનો વિકલ્પ ઉપલબ્ધ છે","તમારી પસંદગીઓ અનુસાર એપ્લિકેશનને ગોઠવવા માટે સેટિંગ વિકલ્પ ઉપલબ્ધ છે"};
 
 }

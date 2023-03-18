@@ -132,6 +132,10 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             Constants1.editor.putBoolean("tutorial",true);
             Constants1.editor.commit();
         }
+
+        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
     }
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
@@ -142,11 +146,10 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         RelativeLayout layout_setting_header=(RelativeLayout)findViewById(R.id.layout_setting_header);
         if(layout_setting.getVisibility()==View.INVISIBLE) {
 
-                txtTitleSettingUrdu.setText("ترتیب");
-                txtTitleSettingGujarati.setText("સેટિંગ");
+            txtTitleSettingUrdu.setText("ترتیب");
+            txtTitleSettingGujarati.setText("સેટિંગ");
 
-                resetGeneralSetting(type);
-
+            resetGeneralSetting(type);
 
             layout_setting.setVisibility(View.VISIBLE);
             TranslateAnimation animate = new TranslateAnimation(0, 0, layout_setting.getHeight(), 0);
@@ -214,6 +217,16 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
 
     public void resetGeneralSetting(int type)
     {
+//        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+//        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+//        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+
+        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+
+
+
         ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);

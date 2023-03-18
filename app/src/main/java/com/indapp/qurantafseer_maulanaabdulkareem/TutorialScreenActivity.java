@@ -59,7 +59,7 @@ public class TutorialScreenActivity  extends FragmentActivity {
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
             DESCRIPTION=Constants1.TUTORIL_DESCRIPTION_GUJARATI;
             ((GujaratiTextView) findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.VISIBLE);
-            txtSkip.setText("છોડો");
+            txtSkip.setText("બહાર નીકળો");
             face = Typeface.createFromAsset(getAssets(),
                     "fonts/BHUJ UNICODE.ttf");
         } else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
@@ -68,7 +68,7 @@ public class TutorialScreenActivity  extends FragmentActivity {
 
 
                  DESCRIPTION=Constants1.TUTORIL_DESCRIPTION_URDU;
-                 txtSkip.setText("چھوڑ دو");
+                 txtSkip.setText("منسوخ کریں");
                  face= Typeface.createFromAsset(getAssets(),
                          "fonts/jameelnoorinastaleeq.ttf");
 
