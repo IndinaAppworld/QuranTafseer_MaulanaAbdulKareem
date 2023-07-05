@@ -37,7 +37,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
-import com.indapp.qurantafseer_maulanaabdulkareem.R;
+import com.indapp.islamicknowledge.R;
 import com.indapp.utils.Constants1;
 
 

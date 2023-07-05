@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 package com.indapp.smarttablayout;
-import com.indapp.qurantafseer_maulanaabdulkareem.R;
+import com.indapp.islamicknowledge.R;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;

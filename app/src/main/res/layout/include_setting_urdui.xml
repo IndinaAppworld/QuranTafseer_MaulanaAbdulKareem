@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+    <ImageView
+
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/setting_bg" />
+
+    <LinearLayout
+        android:layout_gravity="right"
+        android:id="@+id/layout_language"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="زبان تبدیل کریں"
+
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            android:weightSum="2"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+            android:id="@+id/layout_language_list"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.indapp.fonts.UrduTextView
+                android:id="@+id/txtLanguage_Urdu"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_bg_brown"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:text="اردو"
+                android:paddingTop="-20dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <com.indapp.fonts.GujaratiTextView
+                android:id="@+id/txtLanguage_Gujarati"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal|center_vertical"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@drawable/rounded_bg_brown_sel"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:text="ગુજરાતી"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_color"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <!--        Change Text Color-->
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:text="کلر تبدیل کریں"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_color_list"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:id="@+id/layout_translationColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:background="#000000"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+                    <View
+                        android:background="#ff0000"
+                        android:id="@+id/viewTranslationColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <com.indapp.fonts.UrduTextView
+                    android:layout_marginTop="-3dp"
+                    android:text="ترجمہ"
+                    android:textSize="@dimen/menuitemsize_urdu"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:id="@+id/layout_arabicColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:background="#000000"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+                    <View
+                        android:background="#ff0000"
+                        android:id="@+id/viewArabicColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <com.indapp.fonts.UrduTextView
+                    android:layout_marginTop="-3dp"
+                    android:text="عربی"
+                    android:textSize="@dimen/menuitemsize_urdu"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:id="@+id/layout_lineColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:background="#000000"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp">
+                    <View
+                        android:background="#ff0000"
+                        android:id="@+id/viewLineColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <com.indapp.fonts.UrduTextView
+                    android:layout_marginTop="-3dp"
+                    android:text="لائن/حاشیہ"
+                    android:textSize="@dimen/menuitemsize_urdu"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginTop="0dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_gotopage"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <!--        Change Text Color-->
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:text="صفحہ پر جائیں"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_gotopage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+            android:id="@+id/layout_enterpage"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:maxLength="3"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/menuitemsize"
+                android:id="@+id/txtPageNo"
+                android:background="@drawable/rounded_bg_brown_sel"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
+
+            <com.indapp.fonts.CipherNormal
+                android:text=">>"
+                android:textColor="#ffffff"
+                android:imeOptions="actionDone"
+                android:id="@+id/btnGotoPage"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:background="@drawable/rounded_bg_brown_sel"
+                android:layout_gravity="center_vertical"
+                android:layout_width="40dp"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_bookmark"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <!--        Change Text Color-->
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:text="بک مارک"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/layout_datamanage"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <CheckBox
+                android:layout_centerVertical="true"
+                android:id="@+id/chkTranslationTarjuma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <!--        Change Text Color-->
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/imgSetting_icon_translate"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/imgSetting_icon_translate"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.indapp.fonts.UrduTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="right"
+                    android:id="@+id/tt"
+                    android:text="قرآن ترجمہ اور تفسیر دکھائیں"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/menuitemsize_urdu" />
+
+                <com.indapp.fonts.UrduTextView
+                    android:visibility="visible"
+                    android:layout_below="@id/tt"
+                    android:id="@+id/lblArabicOnlyText"
+                    android:layout_marginLeft="10dp"
+                    android:text="અરબી તર્જમા/તફસીર જોડે  -  ફકત અરબી પઢવા માટે નિશાન હટાવો"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/layout_share"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <!--        Change Translation Language-->
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="دوسروں کو ایپ شیئر کرے"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/share_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/layout_rateapp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <!--        Change Translation Language-->
+            <com.indapp.fonts.UrduTextView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="ایپ کو ریٹینگ دیجئے"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_rateapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

@@ -18,7 +18,7 @@
             android:gravity="center_horizontal"
             android:id="@+id/txtTutotialText"
             android:textColor="#ffffff"
-            android:textSize="@dimen/menuitemsize_urdu"
+            android:textSize="@dimen/menuitemsize"
             android:text="This is sample text for tutorial "
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -34,6 +34,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/layout_footer"
         android:padding="5dp"
         android:background="#99000000"
         android:layout_alignParentBottom="true"
@@ -45,8 +46,9 @@
             android:visibility="visible"
             android:id="@+id/txtNumber"
             android:textColor="#ffffff"
+            android:layout_marginLeft="10dp"
             android:text="1/2"
-            android:textSize="@dimen/menuitemsize_urdu"
+            android:textSize="@dimen/menuitemsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -54,18 +56,18 @@
             android:visibility="gone"
             android:id="@+id/txtMainTitleUrdu"
             android:textColor="#ffffff"
-            android:text="ٹیوٹوریل"
+            android:text="ٹوٹوریل"
             android:layout_centerInParent="true"
-            android:textSize="@dimen/menuitemsize_urdu"
+            android:textSize="@dimen/menuitemsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <com.indapp.fonts.GujaratiTextView
             android:visibility="gone"
             android:id="@+id/txtMainTitleGujarati"
             android:textColor="#ffffff"
-            android:text="ટ્યુટોરીયલ"
+            android:text="ટુટોરિયલ"
             android:layout_centerInParent="true"
-            android:textSize="@dimen/menuitemsize_urdu"
+            android:textSize="@dimen/menuitemsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -75,7 +77,7 @@
             android:textColor="#ffffff"
             android:text="1/2"
             android:layout_alignParentRight="true"
-            android:textSize="@dimen/menuitemsize_urdu"
+            android:textSize="@dimen/menuitemsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

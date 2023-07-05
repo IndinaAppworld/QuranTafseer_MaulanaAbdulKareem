@@ -10,7 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
+
 rootProject.name = "QuranTafseer_MaulanaAbdulKareem"
 include ':app'

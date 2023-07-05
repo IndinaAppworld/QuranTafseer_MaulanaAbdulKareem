@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.indapp.qurantafseer_maulanaabdulkareem">
+    package="com.indapp.islamicknowledge">
 
     <application
         android:allowBackup="true"
@@ -14,34 +14,40 @@
         android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem"
         tools:targetApi="31">
         <activity
-            android:name=".MenuScreenActivity"
+            android:name="com.indapp.islamicknowledge.MenuScreenActivity"
             android:exported="false"
             android:label="@string/title_activity_menu_screen"
             android:screenOrientation="portrait" />
-        <activity android:name=".LanguageChangeActivity"
+        <activity android:name="com.indapp.islamicknowledge.LanguageChangeActivity"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/Theme.Transparent" >
 
     </activity>
         <activity
-            android:name=".TutorialScreenActivity"
+            android:name="com.indapp.islamicknowledge.TutorialScreenActivity"
             android:exported="false"
             android:label="@string/title_activity_menu_screen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SearchActivity"
+            android:name="com.indapp.islamicknowledge.SearchActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BookmarkActivity"
+            android:name="com.indapp.islamicknowledge.BookmarkActivity"
             android:exported="false"
             android:label="@string/title_activity_bookmark"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.indapp.islamicknowledge.PDFViewActivityScreen"
+            android:exported="false"
+            android:label="PDFViewer"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem.NoActionBar" />
+        <activity
+            android:name="com.indapp.islamicknowledge.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -54,10 +60,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".QuranActivity"
+            android:name="com.indapp.islamicknowledge.QuranActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.indapp.islamicknowledge.BookIndexScreenActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/aboutus"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" >
+        </activity>
     </application>
 
 </manifest>

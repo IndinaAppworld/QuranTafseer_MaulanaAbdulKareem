@@ -18,13 +18,13 @@
 <!--    <item-->
 <!--        android:id = "@+id/sharetranslation"-->
 <!--        android:title = "શેર અનુવાદ"/>-->
-    <item
-        android:id = "@+id/sharearabic"
-        android:title = "અરબી શેર કરો"/>
+<!--    <item-->
+<!--        android:id = "@+id/sharearabic"-->
+<!--        android:title = "અરબી શેર કરો"/>-->
     <item
         android:id = "@+id/sharearabictranslation"
-        android:title = "અનુવાદ+અરબી શેર કરો"/>
+        android:title = "શેર કરો (અરબી + તર્જમો)"/>
     <item
         android:id = "@+id/sharearabictranslationtafseer"
-        android:title = "અનુવાદ+અરબી+તફસીર શેર કરો"/>
+        android:title = "શેર કરો (અરબી + તર્જમો + તફસીર)"/>
 </menu>

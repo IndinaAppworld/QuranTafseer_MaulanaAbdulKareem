@@ -1,15 +1,17 @@
 package com.indapp.fragements;
 
-import android.media.Image;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.indapp.qurantafseer_maulanaabdulkareem.R;
+import com.indapp.islamicknowledge.R;
 import com.indapp.utils.Constants1;
 
 public class TutorialFragement extends Fragment {
@@ -25,16 +27,53 @@ public class TutorialFragement extends Fragment {
         f.setArguments(bdl);
         return f;
     }
-
+    RelativeLayout last_layout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view1 = inflater.inflate(R.layout.fragement_tutorial, container, false);
         int GROUP_NO = getArguments().getInt(PAGENO_ID);
-        ImageView imgTutorial=(ImageView) view1.findViewById(R.id.imgTutorial);
+        last_layout = (RelativeLayout) view1.findViewById(R.id.last_layout);
+        ImageView imgTutorial = (ImageView) view1.findViewById(R.id.imgTutorial);
 
-        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-        imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES[GROUP_NO]);
-        else imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES_GUJ[GROUP_NO]);
+        if(GROUP_NO<Constants1.TUTORIAL_IMAGES_GUJ.length) {
+            if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+                imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES[GROUP_NO]);
+            else imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES_GUJ[GROUP_NO]);
+            last_layout.setVisibility(View.GONE);
+        }
+        else {
+            imgTutorial.setVisibility(View.GONE);
+            last_layout.setVisibility(View.VISIBLE);
+
+
+
+
+            TextView txtTutorialEndText=(TextView) view1.findViewById(R.id.txtTutorialEndText);
+            TextView txtBottomText=(TextView) view1.findViewById(R.id.txtBottomText);
+            Typeface face;
+
+            if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+                txtTutorialEndText.setText("કુર્આન મજીદને વુઝૂ સાથે પઢવું જોઇયે");
+                txtBottomText.setText("શરૂઆત કરવા માટે અહીં ક્લિક કરો");
+                face = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/BHUJ UNICODE.ttf");
+            } else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+            {
+                txtTutorialEndText.setText("قرآن مجید کو وضو کے ساتھ پڑھنا چاہیے");
+                txtBottomText.setText("شروع کرنے کے لیے یہاں کلک کریں");
+                face= Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/jameelnoorinastaleeq.ttf");
+            }
+            txtTutorialEndText.setTypeface(face);
+            txtBottomText.setTypeface(face);
+            txtBottomText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().finish();
+                }
+            });
+
+        }
 
         return view1;
     }

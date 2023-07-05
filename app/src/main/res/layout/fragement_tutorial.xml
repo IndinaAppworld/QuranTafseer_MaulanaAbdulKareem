@@ -18,4 +18,43 @@
         android:src="@drawable/tut_3" />
 
 
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/last_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerInParent="true"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/maintitlefont_arabic"
+            android:id="@+id/txtTutorialEndText"
+            android:text="Main Body Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:background="@drawable/rounded_button_brown"
+            android:textColor="@color/colorPrimaryDark"
+            android:id="@+id/txtBottomText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/maintitlefont"
+            android:text="Click here to Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

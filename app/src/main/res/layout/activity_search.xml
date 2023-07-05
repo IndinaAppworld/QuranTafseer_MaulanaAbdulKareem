@@ -57,7 +57,7 @@
         <com.indapp.fonts.GujaratiEditText
             android:textColor="@color/colorPrimaryDark"
             android:layout_marginRight="0dp"
-            android:hint="કુરાન, તરજુમા અને તફસીર પર શોધો"
+            android:hint="કુર્આનમાં અરબી, તર્જમા, તફસીર શોધવા માટે ટાઇપ કરો"
             android:layout_marginLeft="0dp"
             android:drawableRight="@drawable/icon_mic"
 android:singleLine="true"
@@ -78,7 +78,7 @@ android:singleLine="true"
             android:paddingBottom="5dp"
 
             android:drawableLeft="@drawable/icon_mic"
-            android:hint="قرآن، ترجمہ اور تفسیر پر تلاش کریں"
+            android:hint="قرآن میں عربی، ترجمہ اور تفسیر تلاش کرنے کے لیے لکھیں"
             android:textColor="@color/colorPrimaryDark"
             android:layout_marginRight="0dp"
             android:layout_marginLeft="0dp"

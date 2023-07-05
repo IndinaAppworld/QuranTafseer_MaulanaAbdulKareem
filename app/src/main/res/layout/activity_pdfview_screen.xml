@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:padding="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/imgBack"
+            android:src="@drawable/icon_backarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.indapp.fonts.UrduTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleUrdu"
+            android:textColor="#ffffff"
+            android:text="تلاش کریں"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.indapp.fonts.GujaratiTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleGujarati"
+            android:textColor="#ffffff"
+            android:text="શોધો"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:layout_below="@id/layout_header"
+            android:id="@+id/pdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+<ScrollView
+    android:layout_below="@id/layout_header"
+    android:visibility="gone"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:autoLink="email"
+        android:layout_margin="10dp"
+        android:id="@+id/txtAboutUsUrdu"
+        android:textColor="#000000"
+        android:text=""
+        android:textColorLink="#0000FF"
+        android:textSize="@dimen/menuitemsize_urdu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</ScrollView>
+
+
+
+
+</RelativeLayout>

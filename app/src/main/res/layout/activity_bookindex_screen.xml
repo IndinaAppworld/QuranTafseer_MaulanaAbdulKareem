@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:padding="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/imgBack"
+            android:src="@drawable/icon_backarrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.indapp.fonts.UrduTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleUrdu"
+            android:textColor="#ffffff"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <com.indapp.fonts.GujaratiTextView
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleGujarati"
+            android:textColor="#ffffff"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <ScrollView
+        android:layout_below="@id/layout_header"
+        android:visibility="visible"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

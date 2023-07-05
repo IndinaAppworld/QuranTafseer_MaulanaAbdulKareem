@@ -235,12 +235,13 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:orientation="vertical"
                         android:id="@+id/include_general_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone">
 
-                        <include layout="@layout/include_setting" />
+<!--                        <include layout="@layout/include_setting" />-->
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>

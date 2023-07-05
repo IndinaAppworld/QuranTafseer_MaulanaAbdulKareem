@@ -3,12 +3,10 @@ package com.indapp.fragements;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,16 +17,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.MenuRes;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.indapp.beans.PageBean;
 import com.indapp.fonts.ArabicTextView;
-import com.indapp.qurantafseer_maulanaabdulkareem.R;
+import com.indapp.islamicknowledge.R;
 import com.indapp.utils.Constants1;
 
 
@@ -486,7 +480,7 @@ public class QuranFragement extends Fragment {
             intent.setType("text/plain");
             /*Applying information Subject and Body.*/
 //            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
-            intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody+"\n\n"+Constants1.share_data);
             /*Fire!*/
             startActivity(Intent.createChooser(intent, "Share Via"));
 

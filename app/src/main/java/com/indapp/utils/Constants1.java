@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.indapp.qurantafseer_maulanaabdulkareem.R;
+import com.indapp.islamicknowledge.R;
 
 public class Constants1 {
     public static String TAG="QuramTafseer";
@@ -44,8 +44,25 @@ public class Constants1 {
             R.drawable.tut_6_guj,
             R.drawable.tut_7_guj};
 
-    public static String TUTORIL_DESCRIPTION_URDU[]={"قرآن مجید کو ترجمہ اور تفسیر کے ساتھ پڑھیں","ترجمہ اور تفسیر کے بغیر قرآن پڑھیں","آیات کو بُک مارک کیا جا سکتا ہے، تفسیر کے ساتھ یا بغیر شیئر کیا جا سکتا ہے۔","آپ پارہ کی فہرست دیکھ سکتے ہیں",  "آپ سورہ کی فہرست دیکھ سکتے ہیں",  "آیات، تفسیر اور ترجمہ تلاش کرنے کا آپشن دستیاب ہے", "آپ کی ترجیحات کے مطابق ایپلیکیشن کو ترتیب دینے کے لیے سیٹنگ کا آپشن دستیاب ہے۔" };
+    public static String TUTORIL_DESCRIPTION_URDU[]={"قرآن مجید کو ترجمہ اور تفسیر کے ساتھ پڑھیں",
+            "قرآن مجید کو ترجمہ اور تفسیر کے بغیر پڑھیں",
+            "آیات کو بُک مارک کیا جا سکتا ہے، تفسیر کے ساتھ یا بغیر تفسیر کے شیئر کیا جا سکتا ہے۔"
+            ,"آپ پاروں کی فہرست دیکھ سکتے ہیں",
+            "آپ سورتوں کی فہرست دیکھ سکتے ہیں",
+            "آیات، تفسیر اور ترجمہ تلاش کرنے کا آپشن دیا گیا ہے",
+            "آپ کی پسند کے مطابق ایپلیکیشن کو ترتیب دینے کے لیے سیٹنگ کا آپشن دیا گیا ہے"
+    };
     public static String TUTORIL_DESCRIPTION_ENGLISH[]={"Read Quran along with the Tarjuma and Tafseer","Read Quran without Translation & Tafseer","Ayat can be bookmarked, shared with or without tafseer","You are able to view the list of parah","You are able to view the list of Surah","Option to search on Ayat, Tafseer & translation is available","Setting option is available to configure the application as per your preferences",""};
-    public static String TUTORIL_DESCRIPTION_GUJARATI[]={"તરજુમા અને તફસીર સાથે કુરાન વાંચો","અનુવાદ અને તફસીર વિના કુરાન વાંચો","આયત બુકમાર્ક કરી શકાય છે, તફસીર સાથે અથવા વગર શેર કરી શકાય છે","તમે પરહની સૂચિ જોવા માટે સક્ષમ છો","તમે સૂરાની સૂચિ જોવા માટે સક્ષમ છો","આયત, તફસીર અને અનુવાદ શોધવાનો વિકલ્પ ઉપલબ્ધ છે","તમારી પસંદગીઓ અનુસાર એપ્લિકેશનને ગોઠવવા માટે સેટિંગ વિકલ્પ ઉપલબ્ધ છે"};
-
+    public static String TUTORIL_DESCRIPTION_GUJARATI[]={"તર્જમા અને તફસીર સાથે કુર્આન પઢો",
+            "તર્જમા અને તફસીર વગર કુર્આન પઢો",
+            "આયતોંને બુકમાર્ક કરી શકાય છે, તફસીરની સાથે અને વગર તફસીરે શેર કરી શકાય છે",
+            "તમે સિપારાની ફેહરિસ્ત (સૂચી) જોઈ શકો છો",
+            "તમે સૂરતોંની ફેહરિસ્ત (સૂચી) જોઈ શકો છો",
+            "આયત, તફસીર અને તર્જમાને શોધવાનો વિકલ્પ આપેલ છે",
+            "તમારી પસંદગી મુજબ એપ્લિકેશનને સેટ કરવા માટે સેટિંગનો વિકલ્પ આપેલ છે"};
+    public static String share_data=
+            "Download Android App for Quran e Karim (Tashreehul Quraan) with Translation & Tafseer in Gujarati and Urdu Language by Maulana Abdul Karim Parekh Sahab from the Google Play Store.\n" +
+                    "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n" +
+                    "\n" +
+                    "Share this message as much as possible.";
 }
