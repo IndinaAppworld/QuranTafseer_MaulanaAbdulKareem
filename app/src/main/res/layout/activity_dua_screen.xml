@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_setting"
+    >
+    <RelativeLayout
+        android:visibility="visible"
+        android:id="@+id/layout_quran"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:padding="5dp"
+
+            android:background="@drawable/background_header_dua"
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.indapp.fonts.GujaratiBoldTextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:id="@+id/txtPageNo_Gujarati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.UrduTextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:id="@+id/txtPageNo_Urdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/imgSearch"
+                android:tint="#ffffff"
+                android:visibility="gone"
+                android:src="@drawable/search_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/text_header"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/imgBack"
+                android:src="@drawable/icon_backarrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/imgSetting"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/sideop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgListGridIcon"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/imgSetting"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.UrduTextView
+                android:visibility="gone"
+                android:id="@+id/txtMainTitleUrdu"
+                android:textColor="#ffffff"
+                android:text=""
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.GujaratiTextView
+                android:visibility="visible"
+                android:id="@+id/txtMainTitleGujarati"
+                android:textColor="#ffffff"
+                android:text=""
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:background="@color/colorPrimary"
+            android:weightSum="3"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/layout_header"
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.indapp.fonts.ArabicTextView
+                android:paddingTop="0dp"
+                android:id="@+id/txtParaName"
+                android:gravity="center"
+                android:text="آلم"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:background="@drawable/rounded_button_brown"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+            <com.indapp.smarttablayout.SmartTabLayout
+                android:visibility="gone"
+                android:id="@+id/viewpagertab_urdu"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                app:stl_indicatorAlwaysInCenter="false"
+                app:stl_indicatorWithoutPadding="false"
+                app:stl_indicatorInFront="false"
+                app:stl_indicatorInterpolation="smart"
+                app:stl_indicatorGravity="bottom"
+                app:stl_indicatorColor="#ffffff"
+                app:stl_indicatorThickness="4dp"
+                app:stl_indicatorWidth="auto"
+                app:stl_indicatorCornerRadius="2dp"
+                app:stl_overlineColor="#ffffff"
+                app:stl_overlineThickness="0dp"
+                app:stl_underlineColor="#ffffff"
+                app:stl_underlineThickness="1dp"
+                app:stl_dividerColor="#ffffff"
+                app:stl_dividerThickness="1dp"
+                app:stl_defaultTabBackground="@android:color/transparent"
+                app:stl_defaultTabTextAllCaps="true"
+                app:stl_defaultTabTextColor="#ffffff"
+                app:stl_defaultTabTextSize="@dimen/menuitemsize_urdu"
+                app:stl_defaultTabTextHorizontalPadding="20dp"
+                app:stl_defaultTabTextMinWidth="0dp"
+                app:stl_distributeEvenly="false"
+                app:stl_clickable="true"
+                app:stl_titleOffset="15dp"
+                app:stl_drawDecorationAfterTab="true"
+                android:layout_weight="1"
+                />
+
+            <com.indapp.fonts.ArabicTextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rounded_button_brown"
+                android:id="@+id/txtSurahName"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:layout_below="@id/tabLayout"
+            android:id="@+id/activity_main_pager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        </androidx.viewpager.widget.ViewPager>
+
+
+        <LinearLayout
+            android:id="@+id/layout_setting"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_setting"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+
+            <RelativeLayout
+                android:id="@+id/layout_setting_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="invisible">
+
+                <com.indapp.fonts.UrduTextView
+                    android:id="@+id/txtTitleSettingUrdu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="سورتوں کی فہرست"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/menuitemsize_urdu" />
+
+                <com.indapp.fonts.GujaratiTextView
+                    android:id="@+id/txtTitleSettingGujarati"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="سورتوں کی فہرست"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/menuitemsize_urdu" />
+
+                <ImageView
+                    android:id="@+id/imgSettingClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/close_button_white"
+                    app:tint="@color/colorPrimaryDark" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/scroll_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+
+                        android:id="@+id/layout_setting_surahparahlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:id="@+id/include_general_setting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <!--                        <include layout="@layout/include_setting" />-->
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

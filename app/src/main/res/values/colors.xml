@@ -9,4 +9,18 @@
     <color name="colroGold">#A0946E</color>
     <color name="colroGoldDark">#b8a877</color>
     <color name="colorYellow">#FDB329</color>
+    <color name="colorPrimaryDarkBook">#5d3a27</color>
+
+    <color name="menuColor1">#13447E</color>
+    <color name="menuColor2">#038E55</color>
+    <color name="menuColor3">#E91648</color>
+    <color name="menuColor4">#21BEBC</color>
+    <color name="menuColor5">#A037D6</color>
+    <color name="menuColor6">#FF4500</color>
+    <color name="menuColor7">#CCCC00</color>
+    <color name="menuColor8">#0600FF</color>
+    <color name="menuColor9">#71471E</color>
+    <color name="TN">#93BEEF</color>
+    <color name="duaprimarycolor">#26866E</color>
+
 </resources>

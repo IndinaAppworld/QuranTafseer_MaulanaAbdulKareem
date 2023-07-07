@@ -3,7 +3,7 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:padding="5dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/background_header_dua"
         android:id="@+id/layout_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -25,11 +25,11 @@
             android:textSize="@dimen/menuitemsize_urdu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        <com.indapp.fonts.GujaratiTextView
+        <com.indapp.fonts.GujaratiBoldTextView
             android:visibility="gone"
             android:id="@+id/txtMainTitleGujarati"
             android:textColor="#ffffff"
-            android:text=""
+            android:text="અલ્લાહ કી રઝામંદી‌ કૈસે હાસિલ કરે઼ં ?"
             android:layout_centerInParent="true"
             android:textSize="@dimen/menuitemsize_urdu"
             android:layout_width="wrap_content"
@@ -42,9 +42,52 @@
 
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/daroodlayout"
+        android:background="@color/duaprimarycolor"
+        android:layout_alignParentBottom="true">
+
+        <!--Shimmer Effect-->
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
+                <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:src="@drawable/right_arrow" />
+
+                <!--Text given to Image-->
+                <com.indapp.fonts.GujaratiBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="દરૂદ શરીફનો પાઠ કરવા અહીં ક્લિક કરો"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/maintitlefont_arabic"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </RelativeLayout>
     <ScrollView
+        android:layout_above="@id/daroodlayout"
         android:layout_below="@id/layout_header"
         android:visibility="visible"
         android:id="@+id/scrollView"
@@ -58,11 +101,6 @@
             android:layout_height="match_parent">
 
         </LinearLayout>
-
-
     </ScrollView>
-
-
-
 
 </RelativeLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:id="@+id/contentLayout"
+        android:background="@drawable/content_rounded_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.indapp.fonts.ArabicTextView
+            android:layout_gravity="center"
+            android:text="غُفْرَانَكَ،اَلْحَمْدُلِلّٰہِ الَّذِيْ أَذْھَبَ  عَنِّي الْأَذٰی وَعَافَانِيْ"
+            android:textSize="@dimen/maintitlefont_arabic"
+            android:gravity="center"
+            android:textColor="@color/colorGreenDark"
+            android:id="@+id/txtArabic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <View
+            android:layout_marginTop="0dp"
+            android:layout_below="@id/txtArabic"
+            android:id="@+id/view_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/duaprimarycolor"
+            ></View>
+
+        <com.indapp.fonts.GujaratiTextView
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:text="Tarjama : Aye Allah ! Main Aap se magfirat chaahta hoon, tamaam ta’areefein Allah ke liye hain, jis ne mujh se takleef ko door kiya aur mujhe aafiyat bakhshi"
+            android:textSize="@dimen/menuitemsize"
+            android:gravity="center"
+            android:id="@+id/txtTrans"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorGreenDark"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/view_line2"
+            android:background="@color/duaprimarycolor"
+            ></View>
+        <com.indapp.fonts.GujaratiTextView
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:text="Tarjama : Aye Allah ! Main Aap se magfirat chaahta hoon, tamaam ta’areefein Allah ke liye hain, jis ne mujh se takleef ko door kiya aur mujhe aafiyat bakhshi"
+            android:textSize="@dimen/menuitemsize"
+            android:gravity="center"
+            android:id="@+id/txtFazilat"
+            android:textColor="@color/colorGreenDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/view_line3"
+            android:background="@color/colroGold"
+            ></View>
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:id="@+id/btnShare"
+                android:src="@drawable/share_icon"
+                android:padding="8dp"
+                android:tint="@color/duaprimarycolor"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <com.indapp.fonts.GujaratiTextView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="2/2"
+                android:textSize="@dimen/menuitemsize"
+                android:id="@+id/txtIndex"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:textColor="@color/colorGreenDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ></com.indapp.fonts.GujaratiTextView>
+
+
+            <com.indapp.fonts.GujaratiTextView
+                android:id="@+id/txtReferance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/btnShare"
+                android:layout_toRightOf="@id/txtIndex"
+                android:gravity="center"
+                android:text="2/2"
+
+                android:textColor="@color/colroGold"
+                android:textSize="@dimen/viewref"></com.indapp.fonts.GujaratiTextView>
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

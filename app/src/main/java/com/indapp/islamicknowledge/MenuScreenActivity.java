@@ -17,13 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
-import com.indapp.islamicknowledge.databinding.ActivityMenuScreenBinding;
 import com.indapp.utils.Constants1;
 import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
@@ -54,6 +52,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
                 parentView.setBackgroundColor(Color.rgb(0x88, 0x33, 0x33));
             }
         }
+
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE=Constants1.sp.getString("language",Constants1.GUJARATI);
         setContentView(R.layout.activity_menu_screen);
@@ -92,7 +91,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             public void onClick(View view) {
 
                 Intent intent =new Intent(Intent.ACTION_VIEW);
-                intent.setClass(MenuScreenActivity.this, BookIndexScreenActivity.class);
+                intent.setClass(MenuScreenActivity.this, DuaIndexScreenActivity.class);
                 startActivity(intent);
             }
         });

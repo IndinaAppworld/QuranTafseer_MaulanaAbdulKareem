@@ -65,4 +65,18 @@ public class Constants1 {
                     "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n" +
                     "\n" +
                     "Share this message as much as possible.";
+
+    public static String replaceNumbers(String str)
+    {
+        if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+            str = str.replaceAll("0", "૦").replaceAll("1", "૧")
+                    .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                    .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+        } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
+            str = str.replaceAll("0", "۰").replaceAll("1", "۱")
+                    .replaceAll("2", "۲").replaceAll("3", "۳").replaceAll("4", "۴")
+                    .replaceAll("5", "۵").replaceAll("6", "۶").replaceAll("7", "۷").replaceAll("8", "۸").replaceAll("9", "۹");
+        }
+        return str;
+    }
 }

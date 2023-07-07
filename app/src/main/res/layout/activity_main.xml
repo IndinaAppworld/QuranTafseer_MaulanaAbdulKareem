@@ -13,7 +13,7 @@
     <RelativeLayout
         android:padding="5dp"
 
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/background_header_quraan"
         android:id="@+id/layout_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -5,6 +5,8 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import java.lang.reflect.Type;
+
 /**
  * Created by admin on 7/26/2016.
  */

@@ -1,0 +1,81 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imgFav"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/favorite_dua_unesl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <com.indapp.fonts.GujaratiBoldTextView
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/imgFav"
+            android:textSize="@dimen/maintitlefont_arabic"
+            android:id="@+id/txtTitle"
+            android:textColor="@color/colorGreenDark"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Aman Wa Amaan"
+            />
+<!--        <com.indapp.fonts.HindiFont-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_toLeftOf="@id/imgFav"-->
+<!--            android:textSize="@dimen/menuitemsize"-->
+<!--            android:id="@+id/txtTitle_Hindi"-->
+<!--            android:textColor="@color/colorGreenDark"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Aman Wa Amaan"-->
+<!--            />-->
+
+<!--        <com.indapp.fonts.NoriNastalicUrduFont-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_toLeftOf="@id/imgFav"-->
+<!--            android:textSize="@dimen/menuitemsize_urdu"-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/txtTitle_urdu"-->
+<!--            android:textColor="@color/colorGreenDark"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Aman Wa Amaan"-->
+<!--            />-->
+    </RelativeLayout>
+    <ScrollView
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+
+            android:id="@+id/contentLayout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
