@@ -12,8 +12,8 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     >
-    <ImageView
 
+    <ImageView
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:layout_centerHorizontal="true"

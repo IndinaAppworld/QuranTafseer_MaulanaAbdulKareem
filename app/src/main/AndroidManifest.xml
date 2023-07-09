@@ -13,6 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuranTafseer_MaulanaAbdulKareem"
         tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.indapp.islamicknowledge.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+
         <activity
             android:name="com.indapp.islamicknowledge.MenuScreenActivity"
             android:exported="false"

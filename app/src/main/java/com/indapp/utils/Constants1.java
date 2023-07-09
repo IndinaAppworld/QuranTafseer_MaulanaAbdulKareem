@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
+import android.widget.TextView;
 
 import com.indapp.islamicknowledge.R;
 
@@ -78,5 +80,21 @@ public class Constants1 {
                     .replaceAll("5", "۵").replaceAll("6", "۶").replaceAll("7", "۷").replaceAll("8", "۸").replaceAll("9", "۹");
         }
         return str;
+    }
+    public static void setFontTypeFaceLanguage(TextView textView,Context context,boolean isBold)
+    {
+        Typeface mTypeFace=null;
+        if(LANGUAGE.equalsIgnoreCase(URDU))
+        {
+            mTypeFace = Typeface.createFromAsset(context.getAssets(), "fonts/jameelnoorinastaleeq.ttf");
+        }
+        else if(LANGUAGE.equalsIgnoreCase(GUJARATI))
+        {
+            mTypeFace = Typeface.createFromAsset(context.getAssets(), "fonts/BHUJ UNICODE.ttf");
+        }
+        if(!isBold)
+        textView.setTypeface(mTypeFace);
+        else textView.setTypeface(mTypeFace,Typeface.BOLD);
+
     }
 }

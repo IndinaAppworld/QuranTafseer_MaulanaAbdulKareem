@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_setting"
+    android:background="@drawable/settingbg_dua"
     >
     <RelativeLayout
         android:visibility="visible"
@@ -19,22 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.indapp.fonts.GujaratiBoldTextView
+<!--            <com.indapp.fonts.GujaratiBoldTextView-->
+<!--                android:layout_weight="1"-->
+<!--                android:gravity="center"-->
+<!--                android:text="1"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:textSize="@dimen/menuitemsize_urdu"-->
+<!--                android:id="@+id/txtPageNo_Gujarati"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
+            <TextView
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="1"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/menuitemsize_urdu"
-                android:id="@+id/txtPageNo_Gujarati"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <com.indapp.fonts.UrduTextView
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/menuitemsize_urdu"
-                android:id="@+id/txtPageNo_Urdu"
+                android:id="@+id/txtPageNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <ImageView

@@ -56,7 +56,7 @@ public class DuaScreenActivity extends FragmentActivity {
     ImageView imgListGridIcon;
     CheckBox chkTranslationTarjumal;
     TextView lblArabicOnlyText;
-    GujaratiBoldTextView txtPageNo_Gujarati;
+    TextView txtPageNo;
     UrduTextView txtPageNo_Urdu;
 
 
@@ -98,8 +98,7 @@ public class DuaScreenActivity extends FragmentActivity {
         mScaleDetector = new ScaleGestureDetector(this, new ScaleManager());
 
 
-        txtPageNo_Gujarati=(GujaratiBoldTextView)findViewById(R.id.txtPageNo_Gujarati);
-        txtPageNo_Urdu=(UrduTextView)findViewById(R.id.txtPageNo_Urdu);
+        txtPageNo=(TextView) findViewById(R.id.txtPageNo);
 
 //        copydatabase();
 
@@ -225,7 +224,7 @@ public class DuaScreenActivity extends FragmentActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                txtPageNo_Gujarati.setText(Constants1.replaceNumbers((position+1)+"/"+TOTAL));
+                txtPageNo.setText(Constants1.replaceNumbers((position+1)+"/"+TOTAL));
             }
 
             @Override
@@ -247,6 +246,7 @@ public class DuaScreenActivity extends FragmentActivity {
 //        pageNo.setText("1/ "+TOTAL);
 
 
+        Constants1.setFontTypeFaceLanguage(txtPageNo,getApplicationContext(),true);
 
         if(getIntent().getExtras().getString("pageno")!=null)
         {
@@ -268,8 +268,6 @@ public class DuaScreenActivity extends FragmentActivity {
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
 
-            txtPageNo_Urdu.setVisibility(View.VISIBLE);
-            txtPageNo_Gujarati.setVisibility(View.GONE);
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
@@ -282,8 +280,6 @@ public class DuaScreenActivity extends FragmentActivity {
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
 
-            txtPageNo_Urdu.setVisibility(View.GONE);
-            txtPageNo_Gujarati.setVisibility(View.VISIBLE);
         }
 
     }

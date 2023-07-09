@@ -103,11 +103,11 @@ public class DuaFragement extends Fragment {
             }
         }
 
-
+        ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
+        Constants1.setFontTypeFaceLanguage(            ((TextView)view1.findViewById(R.id.txtTitle)),getActivity(),true);
 
         if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI) )//|| Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ROMAN))
         {
-            ((GujaratiBoldTextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
 //            ((GujaratiTextView)view1.findViewById(R.id.txtTitle_urdu)).setVisibility(View.GONE);
 //            ((GujaratiTextView)view1.findViewById(R.id.txtTitle_Hindi)).setVisibility(View.GONE);
         }
@@ -150,16 +150,16 @@ public class DuaFragement extends Fragment {
         imgFav.setOnClickListener(new FavClickListener(Integer.parseInt(currentPageNo),imgFav));
         for(int i=0;i<TOTAL_ROW;i++)
         {
-            if(true)//Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             {
                 view[i]=View.inflate(getActivity(),R.layout.inflate_content_gujarati,null);
             }
-//            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH) || Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ROMAN))
-//            view[i]=View.inflate(getActivity(),R.layout.inflate_content,null);
-//            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.HINDI))
-//                view[i]=View.inflate(getActivity(),R.layout.inflate_content_hindi,null);
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+            {
+                view[i]=View.inflate(getActivity(),R.layout.inflate_content_urdu,null);
+            }
 
-            contentLayout1[i]=(LinearLayout)view[i].findViewById(R.id.contentLayout);
+           contentLayout1[i]=(LinearLayout)view[i].findViewById(R.id.contentLayout);
             btnShare[i]=(ImageView)view[i].findViewById(R.id.btnShare);
             view_line1[i]=(View)view[i].findViewById(R.id.view_line1);
             view_line2[i]=(View)view[i].findViewById(R.id.view_line2);
@@ -377,7 +377,7 @@ public class DuaFragement extends Fragment {
                 StrictMode.setVmPolicy(builder.build());
 
 
-                 String AUTHORITY="com.indapp.supplications.fileprovider";
+                 String AUTHORITY="com.indapp.islamicknowledge.fileprovider";
 
                 Log.v(Constants1.TAG,"FILE PATH-------->"+getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/share.png");
                 Intent intent = new Intent();
