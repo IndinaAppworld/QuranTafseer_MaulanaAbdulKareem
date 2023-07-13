@@ -3,13 +3,17 @@ package com.indapp.islamicknowledge;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewParent;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -132,7 +136,7 @@ public class DuaScreenActivity extends FragmentActivity {
         imgSettingClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                openSettingScreen(-1);
+                openSettingScreen(-1);
             }
         });
 
@@ -143,15 +147,15 @@ public class DuaScreenActivity extends FragmentActivity {
 
 
         if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdui, layout_setting, false));
+            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdu_dua, layout_setting, false));
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
-            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati, layout_setting, false));
+            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati_dua, layout_setting, false));
 
 
         imgSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                openSettingScreen(3);
+                openSettingScreen(3);
             }
         });
 
@@ -170,48 +174,48 @@ public class DuaScreenActivity extends FragmentActivity {
             }
         });
 
-        chkTranslationTarjumal=(CheckBox) findViewById(R.id.chkTranslationTarjuma);
-        lblArabicOnlyText=(TextView)findViewById(R.id.lblArabicOnlyText);
+//        chkTranslationTarjumal=(CheckBox) findViewById(R.id.chkTranslationTarjuma);
+//        lblArabicOnlyText=(TextView)findViewById(R.id.lblArabicOnlyText);
 
-        imgListGridIcon=(ImageView)findViewById(R.id.imgListGridIcon);
-        if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
-        {
-            imgListGridIcon.setImageResource(R.drawable.icon_grid);
-        }
-        else
-        {
-            imgListGridIcon.setImageResource(R.drawable.icon_list);
-        }
-        if(Constants1.sp.getBoolean("arabic",false))
-        {
-            imgListGridIcon.setVisibility(View.GONE);
-
-            chkTranslationTarjumal.setChecked(false);
-        }
-        else
-        {
-            chkTranslationTarjumal.setChecked(true);
-        }
-        imgListGridIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
-                {
-
-                    Constants1.editor.putString("format","list");
-                    imgListGridIcon.setImageResource(R.drawable.icon_list);
-                }
-                else
-                {
-                    Constants1.editor.putString("format","grid");
-                    imgListGridIcon.setImageResource(R.drawable.icon_grid);
-                }
-                Constants1.editor.commit();
-
-
-            }
-        });
+//        imgListGridIcon=(ImageView)findViewById(R.id.imgListGridIcon);
+//        if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+//        {
+//            imgListGridIcon.setImageResource(R.drawable.icon_grid);
+//        }
+//        else
+//        {
+//            imgListGridIcon.setImageResource(R.drawable.icon_list);
+//        }
+//        if(Constants1.sp.getBoolean("arabic",false))
+//        {
+//            imgListGridIcon.setVisibility(View.GONE);
+//
+//            chkTranslationTarjumal.setChecked(false);
+//        }
+//        else
+//        {
+//            chkTranslationTarjumal.setChecked(true);
+//        }
+//        imgListGridIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if(Constants1.sp.getString("format","grid").equalsIgnoreCase("grid"))
+//                {
+//
+//                    Constants1.editor.putString("format","list");
+//                    imgListGridIcon.setImageResource(R.drawable.icon_list);
+//                }
+//                else
+//                {
+//                    Constants1.editor.putString("format","grid");
+//                    imgListGridIcon.setImageResource(R.drawable.icon_grid);
+//                }
+//                Constants1.editor.commit();
+//
+//
+//            }
+//        });
 
 
 
@@ -259,30 +263,271 @@ public class DuaScreenActivity extends FragmentActivity {
 
         if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
         {
-            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown_sel);
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_green_sel);
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(Color.parseColor("#ffffff"));
 
-            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown);
-            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
 
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
 
+//            imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
+//            imgDua.setImageResource(R.drawable.menu_icon2_urdu);
+
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
-            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown_sel);
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_green_sel);
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(Color.parseColor("#ffffff"));
 
-            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown);
-            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
 
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
 
+//            imgQuran.setImageResource(R.drawable.menu_icon1_gujrati);
+//            imgDua.setImageResource(R.drawable.menu_icon2_gujrati);
+
         }
+    }
+
+
+
+    public void openSettingScreen(int type)
+    {
+
+        RelativeLayout layout_setting_header=(RelativeLayout)findViewById(R.id.layout_setting_header);
+        if(layout_setting.getVisibility()==View.INVISIBLE) {
+
+            txtTitleSettingUrdu.setText("ترتیب");
+            txtTitleSettingGujarati.setText("સેટિંગ");
+
+            resetGeneralSetting(type);
+
+            layout_setting.setVisibility(View.VISIBLE);
+            TranslateAnimation animate = new TranslateAnimation(0, 0, layout_setting.getHeight(), 0);
+            // duration of animation
+            animate.setDuration(300);
+            animate.setFillAfter(true);
+            layout_setting.startAnimation(animate);
+            animate.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    layout_setting_header.setVisibility(View.VISIBLE);
+
+
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
+        else
+        {
+
+            layout_setting.setVisibility(View.INVISIBLE);
+            scroll_setting.setVisibility(View.INVISIBLE);
+            layout_general_setting.setVisibility(View.INVISIBLE);
+
+            TranslateAnimation animate = new TranslateAnimation(0, 0, 0, layout_setting.getHeight());
+
+            // duration of animation
+            animate.setDuration(300);
+            animate.setFillAfter(true);
+            layout_setting.startAnimation(animate);
+            animate.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    layout_setting_header.setVisibility(View.INVISIBLE);
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            layout_general_setting.removeAllViews();
+                            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+                                layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdu_dua, layout_setting, false));
+                            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+                                layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati_dua, layout_setting, false));
+
+                        }
+                    }, 100);
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
+    }
+    public void resetGeneralSetting(int type)
+    {
+//        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+//        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+//        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+
+        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+
+
+
+        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+        ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+        scroll_setting.setVisibility(View.VISIBLE);
+        scroll_setting.scrollTo(0,0);
+        layout_general_setting.setVisibility(View.VISIBLE);
+
+        findViewById(R.id.layout_language).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(((LinearLayout)findViewById(R.id.layout_language_list)).getVisibility()==View.GONE)
+                {
+                    ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.VISIBLE);
+                    ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+                }
+                else {
+                    ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+                }
+            }
+        });
+//        findViewById(R.id.layout_peshlafz).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Intent.ACTION_VIEW);
+//                intent.setClass(DuaIndexScreenActivity.this,PDFViewActivityScreen.class);
+//                intent.putExtra("type","peshlafz");
+//                startActivity(intent);
+//            }
+//        });
+//        findViewById(R.id.layout_aboutus).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Intent.ACTION_VIEW);
+//                intent.setClass(DuaIndexScreenActivity.this,PDFViewActivityScreen.class);
+//                intent.putExtra("type","aboutus");
+//                startActivity(intent);
+//            }
+//        });
+        findViewById(R.id.txtLanguage_Urdu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+                {
+                    Constants1.LANGUAGE=Constants1.URDU;
+                    Constants1.editor.putString("language",Constants1.URDU);
+                    Constants1.editor.commit();
+                    changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+//                            setTabs();
+
+//                            updateList();
+                        }
+                    }, 500);
+
+                }
+            }
+        });
+        findViewById(R.id.layout_share).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, Constants1.share_data);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.layout_rateapp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent rateIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.indapp.islamicknowledge"));
+                startActivity(rateIntent);
+
+            }
+        });
+        findViewById(R.id.txtLanguage_Gujarati).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+                {
+                    Constants1.LANGUAGE=Constants1.GUJARATI;
+                    Constants1.editor.putString("language",Constants1.GUJARATI);
+                    Constants1.editor.commit();
+                    changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+//                            setTabs();
+//                            updateList();
+                        }
+                    }, 500);
+
+                }
+            }
+        });
+        changeLanguage();
+        findViewById(R.id.layout_color).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(((LinearLayout)findViewById(R.id.layout_color_list)).getVisibility()==View.GONE)
+                {
+                    ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.VISIBLE);
+
+                    ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+
+                }
+                else {
+                    ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
+                }
+            }
+        });
+
+//        findViewById(R.id.layout_tutorial).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent =new Intent(Intent.ACTION_VIEW);
+//                intent.setClass(DuaIndexScreenActivity.this, TutorialScreenActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+//        findViewById(R.id.layout_translationColor).setOnClickListener(new MenuScreenActivity.TextClickListener(0));
+//        findViewById(R.id.layout_arabicColor).setOnClickListener(new MenuScreenActivity.TextClickListener(1));
+//        findViewById(R.id.layout_lineColor).setOnClickListener(new MenuScreenActivity.TextClickListener(2));
+
 
     }
+
+
+
 
     class MyPageAdapter extends FragmentPagerAdapter {
         private List<Fragment> fragments;

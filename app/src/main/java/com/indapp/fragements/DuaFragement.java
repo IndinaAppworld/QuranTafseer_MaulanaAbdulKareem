@@ -130,7 +130,7 @@ public class DuaFragement extends Fragment {
         Log.v(Constants1.TAG,"*********************>>>>>>>"+type+"_"+(Integer.parseInt(currentPageNo)));
         if(Constants1.sp.contains(type+"_"+(Integer.parseInt(currentPageNo)))==true)
         {
-            imgFav.setImageResource(R.drawable.favorite_dua_sel);
+            imgFav.setImageResource(R.drawable.favorite_dua_white_sel);
         }
 
         int TOTAL_ROW=dataBeanArrayList.size();
@@ -312,7 +312,7 @@ public class DuaFragement extends Fragment {
                 Constants1.editor.putString(getArguments().getString(EXTRA_TYPE)+"_"+pageno,""+pageno);
                 Constants1.editor.commit();
 
-                imgFav.setImageResource(R.drawable.favorite_dua_sel);
+                imgFav.setImageResource(R.drawable.favorite_dua_white_sel);
                 Toast.makeText(getActivity(),"Added to Favourite",Toast.LENGTH_SHORT).show();
             }
             else
@@ -320,7 +320,7 @@ public class DuaFragement extends Fragment {
                 Constants1.editor.remove(getArguments().getString(EXTRA_TYPE)+"_"+pageno);
                 Constants1.editor.commit();
 
-                imgFav.setImageResource(R.drawable.favorite_dua_unesl);
+                imgFav.setImageResource(R.drawable.favorite_dua_white_unsel);
                 Toast.makeText(getActivity(),"Removed from Favourite",Toast.LENGTH_SHORT).show();
             }
         }

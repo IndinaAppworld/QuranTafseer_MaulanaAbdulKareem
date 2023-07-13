@@ -22,7 +22,7 @@
             android:text="غُفْرَانَكَ،اَلْحَمْدُلِلّٰہِ الَّذِيْ أَذْھَبَ  عَنِّي الْأَذٰی وَعَافَانِيْ"
             android:textSize="@dimen/maintitlefont_arabic"
             android:gravity="center"
-            android:textColor="@color/colorGreenDark"
+            android:textColor="@color/duaprimarycolor"
             android:id="@+id/txtArabic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:id="@+id/txtTrans"
             android:layout_width="match_parent"
-            android:textColor="@color/colorGreenDark"
+            android:textColor="@color/duaprimarycolor"
             android:layout_height="wrap_content" />
 
         <View
@@ -55,6 +55,7 @@
             android:id="@+id/view_line2"
             android:background="@color/duaprimarycolor"
             ></View>
+
         <com.indapp.fonts.UrduTextView
             android:layout_marginTop="7dp"
             android:layout_marginBottom="7dp"
@@ -62,7 +63,7 @@
             android:textSize="@dimen/menuitemsize"
             android:gravity="center"
             android:id="@+id/txtFazilat"
-            android:textColor="@color/colorGreenDark"
+            android:textColor="@color/duaprimarycolor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -98,7 +99,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:textColor="@color/colorGreenDark"
+                android:textColor="@color/duaprimarycolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 ></com.indapp.fonts.UrduTextView>

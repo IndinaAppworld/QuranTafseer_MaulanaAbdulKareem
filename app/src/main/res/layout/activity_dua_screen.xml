@@ -103,7 +103,7 @@
 
         <LinearLayout
             android:visibility="gone"
-            android:background="@color/colorPrimary"
+            android:background="@color/duaprimarycolor"
             android:weightSum="3"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
@@ -195,7 +195,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_setting"
+            android:background="@drawable/settingbg_dua"
             android:orientation="vertical"
             android:visibility="invisible">
 
@@ -204,7 +204,7 @@
                 android:id="@+id/layout_setting_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@color/duaprimarycolor"
                 android:padding="5dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"

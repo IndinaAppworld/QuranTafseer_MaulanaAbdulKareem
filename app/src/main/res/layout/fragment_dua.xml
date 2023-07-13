@@ -3,21 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:visibility="visible"
-    android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <RelativeLayout
+
+        android:background="#16505A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
         <ImageView
+            android:layout_marginRight="5dp"
             android:id="@+id/imgFav"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/favorite_dua_unesl"
+            android:src="@drawable/favorite_dua_white_unsel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -26,12 +28,14 @@
             android:layout_toLeftOf="@id/imgFav"
             android:textSize="@dimen/maintitlefont_arabic"
             android:id="@+id/txtTitle"
-            android:textColor="@color/colorGreenDark"
+            android:textColor="#ffffff"
             android:layout_width="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Aman Wa Amaan"
+            android:layout_marginLeft="5dp"
+
             />
 <!--        <com.indapp.fonts.HindiFont-->
 <!--            android:layout_centerVertical="true"-->
@@ -63,6 +67,8 @@
 <!--            />-->
     </RelativeLayout>
     <ScrollView
+        android:padding="10dp"
+
         android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

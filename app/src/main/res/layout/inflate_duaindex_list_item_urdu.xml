@@ -60,7 +60,7 @@ android:layout_toRightOf="@id/imgArrow"
             android:text="NAMAAZ KI DUAEIN"
 
             android:id="@+id/txtTitle"
-            android:textColor="#26866E"
+            android:textColor="#176775"
             android:textSize="@dimen/maintitlefont_urdu"
             android:layout_width="match_parent"
             android:layout_centerVertical="true"
