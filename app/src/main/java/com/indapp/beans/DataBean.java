@@ -113,4 +113,24 @@ public class DataBean {
     }
 
     public String referance="";
+
+    public String getReferenceTrans() {
+        return referenceTrans;
+    }
+
+    public void setReferenceTrans(String referenceTrans) {
+        this.referenceTrans = referenceTrans;
+    }
+
+    public String getReferenceFazilat() {
+        return referenceFazilat;
+    }
+
+    public void setReferenceFazilat(String referenceFazilat) {
+        this.referenceFazilat = referenceFazilat;
+    }
+
+    public String referenceTrans="";
+    public String referenceFazilat="";
+
 }

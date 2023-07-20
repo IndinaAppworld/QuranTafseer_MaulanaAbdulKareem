@@ -49,8 +49,6 @@ public class DuaFragement extends Fragment {
         return f;
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -70,7 +68,7 @@ public class DuaFragement extends Fragment {
         Cursor cursor1;
 //        if(getArguments().getInt(EXTRA_TYPE)==Constants1.TYPE_FORTRESS)
         {
-            cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
+            cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+" from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
             while (cursor.moveToNext()) {
                 Log.v(Constants1.TAG, "SUBTITLE----->" + cursor.getString(1));
                 dataBean = new DataBean();
@@ -81,6 +79,10 @@ public class DuaFragement extends Fragment {
 
                 SURAHNO =cursor.getInt(3);
                  AYATNO=cursor.getInt(4);
+                dataBean.setReferenceTrans(cursor.getString(5));
+                dataBean.setReferenceFazilat(cursor.getString(6));
+
+                Log.v(Constants1.TAG,"Reference-->"+cursor.getString(5)+">>>"+cursor.getString(6));
                 //dataBean.setTitleid(cursor.getString(2));
                 //dataBean.setPageno(cursor.getString(3));
                 //dataBean.setDuano(cursor.getString(4));
@@ -145,6 +147,8 @@ public class DuaFragement extends Fragment {
         TextView txtArabicTextView[]=new TextView[TOTAL_ROW];
         TextView txtTranslation[]=new TextView[TOTAL_ROW];
         TextView txtTafseer[]=new TextView[TOTAL_ROW];
+        TextView txtFazilatReference[]=new TextView[TOTAL_ROW];
+        TextView txtTransReference[]=new TextView[TOTAL_ROW];
         TextView txtIndex[]=new TextView[TOTAL_ROW];
        // NoriNastalicUrduFont txtTrans[]=new NoriNastalicUrduFont[TOTAL_ROW];
         imgFav.setOnClickListener(new FavClickListener(Integer.parseInt(currentPageNo),imgFav));
@@ -169,6 +173,10 @@ public class DuaFragement extends Fragment {
             txtTranslation[i]=(TextView)view[i].findViewById(R.id.txtTrans);
             txtTafseer[i]=(TextView)view[i].findViewById(R.id.txtFazilat) ;
             txtIndex[i]=(TextView)view[i].findViewById(R.id.txtIndex);
+
+            txtTransReference[i]=(TextView)view[i].findViewById(R.id.txtTransReference);
+            txtFazilatReference[i]=(TextView)view[i].findViewById(R.id.txtFazilatReference);
+
             btnShare[i].setOnClickListener(new ShareClickListener(contentLayout1[i],TITLE,btnShare[i]));
             if(dataBeanArrayList.get(i).getArabicdua()==null || dataBeanArrayList.get(i).getArabicdua().trim().length()==0)
             {
@@ -184,25 +192,34 @@ public class DuaFragement extends Fragment {
             {
                 view_line2[i].setVisibility(View.GONE);
                 txtTranslation[i].setVisibility(View.GONE);
+                txtTransReference[i].setVisibility(View.GONE);
+
             }
             else
             {
                 txtTranslation[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getTranslation().trim()));
+
+
+                if(dataBeanArrayList.get(i).getReferenceTrans()!=null && dataBeanArrayList.get(i).getReferenceTrans().trim().length()>0)
+                txtTransReference[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getReferenceTrans()));
+                else txtTransReference[i].setVisibility(View.GONE);
+
             }
 
             if(dataBeanArrayList.get(i).getFazilat()==null || dataBeanArrayList.get(i).getFazilat().trim().length()==0)
             {
                 view_line3[i].setVisibility(View.GONE);
                 txtTafseer[i].setVisibility(View.GONE);
+                txtFazilatReference[i].setVisibility(View.GONE);
             }
             else
             {
-//                if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-//                {
-//                    txtTafseer[i].setText((""+dataBeanArrayList.get(i).getFazilat().trim()));
-//                }
-//                else
-                txtTafseer[i].setText((dataBeanArrayList.get(i).getFazilat().trim()));
+                txtTafseer[i].setText((dataBeanArrayList.get(i).getFazilat()));
+
+                if(dataBeanArrayList.get(i).getReferenceFazilat()!=null && dataBeanArrayList.get(i).getReferenceFazilat().trim().length()>0)
+                txtFazilatReference[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getReferenceFazilat()));
+                else txtFazilatReference[i].setVisibility(View.GONE);
+
             }
 
             if(dataBeanArrayList.get(i).getReferance()!=null && dataBeanArrayList.get(i).getReferance().equalsIgnoreCase("NA")==false)
@@ -222,15 +239,11 @@ public class DuaFragement extends Fragment {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-
                 try {
-
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-
-
                                 if (true)//Constants1.sp.getBoolean("arabic", false) == false)
                                 {
                                     for (int i = 0; i < TOTAL_ROW; i++) {
@@ -254,6 +267,10 @@ public class DuaFragement extends Fragment {
 
                                         txtIndex[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                         txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+
+                                        txtFazilatReference[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)*0.8f);
+                                        txtTransReference[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)*0.8f);
+
 
 
                                     }

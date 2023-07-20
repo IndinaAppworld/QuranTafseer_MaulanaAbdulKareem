@@ -48,6 +48,18 @@
             android:textColor="@color/duaprimarycolor"
             android:layout_height="wrap_content" />
 
+        <com.indapp.fonts.GujaratiBoldTextView
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="7dp"
+            android:layout_gravity="right"
+            android:text=""
+            android:textSize="@dimen/menuitemsize"
+            android:gravity="right"
+            android:id="@+id/txtTransReference"
+            android:layout_width="match_parent"
+            android:textColor="@color/duaprimarycolor"
+            android:layout_height="wrap_content" />
+
         <View
             android:layout_marginTop="0dp"
             android:layout_width="match_parent"
@@ -65,6 +77,19 @@
             android:textColor="@color/duaprimarycolor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <com.indapp.fonts.GujaratiBoldTextView
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="7dp"
+            android:layout_gravity="right"
+
+            android:text=""
+            android:textSize="@dimen/menuitemsize"
+            android:gravity="right"
+            android:id="@+id/txtFazilatReference"
+            android:layout_width="match_parent"
+            android:textColor="@color/duaprimarycolor"
+            android:layout_height="wrap_content" />
+
 
         <View
             android:layout_marginTop="0dp"
