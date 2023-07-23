@@ -10,13 +10,40 @@
     >
     <LinearLayout
         android:orientation="vertical"
-        android:padding="20dp"
+
         android:id="@+id/contentLayout"
         android:background="@drawable/content_rounded_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
+
+        <LinearLayout
+            android:background="@drawable/rounded_corder_title_darood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        <com.indapp.fonts.UrduBoldTextView
+            android:layout_gravity="center"
+            android:text="غُفْرَانَكَ،اَلْحَمْدُلِلّٰہِ الَّذِيْ أَذْھَبَ  عَنِّي الْأَذٰی وَعَافَانِيْ"
+            android:textSize="@dimen/menuitemsize"
+            android:layout_margin="3dp"
+
+            android:visibility="gone"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:id="@+id/txtTitleDarood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+
+<LinearLayout
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
         <com.indapp.fonts.ArabicTextView
             android:layout_gravity="center"
             android:text="غُفْرَانَكَ،اَلْحَمْدُلِلّٰہِ الَّذِيْ أَذْھَبَ  عَنِّي الْأَذٰی وَعَافَانِيْ"
@@ -148,6 +175,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-
+    </LinearLayout>
 
 </RelativeLayout>

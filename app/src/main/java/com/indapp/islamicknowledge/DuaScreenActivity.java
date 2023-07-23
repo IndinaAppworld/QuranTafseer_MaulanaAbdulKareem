@@ -66,6 +66,7 @@ public class DuaScreenActivity extends FragmentActivity {
 
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
+    String type_view="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +83,11 @@ public class DuaScreenActivity extends FragmentActivity {
             }
         }
         getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
+        type_view=getIntent().getExtras().getString("type_view");
+
+
+        if(type_view.equalsIgnoreCase(Constants1.TYPE_DUA))TOTAL=104;
+        else if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD)) TOTAL=54;
 
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
@@ -161,9 +167,9 @@ public class DuaScreenActivity extends FragmentActivity {
 
         changeLanguage();
 
-        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
-        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
-        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
+//        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
+//        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
+//        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
 
         findViewById(R.id.imgSearch).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -380,17 +386,13 @@ public class DuaScreenActivity extends FragmentActivity {
     }
     public void resetGeneralSetting(int type)
     {
-//        findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
-//        findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
-//        findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
-
         findViewById(R.id.viewArabicColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_arabic", "000000")));
         findViewById(R.id.viewTranslationColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_font_color_urdu", "000000")));
         findViewById(R.id.viewLineColor).setBackgroundColor(Color.parseColor("#"+Constants1.sp.getString("perf_line_color", "000000")));
 
 
 
-        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+//        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);
         scroll_setting.scrollTo(0,0);
@@ -410,24 +412,6 @@ public class DuaScreenActivity extends FragmentActivity {
                 }
             }
         });
-//        findViewById(R.id.layout_peshlafz).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(Intent.ACTION_VIEW);
-//                intent.setClass(DuaIndexScreenActivity.this,PDFViewActivityScreen.class);
-//                intent.putExtra("type","peshlafz");
-//                startActivity(intent);
-//            }
-//        });
-//        findViewById(R.id.layout_aboutus).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(Intent.ACTION_VIEW);
-//                intent.setClass(DuaIndexScreenActivity.this,PDFViewActivityScreen.class);
-//                intent.putExtra("type","aboutus");
-//                startActivity(intent);
-//            }
-//        });
         findViewById(R.id.txtLanguage_Urdu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -566,7 +550,7 @@ public class DuaScreenActivity extends FragmentActivity {
         Vector<String> v=new Vector<String>();
         for(int i=0;i<TOTAL;i++)
         {
-            fList.add(DuaFragement.newInstance(""+(i+1),"DUA"));
+            fList.add(DuaFragement.newInstance(""+(i+1),type_view));
         }
         return fList;
     }

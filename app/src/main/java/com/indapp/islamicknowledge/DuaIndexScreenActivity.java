@@ -59,6 +59,9 @@ public class DuaIndexScreenActivity extends Activity  {
     ScrollView scroll_setting;
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
+    String type_view="";
+
+    TextView txtDaroodSharifOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,28 @@ public class DuaIndexScreenActivity extends Activity  {
 
         setContentView(R.layout.activity_bookindex_screen);
 
+        type_view=getIntent().getExtras().getString("type_view");
         imgBack = (ImageView) findViewById(R.id.imgBack);
+        txtDaroodSharifOption=(TextView)findViewById(R.id.txtDaroodSharifOption);
+        if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+        {
+            txtDaroodSharifOption.setVisibility(View.GONE);
+        }
+        txtDaroodSharifOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent=new Intent(Intent.ACTION_VIEW);
+//                intent.setClass(DuaIndexScreenActivity.this,DuaIndexScreenActivity.class);
+//                intent.putExtra("type_view",Constants1.TYPE_DAROOD);
+//                startActivity(intent);
+
+                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                    type_view=Constants1.TYPE_DUA;
+                else type_view=Constants1.TYPE_DAROOD;
+
+                updateList();
+            }
+        });
 
         layout_quran=(RelativeLayout)findViewById(R.id.layout_quran);
         imgSetting=(ImageView)findViewById(R.id.imgSetting);
@@ -101,13 +125,8 @@ public class DuaIndexScreenActivity extends Activity  {
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
 
-
-
         shimmerFrameLayout=(ShimmerFrameLayout)findViewById(R.id.shimmer_view_container);
-
         updateList();
-
-
         findViewById(R.id.imgBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -240,7 +259,7 @@ public class DuaIndexScreenActivity extends Activity  {
 
 
 
-        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+//        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);
         scroll_setting.scrollTo(0,0);
@@ -387,6 +406,7 @@ public class DuaIndexScreenActivity extends Activity  {
         ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.GONE);
         ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.GONE);
 
+
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
 
             typeface = Typeface.createFromAsset(getAssets(),
@@ -399,7 +419,12 @@ public class DuaIndexScreenActivity extends Activity  {
 
                 Constants1.setFontTypeFaceLanguage( ((TextView) findViewById(R.id.txtDaroodSharifOption)),getApplicationContext(),false);
             }
-            ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("દુરૂદ\u200C શરીફ પઢવા માટે અહીંયા ક્લિક કરો");
+            if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+                ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં");
+            }
+            else
+                ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("વિવિધ ફઝીલતો વાળા દુરુદ શરીફ પઢવા માટે ક્લિક કરો");
 
         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
             typeface = Typeface.createFromAsset(getAssets(), "fonts/jameelnoorinastaleeq.ttf");
@@ -411,10 +436,17 @@ public class DuaIndexScreenActivity extends Activity  {
             {
                 ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("ہمارے بارے میں");
             }
-            ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("درود شریف پڑھنے کے لیے یہاں کلک کریں");
+
+            if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+
+                ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
+            }
+            else ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("مختلف فضائل کے ساتھ درود شریف پڑھنے کے لیے کلک کریں");
 
         }
         Constants1.setFontTypeFaceLanguage( ((TextView) findViewById(R.id.txtDaroodSharifOption)),getApplicationContext(),false);
+
 
 
         indexBeanArrayList.clear();
@@ -423,7 +455,19 @@ public class DuaIndexScreenActivity extends Activity  {
         if(Constants1.sqLiteDatabase==null)
             Constants1.sqLiteDatabase=Constants1.databaseHandler.opendatabase(getApplicationContext());
 
-        Cursor cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_"+Constants1.LANGUAGE+" from DUA where  HEADING_"+Constants1.LANGUAGE+" is not null", Constants1.sqLiteDatabase);
+        Cursor cursor;
+
+        if (type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD)) {
+            cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DAROOD", Constants1.sqLiteDatabase);
+            ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("درود شریف");
+            ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("દરૂદ શરીફ");
+        }
+        else {
+            cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DUA where  HEADING_" + Constants1.LANGUAGE + " is not null", Constants1.sqLiteDatabase);
+            ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
+            ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?");
+
+        }
         while(cursor.moveToNext())
         {
             Log.v(Constants1.TAG,"TITLe---->"+cursor.getString(1));
@@ -458,7 +502,7 @@ public class DuaIndexScreenActivity extends Activity  {
             txtNumber[i]=(TextView)view[i].findViewById(R.id.txtNumber);
             imgFav[i]=(ImageView) view[i].findViewById(R.id.imgFav);
 
-            if(Constants1.sp.contains("DUA"+"_"+((i+1)))==true)
+            if(Constants1.sp.contains(type_view+"_"+((i+1)))==true)
             {
                 imgFav[i].setImageResource(R.drawable.favorite_dua_sel);
             }
@@ -472,6 +516,9 @@ public class DuaIndexScreenActivity extends Activity  {
             imgFav[i].setOnClickListener(new FavClickListener((i+1),imgFav[i]));
             contentLayout.addView(view[i]);
         }
+
+        ((ScrollView)findViewById(R.id.scrollView)).fullScroll(ScrollView.FOCUS_UP);
+
     }
     public void changeLanguage(){
 
@@ -519,9 +566,9 @@ public class DuaIndexScreenActivity extends Activity  {
         {
             Constants1.initSharedPref(DuaIndexScreenActivity.this);
 
-            if(Constants1.sp.contains("DUA_"+pageno)==false)
+            if(Constants1.sp.contains(type_view+"_"+pageno)==false)
             {
-                Constants1.editor.putString("DUA_"+pageno,""+pageno);
+                Constants1.editor.putString(type_view+"_"+pageno,""+pageno);
                 Constants1.editor.commit();
 
                 imgFav.setImageResource(R.drawable.favorite_dua_sel);
@@ -529,7 +576,7 @@ public class DuaIndexScreenActivity extends Activity  {
             }
             else
             {
-                Constants1.editor.remove("DUA_"+pageno);
+                Constants1.editor.remove(type_view+"_"+pageno);
                 Constants1.editor.commit();
 
                 imgFav.setImageResource(R.drawable.favorite_dua_unesl);
@@ -549,6 +596,7 @@ public class DuaIndexScreenActivity extends Activity  {
             Intent intent=new Intent(Intent.ACTION_VIEW);
             intent.setClass(DuaIndexScreenActivity.this,DuaScreenActivity.class);
             intent.putExtra("pageno",""+pos);
+            intent.putExtra("type_view",type_view);
             startActivity(intent);
         }
     }

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.text.Html;
 import android.util.Log;
@@ -38,7 +39,7 @@ public class DuaFragement extends Fragment {
 
 
     public static final String EXTRA_ID = "ID";
-    public static final String EXTRA_TYPE = "TYPE";
+    public static final String EXTRA_TYPE = "";
     public static final DuaFragement newInstance(String ID,String type)
     {
         DuaFragement f = new DuaFragement();
@@ -48,7 +49,6 @@ public class DuaFragement extends Fragment {
         f.setArguments(bdl);
         return f;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -66,7 +66,7 @@ public class DuaFragement extends Fragment {
         String TITLE = "";
         int SURAHNO,AYATNO;
         Cursor cursor1;
-//        if(getArguments().getInt(EXTRA_TYPE)==Constants1.TYPE_FORTRESS)
+        if(type.equalsIgnoreCase(Constants1.TYPE_DUA))
         {
             cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+" from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
             while (cursor.moveToNext()) {
@@ -83,51 +83,44 @@ public class DuaFragement extends Fragment {
                 dataBean.setReferenceFazilat(cursor.getString(6));
 
                 Log.v(Constants1.TAG,"Reference-->"+cursor.getString(5)+">>>"+cursor.getString(6));
-                //dataBean.setTitleid(cursor.getString(2));
-                //dataBean.setPageno(cursor.getString(3));
-                //dataBean.setDuano(cursor.getString(4));
-
                 cursor1=Constants1.databaseHandler.getData("select AYAT from QURAN_ARABIC where SURA_NO ='"+SURAHNO+"' and SURA_AYAT_NO='"+AYATNO+"'",Constants1.sqLiteDatabase);
                 Log.v(Constants1.TAG,"select AYAT from QURAN_ARABIC where SURA_NO ="+SURAHNO+" and SURA_AYAT_NO="+AYATNO);
                 if(cursor1!=null) {
                     while (cursor1.moveToNext()) {
                         dataBean.setArabicdua(cursor1.getString(0));//cursor.getString(5));
-
                     }
                 }
                 dataBean.setTranslation(cursor.getString(1));
-
-                //dataBean.setReferance(cursor.getString(7));
                 dataBean.setFazilat(cursor.getString(2));
-                //dataBean.setFav(cursor.getString(9));
+                dataBeanArrayList.add(dataBean);
+            }
+        }
+        else if(type.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+        {
+            cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", ARABIC," +" HAWALA_"+Constants1.LANGUAGE+" from darood where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
+            while (cursor.moveToNext()) {
+                Log.v(Constants1.TAG, "SUBTITLE----->" + cursor.getString(1));
+                dataBean = new DataBean();
+                dataBean.setSR("");
+                dataBean.setTitle(cursor.getString(0));
+                //dataBean.setSubtitle(cursor.getString(1));
+                if (TITLE.length() == 0) TITLE = cursor.getString(0);
 
+
+                dataBean.setReferenceTrans("");
+                dataBean.setReferenceFazilat(cursor.getString(4));
+
+//                Log.v(Constants1.TAG,"Reference-->"+cursor.getString(5)+">>>"+cursor.getString(6));
+                dataBean.setArabicdua(cursor.getString(3));
+                dataBean.setTranslation(cursor.getString(1));
+                dataBean.setFazilat(cursor.getString(2));
                 dataBeanArrayList.add(dataBean);
             }
         }
 
-        ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
-        Constants1.setFontTypeFaceLanguage(            ((TextView)view1.findViewById(R.id.txtTitle)),getActivity(),true);
 
-        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI) )//|| Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ROMAN))
-        {
-//            ((GujaratiTextView)view1.findViewById(R.id.txtTitle_urdu)).setVisibility(View.GONE);
-//            ((GujaratiTextView)view1.findViewById(R.id.txtTitle_Hindi)).setVisibility(View.GONE);
-        }
-//        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
-//        {
-//            ((SwissBoldFont)view1.findViewById(R.id.txtTitle)).setVisibility(View.GONE);
-//            ((NoriNastalicUrduFont)view1.findViewById(R.id.txtTitle_urdu)).setVisibility(View.VISIBLE);
-//            ((NoriNastalicUrduFont)view1.findViewById(R.id.txtTitle_urdu)).setText(Html.fromHtml("<b>"+TITLE+"</b>"));
-//            ((HindiFont)view1.findViewById(R.id.txtTitle_Hindi)).setVisibility(View.GONE);
-//        }
-//        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.HINDI))
-//        {
-//            ((SwissBoldFont)view1.findViewById(R.id.txtTitle)).setVisibility(View.GONE);
-//            ((NoriNastalicUrduFont)view1.findViewById(R.id.txtTitle_urdu)).setVisibility(View.GONE);
-//            ((HindiFont)view1.findViewById(R.id.txtTitle_Hindi)).setVisibility(View.VISIBLE);
-//            ((HindiFont)view1.findViewById(R.id.txtTitle_Hindi)).setText(Html.fromHtml("<b>"+TITLE+"</b>"));
-//
-//        }
+        Constants1.setFontTypeFaceLanguage(((TextView)view1.findViewById(R.id.txtTitle)),getActivity(),true);
+
         Constants1.initSharedPref(getActivity());
         Log.v(Constants1.TAG,"*********************>>>>>>>"+type+"_"+(Integer.parseInt(currentPageNo)));
         if(Constants1.sp.contains(type+"_"+(Integer.parseInt(currentPageNo)))==true)
@@ -141,6 +134,7 @@ public class DuaFragement extends Fragment {
         View view_line2[]=new View[TOTAL_ROW];
         View view_line3[]=new View[TOTAL_ROW];
 
+
         ImageView btnShare[]=new ImageView[TOTAL_ROW];
         LinearLayout contentLayout1[]=new LinearLayout[TOTAL_ROW];
         
@@ -150,6 +144,8 @@ public class DuaFragement extends Fragment {
         TextView txtFazilatReference[]=new TextView[TOTAL_ROW];
         TextView txtTransReference[]=new TextView[TOTAL_ROW];
         TextView txtIndex[]=new TextView[TOTAL_ROW];
+        TextView txtTitleDarood[]=new TextView[TOTAL_ROW];
+
        // NoriNastalicUrduFont txtTrans[]=new NoriNastalicUrduFont[TOTAL_ROW];
         imgFav.setOnClickListener(new FavClickListener(Integer.parseInt(currentPageNo),imgFav));
         for(int i=0;i<TOTAL_ROW;i++)
@@ -169,15 +165,17 @@ public class DuaFragement extends Fragment {
             view_line2[i]=(View)view[i].findViewById(R.id.view_line2);
             view_line3[i]=(View)view[i].findViewById(R.id.view_line3);
 
+
             txtArabicTextView[i]=(TextView)view[i].findViewById(R.id.txtArabic);
             txtTranslation[i]=(TextView)view[i].findViewById(R.id.txtTrans);
             txtTafseer[i]=(TextView)view[i].findViewById(R.id.txtFazilat) ;
             txtIndex[i]=(TextView)view[i].findViewById(R.id.txtIndex);
+            txtTitleDarood[i]=(TextView)view[i].findViewById(R.id.txtTitleDarood);
 
             txtTransReference[i]=(TextView)view[i].findViewById(R.id.txtTransReference);
             txtFazilatReference[i]=(TextView)view[i].findViewById(R.id.txtFazilatReference);
 
-            btnShare[i].setOnClickListener(new ShareClickListener(contentLayout1[i],TITLE,btnShare[i]));
+            btnShare[i].setOnClickListener(new ShareClickListener(contentLayout1[i],TITLE,btnShare[i],    txtTitleDarood[i]));
             if(dataBeanArrayList.get(i).getArabicdua()==null || dataBeanArrayList.get(i).getArabicdua().trim().length()==0)
             {
                 view_line1[i].setVisibility(View.GONE);
@@ -231,6 +229,20 @@ public class DuaFragement extends Fragment {
                 ((TextView)view[i].findViewById(R.id.txtReferance)).setVisibility(View.INVISIBLE);
             }
             txtIndex[i].setText(Constants1.replaceNumbers(""+(i+1))+"/"+Constants1.replaceNumbers(""+TOTAL_ROW));
+            if(type.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+                txtIndex[i].setVisibility(View.GONE);
+                txtTitleDarood[i].setVisibility(View.VISIBLE);
+//                view_line4[i].setVisibility(View.VISIBLE);
+                txtTitleDarood[i].setText((TITLE));
+                ((TextView)view1.findViewById(R.id.txtTitle)).setText("");
+
+            }
+            else {
+                ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
+                txtTitleDarood[i].setText((TITLE));
+            }
+
             contentLayout.addView(view[i]);
         }
 
@@ -249,21 +261,8 @@ public class DuaFragement extends Fragment {
                                     for (int i = 0; i < TOTAL_ROW; i++) {
                                         txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                         txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
+                                        txtTitleDarood[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1f);
 
-//                                        txtTranslationList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-//                                        txtArabicList[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
-//
-//                                        if (pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
-//                                                && pageBeanArrayList.get(i).getQURAN_AYAT_NO() != null && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
-//                                            txtTranslation[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
-//                                            txtArabicTextView[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
-//
-//                                            txtTranslationList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_urdu", "000000")));
-//                                            txtArabicList[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
-//                                        }
-
-//                                        viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
-//                                        viewLineVertical[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
 
                                         txtIndex[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                         txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
@@ -275,16 +274,6 @@ public class DuaFragement extends Fragment {
 
                                     }
                                 }
-//                                else {
-//
-//                                    for (int i = 0; i < TOTAL_ROW; i++) {
-//                                        txtArabicFullText[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
-//                                        if (pageBeanArrayList.get(i).getQURAN_AYAT_NO().equalsIgnoreCase("-1") == false
-//                                                && pageBeanArrayList.get(i).getSURA_AYAT_NO().equalsIgnoreCase("0") == false) {
-//                                            txtArabicFullText[i].setTextColor(Color.parseColor("#" + Constants1.sp.getString("perf_font_color_arabic", "000000")));
-//                                        }
-//                                    }
-//                                }
                             } catch (Exception e) {
                             }
                         }
@@ -296,16 +285,6 @@ public class DuaFragement extends Fragment {
                 {}
             }
         }, 0, 100);
-
-
-
-
-
-
-
-
-
-
 
         return  view1;
     }
@@ -349,18 +328,23 @@ public class DuaFragement extends Fragment {
         View view1;
         String TITLE;
         ImageView btnShare;
-        public ShareClickListener(View view,String TITLE,ImageView btnShare)
+        TextView txtDaroodTitle;
+        public ShareClickListener(View view,String TITLE,ImageView btnShare, TextView txtDaroodTitle)
         {
             this.view1=view;
             this.TITLE=TITLE;
             this.btnShare=btnShare;
+            this.txtDaroodTitle=txtDaroodTitle;
 
         }
         public Bitmap getBitmapFromView(View view)
         {
+//            view.findViewById(R.id.txtTitleDarood).setVisibility(View.VISIBLE);
             Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_4444);
             Canvas canvas = new Canvas(bitmap);
             view.draw(canvas);
+//            view.findViewById(R.id.txtTitleDarood).setVisibility(View.GONE);
+
             return bitmap;
         }
         public void onClick(View view)
@@ -368,6 +352,9 @@ public class DuaFragement extends Fragment {
             try
             {
                 btnShare.setVisibility(View.INVISIBLE);
+//                txtDaroodTitle.setVisibility(View.VISIBLE);
+//                for(int i=0;i<100000;i++)
+//                {}
 //                view1.setDrawingCacheEnabled(true);
                 Log.v(Constants1.TAG,"11111111111111111111111111");
                 Bitmap bitmap = getBitmapFromView(view1);//Bitmap.createBitmap(view1.getDrawingCache());
@@ -380,7 +367,7 @@ public class DuaFragement extends Fragment {
                 FileOutputStream stream = new FileOutputStream(subDire); // overwrites this image every time
                 Log.v(Constants1.TAG,"333333333333333333333333333");
                 bitmap.compress(Bitmap.CompressFormat.PNG, 70, stream);
-                Log.v(Constants1.TAG,"4444444444444444444444444444");
+                Log.v(Constants1.TAG,"444444444444444444444444444");
                 btnShare.setVisibility(View.VISIBLE);
                 stream.close();
                 stream.flush();
@@ -410,6 +397,7 @@ public class DuaFragement extends Fragment {
                 intent.putExtra(Intent.EXTRA_TEXT,""+TITLE+"\n\n"+Constants1.share_data);
                 intent.putExtra(Intent.EXTRA_STREAM,contentUri);
                 startActivity(intent);
+//                txtDaroodTitle.setVisibility(View.GONE);
             }
             catch (Exception e)
             {

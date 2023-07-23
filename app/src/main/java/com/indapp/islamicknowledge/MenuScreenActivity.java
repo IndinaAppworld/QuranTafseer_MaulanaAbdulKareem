@@ -92,6 +92,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
 
                 Intent intent =new Intent(Intent.ACTION_VIEW);
                 intent.setClass(MenuScreenActivity.this, DuaIndexScreenActivity.class);
+                intent.putExtra("type_view",""+Constants1.TYPE_DUA);
                 startActivity(intent);
             }
         });
@@ -260,7 +261,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
 
 
 
-        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+//        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);
         scroll_setting.scrollTo(0,0);

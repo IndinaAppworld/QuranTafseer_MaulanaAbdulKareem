@@ -501,7 +501,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     public void resetGeneralSetting(int type)
     {
         layout_setting_surahparalist.setVisibility(View.INVISIBLE);
-        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
+//        ((LinearLayout)findViewById(R.id.layout_language_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_color_list)).setVisibility(View.GONE);
         ((LinearLayout)findViewById(R.id.layout_enterpage)).setVisibility(View.GONE);
         scroll_setting.setVisibility(View.VISIBLE);

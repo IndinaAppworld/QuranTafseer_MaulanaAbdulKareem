@@ -64,7 +64,7 @@
             android:id="@+id/shimmer_view_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            app:shimmer_duration="2000"
             android:layout_centerInParent="true">
 
             <RelativeLayout
@@ -85,12 +85,13 @@
 
                 <!--Text given to Image-->
                 <TextView
+                    android:gravity="center_horizontal"
                     android:id="@+id/txtDaroodSharifOption"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="દરૂદ શરીફનો પાઠ કરવા અહીં ક્લિક કરો"
                     android:textColor="#ffffff"
-                    android:textSize="@dimen/maintitlefont_arabic"
+                    android:textSize="@dimen/menuitemsize_urdu"
                     android:textStyle="bold" />
 
             </RelativeLayout>
