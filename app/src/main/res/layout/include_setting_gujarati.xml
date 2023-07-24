@@ -53,6 +53,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Language Change)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -132,7 +140,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Color Change)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -268,7 +283,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Go to Page)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -345,7 +367,14 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Bookmark)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -400,6 +429,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
                 <com.indapp.fonts.CipherNormal
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="(Quran translation and tafseer)"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.indapp.fonts.CipherNormal
+                    android:visibility="gone"
                     android:id="@+id/lblArabicOnlyText"
                     android:layout_marginLeft="10dp"
                     android:text="અરબી તર્જમા/તફસીર જોડે  -  ફકત અરબી પઢવા માટે નિશાન હટાવો"
@@ -448,8 +486,17 @@
             <com.indapp.fonts.GujaratiTextView
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
-                android:text="બીજાને એપ્લિકેશન મોકલો"
+                android:text="એપ શેર કરો"
                 android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Share App)"
+                android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -486,12 +533,19 @@
                 <com.indapp.fonts.GujaratiTextView
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="એપ્લિકેશન ને નંબર આપો"
+                    android:text="એપ્લિકેશનને રેટ કરો"
                     android:textSize="@dimen/menuitemsize_urdu"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
+                <com.indapp.fonts.CipherNormal
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="(Rate App)"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <View

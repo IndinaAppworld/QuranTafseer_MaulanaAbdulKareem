@@ -68,11 +68,11 @@ public class DuaFragement extends Fragment {
         Cursor cursor1;
         if(type.equalsIgnoreCase(Constants1.TYPE_DUA))
         {
-            cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+" from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
+            cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+", SR from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
             while (cursor.moveToNext()) {
                 Log.v(Constants1.TAG, "SUBTITLE----->" + cursor.getString(1));
                 dataBean = new DataBean();
-                dataBean.setSR("");
+
                 dataBean.setTitle(cursor.getString(0));
                 //dataBean.setSubtitle(cursor.getString(1));
                 if (TITLE.length() == 0) TITLE = cursor.getString(0);
@@ -92,6 +92,7 @@ public class DuaFragement extends Fragment {
                 }
                 dataBean.setTranslation(cursor.getString(1));
                 dataBean.setFazilat(cursor.getString(2));
+                dataBean.setSR(""+cursor.getInt(7));
                 dataBeanArrayList.add(dataBean);
             }
         }
@@ -145,6 +146,7 @@ public class DuaFragement extends Fragment {
         TextView txtTransReference[]=new TextView[TOTAL_ROW];
         TextView txtIndex[]=new TextView[TOTAL_ROW];
         TextView txtTitleDarood[]=new TextView[TOTAL_ROW];
+        TextView txtNumber[]=new TextView[TOTAL_ROW];
 
        // NoriNastalicUrduFont txtTrans[]=new NoriNastalicUrduFont[TOTAL_ROW];
         imgFav.setOnClickListener(new FavClickListener(Integer.parseInt(currentPageNo),imgFav));
@@ -171,6 +173,7 @@ public class DuaFragement extends Fragment {
             txtTafseer[i]=(TextView)view[i].findViewById(R.id.txtFazilat) ;
             txtIndex[i]=(TextView)view[i].findViewById(R.id.txtIndex);
             txtTitleDarood[i]=(TextView)view[i].findViewById(R.id.txtTitleDarood);
+            txtNumber[i]=(TextView)view[i].findViewById(R.id.txtNumber);
 
             txtTransReference[i]=(TextView)view[i].findViewById(R.id.txtTransReference);
             txtFazilatReference[i]=(TextView)view[i].findViewById(R.id.txtFazilatReference);
@@ -217,7 +220,6 @@ public class DuaFragement extends Fragment {
                 if(dataBeanArrayList.get(i).getReferenceFazilat()!=null && dataBeanArrayList.get(i).getReferenceFazilat().trim().length()>0)
                 txtFazilatReference[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getReferenceFazilat()));
                 else txtFazilatReference[i].setVisibility(View.GONE);
-
             }
 
             if(dataBeanArrayList.get(i).getReferance()!=null && dataBeanArrayList.get(i).getReferance().equalsIgnoreCase("NA")==false)
@@ -241,6 +243,8 @@ public class DuaFragement extends Fragment {
             else {
                 ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
                 txtTitleDarood[i].setText((TITLE));
+
+                txtNumber[i].setText(""+Constants1.replaceNumbers(dataBeanArrayList.get(i).getSR()));
             }
 
             contentLayout.addView(view[i]);
@@ -265,6 +269,8 @@ public class DuaFragement extends Fragment {
 
 
                                         txtIndex[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+                                        txtNumber[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
+
                                         txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
 
                                         txtFazilatReference[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)*0.8f);

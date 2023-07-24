@@ -42,10 +42,8 @@ public class InfoActivity extends Activity {
                 txtAboutusUrdu.setText("અગર આપકો ઇસ એપ સે ફાઇદા હો યા આપ કોઈ મશવરા દેના ચાહતે હોં તો નીચે દિયે ગએ ઈ-મેઈલ એડ્રેસ પર હમસે રાબતા કર સકતે હૈં, આપ કા દીની ભાઈ અફરોઝ ફત્તા (સુરત)" +
                         "");
 
-
         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
             typeface = Typeface.createFromAsset(getAssets(), "fonts/jameelnoorinastaleeq.ttf");
-
 
                 txtAboutusUrdu.setText("" +
                         "اگر آپ کو اس ایپ سے فائدہ ہو یا آپ کوئی مشورہ دینا چاہتے ہو تو نیچے دیے گئے ای میل ایڈریس پر ہم سے رابطہ کر سکتے ہیں ، آپ کا دینی بھائی افروز فتہ (سورت)" +

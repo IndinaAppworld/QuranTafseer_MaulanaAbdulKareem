@@ -56,15 +56,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/daroodlayout"
-        android:background="@color/duaprimarycolor"
+        android:background="@drawable/background_duapatti"
         android:layout_alignParentBottom="true">
 
         <!--Shimmer Effect-->
         <com.facebook.shimmer.ShimmerFrameLayout
+            android:visibility="gone"
             android:id="@+id/shimmer_view_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:shimmer_duration="2000"
+            app:shimmer_repeat_delay="2000"
+            app:shimmer_base_color="#ffffff"
+
             android:layout_centerInParent="true">
 
             <RelativeLayout
@@ -84,19 +88,22 @@
                     android:src="@drawable/right_arrow" />
 
                 <!--Text given to Image-->
-                <TextView
-                    android:gravity="center_horizontal"
-                    android:id="@+id/txtDaroodSharifOption"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="દરૂદ શરીફનો પાઠ કરવા અહીં ક્લિક કરો"
-                    android:textColor="#ffffff"
-                    android:textSize="@dimen/menuitemsize_urdu"
-                    android:textStyle="bold" />
+
 
             </RelativeLayout>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
+        <TextView
+            android:gravity="center_horizontal"
+            android:id="@+id/txtDaroodSharifOption"
+            android:layout_width="match_parent"
+            android:padding="2dp"
+
+            android:layout_height="wrap_content"
+            android:text="દરૂદ શરીફનો પાઠ કરવા અહીં ક્લિક કરો"
+            android:textColor="#000000"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:textStyle="bold" />
     </RelativeLayout>
     <ScrollView
         android:layout_above="@id/daroodlayout"

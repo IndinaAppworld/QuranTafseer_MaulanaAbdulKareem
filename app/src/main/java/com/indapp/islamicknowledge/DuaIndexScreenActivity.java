@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.CpuUsageInfo;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,8 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.core.content.ContextCompat;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.indapp.beans.DataBean;
@@ -63,6 +60,8 @@ public class DuaIndexScreenActivity extends Activity  {
 
     TextView txtDaroodSharifOption;
 
+    RelativeLayout daroodlayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +83,7 @@ public class DuaIndexScreenActivity extends Activity  {
         getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
 
         setContentView(R.layout.activity_bookindex_screen);
-
+        daroodlayout=(RelativeLayout)findViewById(R.id.daroodlayout);
         type_view=getIntent().getExtras().getString("type_view");
         imgBack = (ImageView) findViewById(R.id.imgBack);
         txtDaroodSharifOption=(TextView)findViewById(R.id.txtDaroodSharifOption);
@@ -126,6 +125,8 @@ public class DuaIndexScreenActivity extends Activity  {
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
 
         shimmerFrameLayout=(ShimmerFrameLayout)findViewById(R.id.shimmer_view_container);
+        shimmerFrameLayout.stopShimmer();
+
         updateList();
         findViewById(R.id.imgBack).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -461,11 +462,13 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DAROOD", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("درود شریف");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("દરૂદ શરીફ");
+            daroodlayout.setBackgroundResource(R.drawable.background_duapatti);
         }
         else {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DUA where  HEADING_" + Constants1.LANGUAGE + " is not null", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?");
+            daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
 
         }
         while(cursor.moveToNext())

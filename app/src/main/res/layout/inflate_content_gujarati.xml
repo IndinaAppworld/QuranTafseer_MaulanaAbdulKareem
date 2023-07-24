@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 />
 
-            <com.indapp.fonts.GujaratiTextView
+            <com.indapp.fonts.GujaratiBoldTextView
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="2/2"
@@ -149,7 +149,7 @@
                 android:textColor="@color/duaprimarycolor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                ></com.indapp.fonts.GujaratiTextView>
+                ></com.indapp.fonts.GujaratiBoldTextView>
 
 
             <com.indapp.fonts.GujaratiTextView
@@ -167,6 +167,16 @@
                 android:textColor="@color/colroGold"
                 android:textSize="@dimen/viewref"></com.indapp.fonts.GujaratiTextView>
 
+            <com.indapp.fonts.GujaratiBoldTextView
+                android:id="@+id/txtNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/duaprimarycolor"
+                android:textSize="@dimen/viewref"></com.indapp.fonts.GujaratiBoldTextView>
 
 
         </RelativeLayout>

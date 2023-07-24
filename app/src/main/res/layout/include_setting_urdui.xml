@@ -39,7 +39,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Language Change)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
             <com.indapp.fonts.UrduTextView
@@ -122,7 +129,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Color Change)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <!--        Change Text Color-->
             <com.indapp.fonts.UrduTextView
                 android:layout_marginLeft="10dp"
@@ -262,7 +276,14 @@
             android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Go to Page)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <!--        Change Text Color-->
             <com.indapp.fonts.UrduTextView
@@ -343,7 +364,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Bookmark)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <!--        Change Text Color-->
             <com.indapp.fonts.UrduTextView
                 android:layout_marginLeft="10dp"
@@ -418,9 +446,19 @@
                     android:text="قرآن ترجمہ اور تفسیر دکھائیں"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/menuitemsize_urdu" />
+                <com.indapp.fonts.CipherNormal
+                    android:layout_marginLeft="10dp"
+                    android:layout_below="@id/tt"
 
+                    android:gravity="right"
+                    android:layout_gravity="center_vertical"
+                    android:text="(Quran translation and tafseer)"
+                    android:textSize="@dimen/menuitemsize"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
                 <com.indapp.fonts.UrduTextView
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_below="@id/tt"
                     android:id="@+id/lblArabicOnlyText"
                     android:layout_marginLeft="10dp"
@@ -460,13 +498,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Share App)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <!--        Change Translation Language-->
             <com.indapp.fonts.UrduTextView
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical"
-                android:text="دوسروں کو ایپ شیئر کرے"
+                android:text="ایپ شیئر کریں"
                 android:textSize="@dimen/menuitemsize_urdu"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="wrap_content"
@@ -503,7 +548,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:text="(Rate App)"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <!--        Change Translation Language-->
             <com.indapp.fonts.UrduTextView
