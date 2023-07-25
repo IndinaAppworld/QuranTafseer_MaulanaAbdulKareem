@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-<solid android:color="@color/menuColor8"/>
-<stroke android:width="0dp" android:color="#ffffff" />
-<corners android:radius="0dp"/>
-<padding android:left="0dp" android:top="0dp" android:right="0dp" android:bottom="0dp" />
+    <solid android:color="@color/menuColor9"/>
+    <stroke android:width="0dp" android:color="#ffffff" />
+    <corners android:radius="0dp"/>
+    <padding android:left="5dp" android:top="5dp" android:right="5dp" android:bottom="5dp" />
+
+<!--    <gradient-->
+<!--        android:startColor="#888033"-->
+<!--        android:endColor="#5C4529"-->
+<!--        android:angle="90" />-->
 
     <gradient
-        android:startColor="#FF8A80"
-        android:endColor="#834E49"
+        android:startColor="#A2D240"
+        android:endColor="#1B8B00"
         android:angle="90" />
-
-
 
 </shape>

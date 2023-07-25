@@ -67,6 +67,7 @@ public class DuaScreenActivity extends FragmentActivity {
     UrduTextView txtTitleSettingUrdu;
     GujaratiTextView txtTitleSettingGujarati;
     String type_view="";
+    RelativeLayout layout_header;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +85,12 @@ public class DuaScreenActivity extends FragmentActivity {
         }
         getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
         type_view=getIntent().getExtras().getString("type_view");
+        if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+        {getWindow().setStatusBarColor(getResources().getColor(R.color.daroodprimarycolor));
+        }
+        else {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
+        }
 
 
         if(type_view.equalsIgnoreCase(Constants1.TYPE_DUA))TOTAL=104;
@@ -93,6 +100,7 @@ public class DuaScreenActivity extends FragmentActivity {
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
         setContentView(R.layout.activity_dua_screen);
 
+        layout_header=(RelativeLayout)findViewById(R.id.layout_header) ;
         ImageView  imgBack = (ImageView) findViewById(R.id.imgBack);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,6 +272,13 @@ public class DuaScreenActivity extends FragmentActivity {
             pager.setCurrentItem(Integer.parseInt(getIntent().getExtras().getString("pageno")));
         }
 
+        if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+        {
+            layout_header.setBackgroundResource(R.drawable.background_daroodpatti);
+        }
+        else {
+            layout_header.setBackgroundResource(R.drawable.background_header_dua);
+        }
     }
     public void changeLanguage(){
 

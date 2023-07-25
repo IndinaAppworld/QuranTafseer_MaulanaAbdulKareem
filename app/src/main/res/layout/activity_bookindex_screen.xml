@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <RelativeLayout
-        android:padding="5dp"
         android:background="@drawable/background_header_dua"
         android:id="@+id/layout_header"
         android:layout_width="match_parent"
@@ -17,6 +16,7 @@
 
 
         <ImageView
+            android:layout_marginLeft="0dp"
             android:layout_centerVertical="true"
             android:id="@+id/imgBack"
             android:src="@drawable/icon_backarrow"

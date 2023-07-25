@@ -17,10 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import com.indapp.beans.DataBean;
@@ -148,6 +151,8 @@ public class DuaFragement extends Fragment {
         TextView txtTitleDarood[]=new TextView[TOTAL_ROW];
         TextView txtNumber[]=new TextView[TOTAL_ROW];
 
+        RelativeLayout layout_subheader=(RelativeLayout)view1.findViewById(R.id.layout_subheader);
+
        // NoriNastalicUrduFont txtTrans[]=new NoriNastalicUrduFont[TOTAL_ROW];
         imgFav.setOnClickListener(new FavClickListener(Integer.parseInt(currentPageNo),imgFav));
         for(int i=0;i<TOTAL_ROW;i++)
@@ -239,6 +244,27 @@ public class DuaFragement extends Fragment {
                 txtTitleDarood[i].setText((TITLE));
                 ((TextView)view1.findViewById(R.id.txtTitle)).setText("");
 
+
+
+                txtTranslation[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+                txtArabicTextView[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+//                txtTitleDarood[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+
+
+                txtIndex[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+                txtNumber[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+
+                txtTafseer[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+
+                txtFazilatReference[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+                txtTransReference[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+
+                view_line1[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
+                view_line2[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
+
+                view_line3[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
+
+
             }
             else {
                 ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
@@ -247,6 +273,15 @@ public class DuaFragement extends Fragment {
                 txtNumber[i].setText(""+Constants1.replaceNumbers(dataBeanArrayList.get(i).getSR()));
             }
 
+            if(type.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+                layout_subheader.setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
+                DrawableCompat.setTint(
+                        DrawableCompat.wrap(btnShare[i].getDrawable()),
+                        ContextCompat.getColor(getActivity(), R.color.daroodprimarycolor)
+                );
+
+            }
             contentLayout.addView(view[i]);
         }
 

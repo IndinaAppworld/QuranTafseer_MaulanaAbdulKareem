@@ -21,6 +21,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.indapp.beans.DataBean;
 import com.indapp.fonts.GujaratiBoldTextView;
@@ -62,6 +65,7 @@ public class DuaIndexScreenActivity extends Activity  {
 
     RelativeLayout daroodlayout;
 
+    RelativeLayout layout_header;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,9 +84,10 @@ public class DuaIndexScreenActivity extends Activity  {
                 parentView.setBackgroundColor(Color.RED);
             }
         }
-        getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
+
 
         setContentView(R.layout.activity_bookindex_screen);
+        layout_header=(RelativeLayout)findViewById(R.id.layout_header);
         daroodlayout=(RelativeLayout)findViewById(R.id.daroodlayout);
         type_view=getIntent().getExtras().getString("type_view");
         imgBack = (ImageView) findViewById(R.id.imgBack);
@@ -425,7 +430,8 @@ public class DuaIndexScreenActivity extends Activity  {
                 ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં");
             }
             else
-                ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("વિવિધ ફઝીલતો વાળા દુરુદ શરીફ પઢવા માટે ક્લિક કરો");
+                ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("વિવિધ ફઝાઇલ\u200C વાળા દુરુદ પઢવા ક્લિક કરો");
+
 
         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
             typeface = Typeface.createFromAsset(getAssets(), "fonts/jameelnoorinastaleeq.ttf");
@@ -443,11 +449,12 @@ public class DuaIndexScreenActivity extends Activity  {
 
                 ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
             }
-            else ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("مختلف فضائل کے ساتھ درود شریف پڑھنے کے لیے کلک کریں");
+            else ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("مختلف فضائل والے درود پڑھنے کے لیے کلک کریں");
 
         }
         Constants1.setFontTypeFaceLanguage( ((TextView) findViewById(R.id.txtDaroodSharifOption)),getApplicationContext(),false);
 
+        ((TextView) findViewById(R.id.txtDaroodSharifOption)).setTextColor(Color.WHITE);
 
 
         indexBeanArrayList.clear();
@@ -462,14 +469,17 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DAROOD", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("درود شریف");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("દરૂદ શરીફ");
-            daroodlayout.setBackgroundResource(R.drawable.background_duapatti);
+            daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
+            layout_header.setBackgroundResource(R.drawable.background_daroodpatti);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.daroodprimarycolor));
         }
         else {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DUA where  HEADING_" + Constants1.LANGUAGE + " is not null", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?");
-            daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
-
+            daroodlayout.setBackgroundResource(R.drawable.background_header_dua);
+            layout_header.setBackgroundResource(R.drawable.background_header_dua);
+            getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
         }
         while(cursor.moveToNext())
         {
@@ -507,9 +517,22 @@ public class DuaIndexScreenActivity extends Activity  {
 
             if(Constants1.sp.contains(type_view+"_"+((i+1)))==true)
             {
-                imgFav[i].setImageResource(R.drawable.favorite_dua_sel);
+                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                    imgFav[i].setImageResource(R.drawable.favourite_darood_sel);
+                else imgFav[i].setImageResource(R.drawable.favorite_dua_sel);
+            }
+            else {
+                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                    imgFav[i].setImageResource(R.drawable.favourite_darood_unsel);
+                else
+                    imgFav[i].setImageResource(R.drawable.favorite_dua_unesl);
             }
 
+            if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+                txtNumber[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+                ((TextView)view[i].findViewById(R.id.txtTitle)).setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+            }
 
             if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
             txtNumber[i].setText(Constants1.replaceNumbers(""+(i+1) +"."));
@@ -574,6 +597,9 @@ public class DuaIndexScreenActivity extends Activity  {
                 Constants1.editor.putString(type_view+"_"+pageno,""+pageno);
                 Constants1.editor.commit();
 
+                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                    imgFav.setImageResource(R.drawable.favourite_darood_sel);
+                else
                 imgFav.setImageResource(R.drawable.favorite_dua_sel);
                 Toast.makeText(getApplicationContext(),"Added to Favourite",Toast.LENGTH_SHORT).show();
             }
@@ -582,6 +608,9 @@ public class DuaIndexScreenActivity extends Activity  {
                 Constants1.editor.remove(type_view+"_"+pageno);
                 Constants1.editor.commit();
 
+                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                    imgFav.setImageResource(R.drawable.favourite_darood_unsel);
+                else
                 imgFav.setImageResource(R.drawable.favorite_dua_unesl);
                 Toast.makeText(getApplicationContext(),"Removed from Favourite",Toast.LENGTH_SHORT).show();
             }

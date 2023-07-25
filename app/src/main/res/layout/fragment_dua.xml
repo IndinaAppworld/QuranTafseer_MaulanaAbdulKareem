@@ -9,6 +9,7 @@
 
     <RelativeLayout
 
+        android:id="@+id/layout_subheader"
         android:background="#16505A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
