@@ -264,6 +264,25 @@ public class DuaFragement extends Fragment {
 
                 view_line3[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
 
+//                txtTranslation[i].setTextColor(getResources().getColor(R.color.black));
+//                txtArabicTextView[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+////                txtTitleDarood[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
+//
+//
+//                txtIndex[i].setTextColor(getResources().getColor(R.color.black));
+//                txtNumber[i].setTextColor(getResources().getColor(R.color.black));
+//
+//                txtTafseer[i].setTextColor(getResources().getColor(R.color.black));
+//
+//                txtFazilatReference[i].setTextColor(getResources().getColor(R.color.black));
+//                txtTransReference[i].setTextColor(getResources().getColor(R.color.black));
+//
+//                view_line1[i].setBackgroundColor(getResources().getColor(R.color.black));
+//                view_line2[i].setBackgroundColor(getResources().getColor(R.color.black));
+//
+//                view_line3[i].setBackgroundColor(getResources().getColor(R.color.black));
+
+
 
             }
             else {
@@ -435,7 +454,7 @@ public class DuaFragement extends Fragment {
                 Uri contentUri = FileProvider.getUriForFile(getActivity(), AUTHORITY, file);
 
                 intent.setDataAndType(uri, "image/*");
-                intent.putExtra(Intent.EXTRA_TEXT,""+TITLE+"\n\n"+Constants1.share_data);
+                intent.putExtra(Intent.EXTRA_TEXT,""+TITLE+"\n\n"+Constants1.getShareText());
                 intent.putExtra(Intent.EXTRA_STREAM,contentUri);
                 startActivity(intent);
 //                txtDaroodTitle.setVisibility(View.GONE);

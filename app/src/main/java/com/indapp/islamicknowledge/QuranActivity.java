@@ -679,7 +679,16 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             startActivityForResult(intent,100);
             }
         });
-
+        findViewById(R.id.layout_peshlafz).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setClass(QuranActivity.this,PDFViewActivityScreen.class);
+                intent.putExtra("type","peshlafz");
+                intent.putExtra("subtype","quran");
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.layout_translationColor).setOnClickListener(new TextClickListener(0));
         findViewById(R.id.layout_arabicColor).setOnClickListener(new TextClickListener(1));
         findViewById(R.id.layout_lineColor).setOnClickListener(new TextClickListener(2));
@@ -707,7 +716,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, Constants1.share_data);
+                intent.putExtra(Intent.EXTRA_TEXT, Constants1.getShareText());
                 startActivity(intent);
             }
         });

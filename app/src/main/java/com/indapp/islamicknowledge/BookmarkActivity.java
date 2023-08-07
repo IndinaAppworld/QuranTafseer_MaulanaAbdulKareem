@@ -471,7 +471,7 @@ public class BookmarkActivity extends Activity {
                 intent.setType("text/plain");
                 /*Applying information Subject and Body.*/
 //            intent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_subject));
-                intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody+"\n\n"+Constants1.share_data);
+                intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody+"\n\n"+Constants1.getShareText());
                 /*Fire!*/
                 startActivity(Intent.createChooser(intent, "Share Via"));
 

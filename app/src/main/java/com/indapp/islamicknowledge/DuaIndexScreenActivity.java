@@ -99,16 +99,15 @@ public class DuaIndexScreenActivity extends Activity  {
         txtDaroodSharifOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(Intent.ACTION_VIEW);
-//                intent.setClass(DuaIndexScreenActivity.this,DuaIndexScreenActivity.class);
-//                intent.putExtra("type_view",Constants1.TYPE_DAROOD);
-//                startActivity(intent);
 
-                if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
-                    type_view=Constants1.TYPE_DUA;
-                else type_view=Constants1.TYPE_DAROOD;
+                if(layout_setting.getVisibility()==View.INVISIBLE) {
 
-                updateList();
+                    if (type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                        type_view = Constants1.TYPE_DUA;
+                    else type_view = Constants1.TYPE_DAROOD;
+
+                    updateList();
+                }
             }
         });
 
@@ -121,7 +120,10 @@ public class DuaIndexScreenActivity extends Activity  {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if(layout_setting.getVisibility()==View.INVISIBLE) {
+
+                    finish();
+                }
             }
         });
 
@@ -285,6 +287,16 @@ public class DuaIndexScreenActivity extends Activity  {
                 }
             }
         });
+        findViewById(R.id.layout_peshlafz).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setClass(DuaIndexScreenActivity.this,PDFViewActivityScreen.class);
+                intent.putExtra("type","peshlafz");
+                intent.putExtra("subtype","dua");
+                startActivity(intent);
+            }
+        });
 //        findViewById(R.id.layout_peshlafz).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -332,7 +344,7 @@ public class DuaIndexScreenActivity extends Activity  {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, Constants1.share_data);
+                intent.putExtra(Intent.EXTRA_TEXT, Constants1.getShareText());
                 startActivity(intent);
             }
         });
@@ -469,7 +481,7 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DAROOD", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("درود شریف");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("દરૂદ શરીફ");
-            daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
+            daroodlayout.setBackgroundResource(R.drawable.background_header_dua);
             layout_header.setBackgroundResource(R.drawable.background_daroodpatti);
             getWindow().setStatusBarColor(getResources().getColor(R.color.daroodprimarycolor));
         }
@@ -477,7 +489,7 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DUA where  HEADING_" + Constants1.LANGUAGE + " is not null", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?");
-            daroodlayout.setBackgroundResource(R.drawable.background_header_dua);
+            daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
             layout_header.setBackgroundResource(R.drawable.background_header_dua);
             getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
         }
@@ -625,11 +637,13 @@ public class DuaIndexScreenActivity extends Activity  {
         }
         public void onClick(View view)
         {
-            Intent intent=new Intent(Intent.ACTION_VIEW);
-            intent.setClass(DuaIndexScreenActivity.this,DuaScreenActivity.class);
-            intent.putExtra("pageno",""+pos);
-            intent.putExtra("type_view",type_view);
-            startActivity(intent);
+            if(layout_setting.getVisibility()==View.INVISIBLE) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setClass(DuaIndexScreenActivity.this, DuaScreenActivity.class);
+                intent.putExtra("pageno", "" + pos);
+                intent.putExtra("type_view", type_view);
+                startActivity(intent);
+            }
         }
     }
     public class IndexBean

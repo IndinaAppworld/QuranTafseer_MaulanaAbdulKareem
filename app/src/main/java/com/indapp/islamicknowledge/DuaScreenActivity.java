@@ -94,7 +94,7 @@ public class DuaScreenActivity extends FragmentActivity {
 
 
         if(type_view.equalsIgnoreCase(Constants1.TYPE_DUA))TOTAL=104;
-        else if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD)) TOTAL=54;
+        else if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD)) TOTAL=52;
 
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
@@ -456,7 +456,7 @@ public class DuaScreenActivity extends FragmentActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, Constants1.share_data);
+                intent.putExtra(Intent.EXTRA_TEXT, Constants1.getShareText());
                 startActivity(intent);
             }
         });

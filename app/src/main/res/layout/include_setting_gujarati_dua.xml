@@ -56,11 +56,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Language Change)"
+                android:text="Language Change"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/duaprimarycolor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -334,7 +335,7 @@
         android:layout_height="1dp"/>
 
     <LinearLayout
-        android:id="@+id/layout_bookmark"
+        android:id="@+id/layout_peshlafz"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -357,7 +358,7 @@
             <!--        Change Text Color-->
             <com.indapp.fonts.GujaratiTextView
                 android:layout_marginLeft="10dp"
-                android:text="બુકમાર્ક"
+                android:text="પેશ લફઝ"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/menuitemsize_urdu"
                 android:textColor="@color/duaprimarycolor"
@@ -365,11 +366,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Pesh Luffz)"
+                android:text="Pesh Lafz"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/duaprimarycolor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -486,11 +488,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Share App)"
+                android:text="Share App"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/duaprimarycolor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -532,11 +535,12 @@
                     android:layout_height="wrap_content" />
                 <com.indapp.fonts.CipherNormal
                     android:layout_marginLeft="10dp"
+                    android:gravity="right"
                     android:layout_gravity="center_vertical"
-                    android:text="(Rate App)"
+                    android:text="Rate App"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/duaprimarycolor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 

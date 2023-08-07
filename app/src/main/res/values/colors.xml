@@ -22,5 +22,6 @@
     <color name="menuColor9">#71471E</color>
     <color name="TN">#93BEEF</color>
     <color name="duaprimarycolor">#176775</color>
-    <color name="daroodprimarycolor">#1B8B00</color>
+    <color name="daroodprimarycolor">#ff2d9a59</color>
+    <color name="black">#000000</color>
 </resources>

@@ -81,19 +81,24 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         imgQuran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(Intent.ACTION_VIEW);
-                intent.setClass(MenuScreenActivity.this, QuranActivity.class);
-                startActivity(intent);
+                if(layout_setting.getVisibility()==View.INVISIBLE) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setClass(MenuScreenActivity.this, QuranActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         imgDua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent =new Intent(Intent.ACTION_VIEW);
-                intent.setClass(MenuScreenActivity.this, DuaIndexScreenActivity.class);
-                intent.putExtra("type_view",""+Constants1.TYPE_DUA);
-                startActivity(intent);
+                if(layout_setting.getVisibility()==View.INVISIBLE)
+                {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setClass(MenuScreenActivity.this, DuaIndexScreenActivity.class);
+                    intent.putExtra("type_view", "" + Constants1.TYPE_DUA);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -286,7 +291,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             public void onClick(View view) {
                 Intent intent=new Intent(Intent.ACTION_VIEW);
                 intent.setClass(MenuScreenActivity.this,PDFViewActivityScreen.class);
-                intent.putExtra("type","peshlafz");
+                intent.putExtra("type","aboutus");
+                intent.putExtra("subtype","aboutus");
                 startActivity(intent);
             }
         });
@@ -296,6 +302,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
                 Intent intent=new Intent(Intent.ACTION_VIEW);
                 intent.setClass(MenuScreenActivity.this,PDFViewActivityScreen.class);
                 intent.putExtra("type","aboutus");
+                intent.putExtra("subtype","aboutus");
                 startActivity(intent);
             }
         });
@@ -326,7 +333,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, Constants1.share_data);
+                intent.putExtra(Intent.EXTRA_TEXT, Constants1.getShareText());
                 startActivity(intent);
             }
         });

@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -38,13 +38,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
+                    android:gravity="left"
                     android:layout_gravity="center_vertical"
-                    android:text="(Language Change)"
+                    android:text="Language Change"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
@@ -60,7 +69,8 @@
                     android:src="@drawable/setting_icon_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_marginLeft="20dp"
@@ -111,12 +121,13 @@
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/layout_color"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -125,14 +136,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Color Change)"
+                    android:text="Color Change"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <!--        Change Text Color-->
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
@@ -149,6 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            </RelativeLayout>
 
 
             <LinearLayout
@@ -253,17 +272,19 @@
         </LinearLayout>
 
         <View
+            android:visibility="gone"
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/layout_peshlafz"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -272,14 +293,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
+
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Pesh Luffz)"
+                    android:text="Pesh Lafz"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <!--        Change Text Color-->
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
@@ -296,11 +325,13 @@
                     android:src="@drawable/setting_icon_bookmark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
         <View
+            android:visibility="gone"
             android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
@@ -311,7 +342,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -321,14 +352,23 @@
                 android:layout_height="wrap_content">
 
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
+
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(About us)"
+                    android:text="About us"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <!--        Change Text Color-->
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
                     android:text="ہمارے بارے میں"
@@ -343,7 +383,8 @@
                     android:src="@drawable/setting_icon_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -359,7 +400,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -369,14 +410,22 @@
                 android:layout_height="wrap_content">
 
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
+
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Tutorial)"
+                    android:text="Tutorial"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <!--        Change Translation Language-->
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
@@ -393,7 +442,8 @@
                     android:src="@drawable/setting_icon_tutorial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -408,7 +458,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -418,14 +468,22 @@
                 android:layout_height="wrap_content">
 
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
+
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Share App)"
+                    android:text="Share App"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <!--        Change Translation Language-->
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
@@ -442,7 +500,8 @@
                     android:src="@drawable/share_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -457,7 +516,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -467,15 +526,23 @@
                 android:layout_height="wrap_content">
 
                 <com.indapp.fonts.CipherNormal
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Rate App)"
+                    android:text="Rate App"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <!--        Change Translation Language-->
+                <LinearLayout
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="right"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <com.indapp.fonts.UrduTextView
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
@@ -490,7 +557,8 @@
                     android:src="@drawable/setting_icon_rateapp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>

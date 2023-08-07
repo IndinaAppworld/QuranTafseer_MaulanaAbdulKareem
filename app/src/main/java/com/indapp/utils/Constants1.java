@@ -66,10 +66,19 @@ public class Constants1 {
             "આયત, તફસીર અને તર્જમાને શોધવાનો વિકલ્પ આપેલ છે",
             "તમારી પસંદગી મુજબ એપ્લિકેશનને સેટ કરવા માટે સેટિંગનો વિકલ્પ આપેલ છે"};
     public static String share_data=
-            "Download Android App for Quran e Karim (Tashreehul Quraan) with Translation & Tafseer in Gujarati and Urdu Language by Maulana Abdul Karim Parekh Sahab from the Google Play Store.\n" +
+            "";
+
+    public static String share_data_eng=
+            "Download Android App for Quran e Karim with Translation & Tafseer by Maulana Abdul Karim Parekh Sahab & Allah ki Razamandi kaise haasil kare book in Gujarati and Urdu Language from the Google Play Store.\n" +
                     "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n" +
                     "\n" +
                     "Share this message as much as possible.";
+
+
+    public static String share_date_guj="ગૂગલ પ્લે-સ્ટોર પર થી ગુજરાતી અને ઉર્દુ ભાષામાં મૌલાના અબ્દુલ કરીમ પારેખ સાહબનુ તર્જમા અને તફસીર સાથે કુર્આન અને અલ્લાહ કી રઝામંદી કૈસે હાસિલ કરે પુસ્તક પઢવા માટે એન્ડ્રોઇડ એપ ડાઉનલોડ કરો.  નીચે આપેલ લિંક ને ટચ કરો.\n" +
+            "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n"+
+            "\n" +
+            "આ સંદેશને બને તેટલો શેર કરો.";
 
     public static String replaceNumbers(String str)
     {
@@ -98,6 +107,16 @@ public class Constants1 {
         if(!isBold)
         textView.setTypeface(mTypeFace);
         else textView.setTypeface(mTypeFace,Typeface.BOLD);
-
+    }
+    public static String getShareText()
+    {
+        if(LANGUAGE.equalsIgnoreCase(GUJARATI))
+        {
+            return  share_date_guj;
+        }
+        else
+        {
+            return share_data_eng;
+        }
     }
 }

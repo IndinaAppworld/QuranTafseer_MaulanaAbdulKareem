@@ -55,11 +55,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Language Change)"
+                android:text="Language Change"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -142,11 +143,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Color Change)"
+                android:text="Color Change"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -249,11 +251,77 @@
 
     </LinearLayout>
 
+
+
+
+
+
     <View
         android:layout_marginTop="0dp"
         android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_peshlafz"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:tint="@color/colorPrimaryDark"
+
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/setting_icon_bookmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!--        Change Text Color-->
+            <com.indapp.fonts.GujaratiTextView
+                android:layout_marginLeft="10dp"
+                android:text="પેશ લફઝ"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginLeft="10dp"
+                android:gravity="right"
+                android:layout_gravity="center_vertical"
+                android:text="Pesh Lafz"
+                android:textSize="@dimen/menuitemsize"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <View
+        android:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+
+
+
+
+
 
     <LinearLayout
         android:id="@+id/layout_gotopage"
@@ -285,11 +353,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Go to Page)"
+                android:text="Go to Page"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -369,11 +438,12 @@
                 android:layout_height="wrap_content" />
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Bookmark)"
+                android:text="Bookmark"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -431,7 +501,7 @@
                 <com.indapp.fonts.CipherNormal
                     android:layout_marginLeft="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="(Quran translation and tafseer)"
+                    android:text="Quran translation and tafseer"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
@@ -494,11 +564,12 @@
 
             <com.indapp.fonts.CipherNormal
                 android:layout_marginLeft="10dp"
+                android:gravity="right"
                 android:layout_gravity="center_vertical"
-                android:text="(Share App)"
+                android:text="Share App"
                 android:textSize="@dimen/menuitemsize"
                 android:textColor="@color/colorPrimaryDark"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
@@ -540,11 +611,12 @@
                     android:layout_height="wrap_content" />
                 <com.indapp.fonts.CipherNormal
                     android:layout_marginLeft="10dp"
+                    android:gravity="right"
                     android:layout_gravity="center_vertical"
-                    android:text="(Rate App)"
+                    android:text="Rate App"
                     android:textSize="@dimen/menuitemsize"
                     android:textColor="@color/colorPrimaryDark"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
