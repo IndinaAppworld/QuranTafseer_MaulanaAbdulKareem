@@ -67,8 +67,10 @@ public class DuaFragement extends Fragment {
         Cursor cursor;
 
         String TITLE = "";
-        int SURAHNO,AYATNO;
+        int SURAHNO;
+        String AYATNO;
         Cursor cursor1;
+        String tempAyatNO[]=new String[2];
         if(type.equalsIgnoreCase(Constants1.TYPE_DUA))
         {
             cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+", SR from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
@@ -81,18 +83,34 @@ public class DuaFragement extends Fragment {
                 if (TITLE.length() == 0) TITLE = cursor.getString(0);
 
                 SURAHNO =cursor.getInt(3);
-                 AYATNO=cursor.getInt(4);
+                 AYATNO=cursor.getString(4);
                 dataBean.setReferenceTrans(cursor.getString(5));
                 dataBean.setReferenceFazilat(cursor.getString(6));
 
+                if(AYATNO.contains(","))
+                {
+                    tempAyatNO=AYATNO.split(",");
+                }
+                else {
+                    tempAyatNO[0]=AYATNO;
+                }
+
                 Log.v(Constants1.TAG,"Reference-->"+cursor.getString(5)+">>>"+cursor.getString(6));
-                cursor1=Constants1.databaseHandler.getData("select AYAT from QURAN_ARABIC where SURA_NO ='"+SURAHNO+"' and SURA_AYAT_NO='"+AYATNO+"'",Constants1.sqLiteDatabase);
-                Log.v(Constants1.TAG,"select AYAT from QURAN_ARABIC where SURA_NO ="+SURAHNO+" and SURA_AYAT_NO="+AYATNO);
-                if(cursor1!=null) {
-                    while (cursor1.moveToNext()) {
-                        dataBean.setArabicdua(cursor1.getString(0));//cursor.getString(5));
+
+                String tempArabicAyat="";
+                for(int i=0;i<tempAyatNO.length;i++) {
+                    cursor1 = Constants1.databaseHandler.getData("select AYAT from QURAN_ARABIC where SURA_NO ='" + SURAHNO + "' and SURA_AYAT_NO='" + tempAyatNO[i] + "'", Constants1.sqLiteDatabase);
+                    Log.v(Constants1.TAG, "select AYAT from QURAN_ARABIC where SURA_NO =" + SURAHNO + " and SURA_AYAT_NO=" + tempAyatNO[i]);
+                    if (cursor1 != null) {
+                        while (cursor1.moveToNext()) {
+                            //cursor.getString(5));
+                            if(tempAyatNO.length>0)tempArabicAyat=tempArabicAyat+"\n";
+
+                            tempArabicAyat= tempArabicAyat+cursor1.getString(0);
+                        }
                     }
                 }
+                dataBean.setArabicdua(tempArabicAyat);
                 dataBean.setTranslation(cursor.getString(1));
                 dataBean.setFazilat(cursor.getString(2));
                 dataBean.setSR(""+cursor.getInt(7));
@@ -454,7 +472,7 @@ public class DuaFragement extends Fragment {
                 Uri contentUri = FileProvider.getUriForFile(getActivity(), AUTHORITY, file);
 
                 intent.setDataAndType(uri, "image/*");
-                intent.putExtra(Intent.EXTRA_TEXT,""+TITLE+"\n\n"+Constants1.getShareText());
+                intent.putExtra(Intent.EXTRA_TEXT,"*"+TITLE+"*\n\n"+Constants1.getShareText());
                 intent.putExtra(Intent.EXTRA_STREAM,contentUri);
                 startActivity(intent);
 //                txtDaroodTitle.setVisibility(View.GONE);
