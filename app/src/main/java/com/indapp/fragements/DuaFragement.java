@@ -70,7 +70,7 @@ public class DuaFragement extends Fragment {
         int SURAHNO;
         String AYATNO;
         Cursor cursor1;
-        String tempAyatNO[]=new String[2];
+        String tempAyatNO[];//=new String[2];
         if(type.equalsIgnoreCase(Constants1.TYPE_DUA))
         {
             cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+", SR from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
@@ -92,6 +92,7 @@ public class DuaFragement extends Fragment {
                     tempAyatNO=AYATNO.split(",");
                 }
                 else {
+                    tempAyatNO=new String[1];
                     tempAyatNO[0]=AYATNO;
                 }
 
@@ -472,7 +473,7 @@ public class DuaFragement extends Fragment {
                 Uri contentUri = FileProvider.getUriForFile(getActivity(), AUTHORITY, file);
 
                 intent.setDataAndType(uri, "image/*");
-                intent.putExtra(Intent.EXTRA_TEXT,"*"+TITLE+"*\n\n"+Constants1.getShareText());
+                intent.putExtra(Intent.EXTRA_TEXT,""+TITLE+"\n\n"+Constants1.getShareText());
                 intent.putExtra(Intent.EXTRA_STREAM,contentUri);
                 startActivity(intent);
 //                txtDaroodTitle.setVisibility(View.GONE);

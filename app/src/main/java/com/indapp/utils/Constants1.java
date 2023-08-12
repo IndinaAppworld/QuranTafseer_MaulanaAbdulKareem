@@ -69,13 +69,13 @@ public class Constants1 {
             "";
 
     public static String share_data_eng=
-            "Download Android App for Quran e Karim with Translation & Tafseer by Maulana Abdul Karim Parekh Sahab & Allah ki Razamandi kaise haasil kare book in Gujarati and Urdu Language from the Google Play Store.\n" +
+            "*Download Android App for Quran e Karim with Translation & Tafseer by Maulana Abdul Karim Parekh Sahab & Allah ki Razamandi kaise haasil kare book in Gujarati and Urdu Language from the Google Play Store.*\n" +
                     "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n" +
                     "\n" +
                     "*Share this message as much as possible.*";
 
 
-    public static String share_date_guj="ગૂગલ પ્લે-સ્ટોર પર થી ગુજરાતી અને ઉર્દુ ભાષામાં મૌલાના અબ્દુલ કરીમ પારેખ સાહબનુ તર્જમા અને તફસીર સાથે કુર્આન અને અલ્લાહ કી રઝામંદી કૈસે હાસિલ કરે પુસ્તક પઢવા માટે એન્ડ્રોઇડ એપ ડાઉનલોડ કરો.  નીચે આપેલ લિંક ને ટચ કરો.\n" +
+    public static String share_date_guj="*ગૂગલ પ્લે-સ્ટોર પર થી ગુજરાતી અને ઉર્દુ ભાષામાં મૌલાના અબ્દુલ કરીમ પારેખ સાહબનુ તર્જમા અને તફસીર સાથે કુર્આન અને અલ્લાહ કી રઝામંદી કૈસે હાસિલ કરે પુસ્તક પઢવા માટે એન્ડ્રોઇડ એપ ડાઉનલોડ કરો.  નીચે આપેલ લિંક ને ટચ કરો.*\n" +
             "https://play.google.com/store/apps/details?id=com.indapp.islamicknowledge\n"+
             "\n" +
             "*આ સંદેશને બને તેટલો શેર કરો.*";
