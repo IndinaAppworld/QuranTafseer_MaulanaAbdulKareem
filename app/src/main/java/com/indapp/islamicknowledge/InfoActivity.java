@@ -49,7 +49,6 @@ public class InfoActivity extends Activity {
                         "اگر آپ کو اس ایپ سے فائدہ ہو یا آپ کوئی مشورہ دینا چاہتے ہو تو نیچے دیے گئے ای میل ایڈریس پر ہم سے رابطہ کر سکتے ہیں ، آپ کا دینی بھائی افروز فتہ (سورت)" +
                         "");
 
-
         }
         txtAboutusUrdu.setTypeface(typeface);
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {

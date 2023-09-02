@@ -131,7 +131,7 @@ public class TutorialScreenActivity  extends FragmentActivity {
 
     }
     public String DESCRIPTION[]=new String[Constants1.TUTORIAL_IMAGES.length];
-    int TOTAL= Constants1.TUTORIAL_IMAGES.length+1;
+    int TOTAL= Constants1.TUTORIAL_IMAGES_GUJ.length+1;
     private List<Fragment> getFragments()
     {
         List<Fragment> fList = new ArrayList<Fragment>();

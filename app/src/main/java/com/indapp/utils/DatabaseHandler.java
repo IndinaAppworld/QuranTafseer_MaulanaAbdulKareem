@@ -32,7 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_TITLE = "title";
 
 
-    public static String DB_NAME = "quran_v19.sqlite";
+    public static String DB_NAME = "quran_v20.sqlite";
 //private static String DB_NAME = "test.txt";
     public static String DB_PATH = Environment.getExternalStorageDirectory() + "/appdb/";//"/sdcard/appdb/";
     Context context;

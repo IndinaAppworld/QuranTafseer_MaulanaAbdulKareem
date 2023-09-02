@@ -34,28 +34,31 @@ public class Constants1 {
             UNICODE_RAZIALLAHU_ANHUM="\uFDE2", UNICODE_RAZIALLAHU_ANHU="\uFDDE",UNICODE_RAZIALLAHU_ANHA="ﷺ",
             UNICODE_ALAIHASSALAM="\uFDE5",UNICODE_REHMATULLAALEH="\uFDEB";
 
-    public static int TUTORIAL_IMAGES[]={R.drawable.tut_1,
-            R.drawable.tut_2,
-            R.drawable.tut_3,
-            R.drawable.tut_4,
-            R.drawable.tut_5,
-            R.drawable.tut_6,
-            R.drawable.tut_7};
+    public static int TUTORIAL_IMAGES[]={R.drawable.tut_1_urdu,
+            R.drawable.tut_2_urdu,
+            R.drawable.tut_3_urdu,
+            R.drawable.tut_4_urdu,
+            R.drawable.tut_5_urdu,
+            R.drawable.tut_6_urdu,
+            R.drawable.tut_8_urdu,R.drawable.tut_9_urdu,R.drawable.tut_7_urdu};
     public static int TUTORIAL_IMAGES_GUJ[]={R.drawable.tut_1_guj,
             R.drawable.tut_2_guj,
             R.drawable.tut_3_guj,
             R.drawable.tut_4_guj,
             R.drawable.tut_5_guj,
             R.drawable.tut_6_guj,
-            R.drawable.tut_7_guj};
+           R.drawable.tut_8_guj,
+            R.drawable.tut_9_guj, R.drawable.tut_7_guj};
 
     public static String TUTORIL_DESCRIPTION_URDU[]={"قرآن مجید کو ترجمہ اور تفسیر کے ساتھ پڑھیں",
             "قرآن مجید کو ترجمہ اور تفسیر کے بغیر پڑھیں",
             "آیات کو بُک مارک کیا جا سکتا ہے، تفسیر کے ساتھ یا بغیر تفسیر کے شیئر کیا جا سکتا ہے۔"
             ,"آپ پاروں کی فہرست دیکھ سکتے ہیں",
             "آپ سورتوں کی فہرست دیکھ سکتے ہیں",
-            "آیات، تفسیر اور ترجمہ تلاش کرنے کا آپشن دیا گیا ہے",
+            "آیات، تفسیر اور ترجمہ تلاش کرنے کا آپشن دیا گیا ہے"
+            ,"اللہ کی رضامندی کیسے حاصل کریں ؟","درود شریف",
             "آپ کی پسند کے مطابق ایپلیکیشن کو ترتیب دینے کے لیے سیٹنگ کا آپشن دیا گیا ہے"
+
     };
     public static String TUTORIL_DESCRIPTION_ENGLISH[]={"Read Quran along with the Tarjuma and Tafseer","Read Quran without Translation & Tafseer","Ayat can be bookmarked, shared with or without tafseer","You are able to view the list of parah","You are able to view the list of Surah","Option to search on Ayat, Tafseer & translation is available","Setting option is available to configure the application as per your preferences",""};
     public static String TUTORIL_DESCRIPTION_GUJARATI[]={"તર્જમા અને તફસીર સાથે કુર્આન પઢો",
@@ -64,6 +67,7 @@ public class Constants1 {
             "તમે સિપારાની ફેહરિસ્ત (સૂચી) જોઈ શકો છો",
             "તમે સૂરતોંની ફેહરિસ્ત (સૂચી) જોઈ શકો છો",
             "આયત, તફસીર અને તર્જમાને શોધવાનો વિકલ્પ આપેલ છે",
+    "અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?","દરૂદ શરીફ",
             "તમારી પસંદગી મુજબ એપ્લિકેશનને સેટ કરવા માટે સેટિંગનો વિકલ્પ આપેલ છે"};
     public static String share_data=
             "";
