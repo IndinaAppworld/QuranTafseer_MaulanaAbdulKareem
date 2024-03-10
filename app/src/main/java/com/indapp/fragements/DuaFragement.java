@@ -71,6 +71,7 @@ public class DuaFragement extends Fragment {
         String AYATNO;
         Cursor cursor1;
         String tempAyatNO[];//=new String[2];
+        TextView txtTitle;
         if(type.equalsIgnoreCase(Constants1.TYPE_DUA))
         {
             cursor=Constants1.databaseHandler.getData("select HEADING_"+Constants1.LANGUAGE+", TRANSLATION_"+Constants1.LANGUAGE+", TAFSEER_"+Constants1.LANGUAGE+", SURAHNO, AYATNO" +", HAWALA_TRANSLATION_"+Constants1.LANGUAGE+", HAWALA_TAFSEER_"+Constants1.LANGUAGE+", SR from dua where ID ="+getArguments().getString(EXTRA_ID)+"",Constants1.sqLiteDatabase);
@@ -142,8 +143,17 @@ public class DuaFragement extends Fragment {
         }
 
 
-        Constants1.setFontTypeFaceLanguage(((TextView)view1.findViewById(R.id.txtTitle)),getActivity(),true);
+        if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH)==false) {
+            Constants1.setFontTypeFaceLanguage(((TextView) view1.findViewById(R.id.txtTitle)), getActivity(), true);
+            ((TextView) view1.findViewById(R.id.txtTitleEnglish)).setVisibility(View.GONE);
+            txtTitle=(TextView) view1.findViewById(R.id.txtTitle);
 
+        }
+        else
+        {
+            txtTitle=(TextView) view1.findViewById(R.id.txtTitleEnglish);
+            ((TextView) view1.findViewById(R.id.txtTitle)).setVisibility(View.GONE);
+        }
         Constants1.initSharedPref(getActivity());
         Log.v(Constants1.TAG,"*********************>>>>>>>"+type+"_"+(Integer.parseInt(currentPageNo)));
         if(Constants1.sp.contains(type+"_"+(Integer.parseInt(currentPageNo)))==true)
@@ -184,6 +194,10 @@ public class DuaFragement extends Fragment {
             {
                 view[i]=View.inflate(getActivity(),R.layout.inflate_content_urdu,null);
             }
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            {
+                view[i]=View.inflate(getActivity(),R.layout.inflate_content_english,null);
+            }
 
            contentLayout1[i]=(LinearLayout)view[i].findViewById(R.id.contentLayout);
             btnShare[i]=(ImageView)view[i].findViewById(R.id.btnShare);
@@ -206,7 +220,7 @@ public class DuaFragement extends Fragment {
             if(dataBeanArrayList.get(i).getArabicdua()==null || dataBeanArrayList.get(i).getArabicdua().trim().length()==0)
             {
                 view_line1[i].setVisibility(View.GONE);
-                 txtArabicTextView[i].setVisibility(View.GONE);
+                txtArabicTextView[i].setVisibility(View.GONE);
             }
             else
             {
@@ -218,13 +232,10 @@ public class DuaFragement extends Fragment {
                 view_line2[i].setVisibility(View.GONE);
                 txtTranslation[i].setVisibility(View.GONE);
                 txtTransReference[i].setVisibility(View.GONE);
-
             }
             else
             {
                 txtTranslation[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getTranslation().trim()));
-
-
                 if(dataBeanArrayList.get(i).getReferenceTrans()!=null && dataBeanArrayList.get(i).getReferenceTrans().trim().length()>0)
                 txtTransReference[i].setText(Constants1.replaceNumbers(dataBeanArrayList.get(i).getReferenceTrans()));
                 else txtTransReference[i].setVisibility(View.GONE);
@@ -259,58 +270,24 @@ public class DuaFragement extends Fragment {
             {
                 txtIndex[i].setVisibility(View.GONE);
                 txtTitleDarood[i].setVisibility(View.VISIBLE);
-//                view_line4[i].setVisibility(View.VISIBLE);
                 txtTitleDarood[i].setText((TITLE));
-                ((TextView)view1.findViewById(R.id.txtTitle)).setText("");
-
-
-
+                txtTitle.setText("");
                 txtTranslation[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
                 txtArabicTextView[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-//                txtTitleDarood[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-
-
                 txtIndex[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
                 txtNumber[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-
                 txtTafseer[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-
                 txtFazilatReference[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
                 txtTransReference[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-
                 view_line1[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
                 view_line2[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
-
                 view_line3[i].setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
-
-//                txtTranslation[i].setTextColor(getResources().getColor(R.color.black));
-//                txtArabicTextView[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-////                txtTitleDarood[i].setTextColor(getResources().getColor(R.color.daroodprimarycolor));
-//
-//
-//                txtIndex[i].setTextColor(getResources().getColor(R.color.black));
-//                txtNumber[i].setTextColor(getResources().getColor(R.color.black));
-//
-//                txtTafseer[i].setTextColor(getResources().getColor(R.color.black));
-//
-//                txtFazilatReference[i].setTextColor(getResources().getColor(R.color.black));
-//                txtTransReference[i].setTextColor(getResources().getColor(R.color.black));
-//
-//                view_line1[i].setBackgroundColor(getResources().getColor(R.color.black));
-//                view_line2[i].setBackgroundColor(getResources().getColor(R.color.black));
-//
-//                view_line3[i].setBackgroundColor(getResources().getColor(R.color.black));
-
-
-
             }
             else {
-                ((TextView)view1.findViewById(R.id.txtTitle)).setText(""+TITLE);
+               txtTitle.setText(""+TITLE);
                 txtTitleDarood[i].setText((TITLE));
-
                 txtNumber[i].setText(""+Constants1.replaceNumbers(dataBeanArrayList.get(i).getSR()));
             }
-
             if(type.equalsIgnoreCase(Constants1.TYPE_DAROOD))
             {
                 layout_subheader.setBackgroundColor(getResources().getColor(R.color.daroodprimarycolor));
@@ -318,7 +295,6 @@ public class DuaFragement extends Fragment {
                         DrawableCompat.wrap(btnShare[i].getDrawable()),
                         ContextCompat.getColor(getActivity(), R.color.daroodprimarycolor)
                 );
-
             }
             contentLayout.addView(view[i]);
         }
@@ -339,18 +315,11 @@ public class DuaFragement extends Fragment {
                                         txtTranslation[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                         txtArabicTextView[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1.3f);
                                         txtTitleDarood[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT) * 1f);
-
-
                                         txtIndex[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
                                         txtNumber[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-
                                         txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
-
                                         txtFazilatReference[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)*0.8f);
                                         txtTransReference[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT)*0.8f);
-
-
-
                                     }
                                 }
                             } catch (Exception e) {
@@ -364,10 +333,8 @@ public class DuaFragement extends Fragment {
                 {}
             }
         }, 0, 100);
-
         return  view1;
     }
-
     public class FavClickListener implements View.OnClickListener
     {
         int pageno;
@@ -380,13 +347,11 @@ public class DuaFragement extends Fragment {
         public void onClick(View view)
         {
             Constants1.initSharedPref(getActivity());
-
             Log.v(Constants1.TAG,"On Favorite Click--->"+getArguments().getString(EXTRA_TYPE)+"_"+pageno);
             if(Constants1.sp.contains(getArguments().getString(EXTRA_TYPE)+"_"+pageno)==false)
             {
                 Constants1.editor.putString(getArguments().getString(EXTRA_TYPE)+"_"+pageno,""+pageno);
                 Constants1.editor.commit();
-
                 imgFav.setImageResource(R.drawable.favorite_dua_white_sel);
                 Toast.makeText(getActivity(),"Added to Favourite",Toast.LENGTH_SHORT).show();
             }
@@ -394,7 +359,6 @@ public class DuaFragement extends Fragment {
             {
                 Constants1.editor.remove(getArguments().getString(EXTRA_TYPE)+"_"+pageno);
                 Constants1.editor.commit();
-
                 imgFav.setImageResource(R.drawable.favorite_dua_white_unsel);
                 Toast.makeText(getActivity(),"Removed from Favourite",Toast.LENGTH_SHORT).show();
             }

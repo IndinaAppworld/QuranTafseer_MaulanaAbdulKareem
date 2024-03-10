@@ -43,7 +43,15 @@
                 android:textSize="@dimen/menuitemsize_urdu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
+            <com.indapp.fonts.CipherNormal
+                android:visibility="gone"
+                android:id="@+id/txtMainTitleEnglish"
+                android:textColor="#ffffff"
+                android:text="Search"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
         </RelativeLayout>
@@ -87,6 +95,25 @@ android:singleLine="true"
             android:textSize="@dimen/menuitemsize_urdu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+            <com.indapp.fonts.EnglishEditText
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+
+                android:gravity="left|center_vertical"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+
+                android:drawableLeft="@drawable/icon_mic"
+                android:hint="Type to search the Arabic text, translation &amp; Tafseer in the Quran."
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:background="@color/colorSurahParaBG"
+                android:id="@+id/txtSearchEnglish"
+                android:textSize="@dimen/menuitemsize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
 

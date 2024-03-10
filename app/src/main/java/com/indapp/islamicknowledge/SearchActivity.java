@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.indapp.beans.PageBean;
 import com.indapp.fonts.ArabicTextView;
+import com.indapp.fonts.EnglishEditText;
 import com.indapp.fonts.GujaratiEditText;
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduEditText;
@@ -63,11 +64,20 @@ public class SearchActivity extends Activity {
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
             ((GujaratiTextView) findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.VISIBLE);
             ((UrduEditText) findViewById(R.id.txtSearchUrdu)).setVisibility(View.GONE);
+            ((EnglishEditText) findViewById(R.id.txtSearchEnglish)).setVisibility(View.GONE);
+
             txtSearch = (EditText) findViewById(R.id.txtSearchGujarati);
         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.VISIBLE);
             ((GujaratiEditText) findViewById(R.id.txtSearchGujarati)).setVisibility(View.GONE);
+            ((EnglishEditText) findViewById(R.id.txtSearchEnglish)).setVisibility(View.GONE);
             txtSearch = (EditText) findViewById(R.id.txtSearchUrdu);
+        }
+        else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH)) {
+            ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.GONE);
+            ((GujaratiEditText) findViewById(R.id.txtSearchGujarati)).setVisibility(View.GONE);
+            ((EnglishEditText) findViewById(R.id.txtSearchEnglish)).setVisibility(View.VISIBLE);
+            txtSearch = (EditText) findViewById(R.id.txtSearchEnglish);
         }
         contentLayout=(LinearLayout)findViewById(R.id.contentLayout);
         findViewById(R.id.imgBack).setOnClickListener(new View.OnClickListener() {
@@ -230,6 +240,9 @@ public class SearchActivity extends Activity {
                         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                             txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtGujarati);
                         }
+                        else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH)) {
+                            txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtEnglish);
+                        }
 
                         txtArabicTextView[i] = (ArabicTextView) view_row[i].findViewById(R.id.txtArabic);
 
@@ -339,11 +352,11 @@ public class SearchActivity extends Activity {
     }
 
     public void setHighLightedText(TextView tv, String textToHighlight) {
-        String tvt = tv.getText().toString();
-        int ofe = tvt.indexOf(textToHighlight, 0);
-        Spannable wordToSpan = new SpannableString(tv.getText());
+        String tvt = tv.getText().toString().toLowerCase();
+        int ofe = tvt.indexOf(textToHighlight.toLowerCase(), 0);
+        Spannable wordToSpan = new SpannableString(tv.getText().toString());
         for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
-            ofe = tvt.indexOf(textToHighlight, ofs);
+            ofe = tvt.indexOf(textToHighlight.toLowerCase(), ofs);
             if (ofe == -1)
                 break;
             else {

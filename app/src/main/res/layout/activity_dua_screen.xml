@@ -39,7 +39,6 @@
             <ImageView
                 android:layout_centerVertical="true"
                 android:id="@+id/imgSearch"
-                android:tint="#ffffff"
                 android:visibility="gone"
                 android:src="@drawable/search_icon"
                 android:layout_width="wrap_content"
@@ -95,6 +94,15 @@
                 android:text=""
                 android:layout_centerInParent="true"
                 android:textSize="@dimen/menuitemsize_urdu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.CipherNormal
+                android:visibility="gone"
+                android:id="@+id/txtMainTitleEnglish"
+                android:textColor="#ffffff"
+                android:text=""
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/menuitemsize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

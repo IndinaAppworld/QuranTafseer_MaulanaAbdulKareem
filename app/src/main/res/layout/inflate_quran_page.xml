@@ -87,7 +87,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
+                    <com.indapp.fonts.CipherNormal
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
 
+                        android:textColor="#000000"
+                        android:id="@+id/txtEnglishList"
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </RelativeLayout>
 
             </LinearLayout>
@@ -131,7 +139,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-
+                    <com.indapp.fonts.CipherNormal
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/viewLineVertical"
+                        android:textColor="#000000"
+                        android:id="@+id/txtEnglish"
+                        android:text=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </RelativeLayout>
                 <com.indapp.fonts.ArabicTextView
                     android:gravity="right"
@@ -168,6 +183,20 @@
                 android:padding="10dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/menuitemsize_urdu"
+                android:background="@color/colorSurahParaBG"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"/>
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:id="@+id/txtTafseerEnglish"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/menuitemsize"
                 android:background="@color/colorSurahParaBG"
                 android:layout_width="match_parent"
                 android:gravity="center"

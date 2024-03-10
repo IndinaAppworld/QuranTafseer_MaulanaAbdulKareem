@@ -65,7 +65,13 @@
                     android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
+            <com.indapp.fonts.CipherNormal
+                android:layout_marginRight="5dp"
+                android:textColor="#000000"
+                android:id="@+id/txtEnglish"
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>

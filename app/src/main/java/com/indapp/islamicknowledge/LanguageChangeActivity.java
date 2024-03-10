@@ -17,7 +17,7 @@ import com.indapp.utils.Constants1;
 public class LanguageChangeActivity extends Activity {
 
     TextView txtTitle;
-    RadioButton radio1,radio2;
+    RadioButton radio1,radio2,radio3;
     TextView btnApply,btnCancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,37 +41,42 @@ public class LanguageChangeActivity extends Activity {
         btnCancel=(TextView)findViewById(R.id.btnCancel);
         radio1=(RadioButton)findViewById(R.id.radio1);
         radio2=(RadioButton)findViewById(R.id.radio2);
+        radio3=(RadioButton)findViewById(R.id.radio3);
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE=Constants1.sp.getString("language",Constants1.URDU);
         Typeface face ;
 
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
-
             face = Typeface.createFromAsset(getAssets(),
                     "fonts/BLKCHCRY.ttf");
-            //txtTitle.setText("ભાષા પસંદ કરો");
-
-        } else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+        }
+        else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
         {
             face= Typeface.createFromAsset(getAssets(),
                     "fonts/BLKCHCRY.ttf");
-            //txtTitle.setText("زبان منتخب کریں");
+        }
+        else {
+            face= Typeface.createFromAsset(getAssets(),
+                    "fonts/BLKCHCRY.ttf");
         }
         txtTitle.setTypeface(face,Typeface.BOLD);
         radio1.setTypeface(face,Typeface.BOLD);
         radio2.setTypeface(face,Typeface.BOLD);
+        radio3.setTypeface(face,Typeface.BOLD);
         btnApply.setTypeface(face,Typeface.BOLD);
         btnCancel.setTypeface(face,Typeface.BOLD);
         findViewById(R.id.btnApply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(radio1.isChecked() || radio2.isChecked())
+                if(radio1.isChecked() || radio2.isChecked() || radio3.isChecked())
                 {
                     if(radio1.isChecked())
                     Constants1.editor.putString("language",Constants1.URDU);
                     else if(radio2.isChecked())
                     Constants1.editor.putString("language",Constants1.GUJARATI);
+                    else if(radio3.isChecked())
+                        Constants1.editor.putString("language",Constants1.ENGLISH);
 
                     Constants1.editor.putBoolean("languageDialog",true);
 

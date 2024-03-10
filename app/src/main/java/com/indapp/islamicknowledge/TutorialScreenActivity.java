@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.indapp.fonts.CipherNormal;
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
 import com.indapp.fragements.TutorialFragement;
@@ -53,7 +54,7 @@ public class TutorialScreenActivity  extends FragmentActivity {
         txtTutotialText=(TextView)findViewById(R.id.txtTutotialText);
         txtNumber=(TextView)findViewById(R.id.txtNumber);
         txtSkip=(TextView)findViewById(R.id.txtSkip);
-        Typeface face ;
+        Typeface face=null ;
 
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
             DESCRIPTION=Constants1.TUTORIL_DESCRIPTION_GUJARATI;
@@ -61,15 +62,24 @@ public class TutorialScreenActivity  extends FragmentActivity {
             txtSkip.setText("ખતમ કરો");
             face = Typeface.createFromAsset(getAssets(),
                     "fonts/BHUJ UNICODE.ttf");
-        } else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+        } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
              {
                  ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.VISIBLE);
-
 
                  DESCRIPTION=Constants1.TUTORIL_DESCRIPTION_URDU;
                  txtSkip.setText("منسوخ کریں");
                  face= Typeface.createFromAsset(getAssets(),
                          "fonts/jameelnoorinastaleeq.ttf");
+
+        }
+        else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+        {
+            ((CipherNormal) findViewById(R.id.txtMainTitleEnglish)).setVisibility(View.VISIBLE);
+
+            DESCRIPTION=Constants1.TUTORIL_DESCRIPTION_ENGLISH;
+            txtSkip.setText("Skip");
+            face= Typeface.createFromAsset(getAssets(),
+                    "fonts/BLKCHCRY.ttf");
 
         }
 

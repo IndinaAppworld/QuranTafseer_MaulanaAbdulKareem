@@ -41,6 +41,15 @@
             android:textSize="@dimen/menuitemsize_urdu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <com.indapp.fonts.CipherNormal
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleEnglish"
+            android:textColor="#ffffff"
+            android:text="અલ્લાહ કી રઝામંદી‌ કૈસે હાસિલ કરે઼ં ?"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/maintitlefont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/imgSetting"
@@ -104,6 +113,18 @@
             android:textColor="#000000"
             android:textSize="@dimen/menuitemsize_urdu"
             android:textStyle="bold" />
+        <com.indapp.fonts.CipherNormal
+            android:gravity="center_horizontal"
+            android:id="@+id/txtDaroodSharifOptionEnglish"
+            android:layout_width="match_parent"
+            android:padding="2dp"
+            android:visibility="gone"
+
+            android:layout_height="wrap_content"
+            android:text="દરૂદ શરીફનો પાઠ કરવા અહીં ક્લિક કરો"
+            android:textColor="#000000"
+            android:textSize="@dimen/menuitemsize"
+            android:textStyle="bold" />
     </RelativeLayout>
     <ScrollView
         android:layout_above="@id/daroodlayout"
@@ -158,6 +179,15 @@
                 android:text="سورتوں کی فہرست"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/menuitemsize_urdu" />
+
+            <com.indapp.fonts.CipherNormal
+                android:id="@+id/txtTitleSettingEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="سورتوں کی فہرست"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/menuitemsize" />
 
             <ImageView
                 android:id="@+id/imgSettingClose"

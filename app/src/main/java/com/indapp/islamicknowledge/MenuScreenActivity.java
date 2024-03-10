@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.indapp.fonts.CipherNormal;
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
 import com.indapp.utils.Constants1;
@@ -37,6 +38,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
 
     ImageView imgQuran,imgDua;
     ViewStub menu_stub;
+    CipherNormal txtTitleSettingEnglish;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +73,11 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         {
             imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
             imgDua.setImageResource(R.drawable.menu_icon2_urdu);
-//            menu_stub.setLayoutResource(R.layout.include_setting_menu_urdu);
-//            View inflated = menu_stub.inflate();
+        }
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+        {
+            imgQuran.setImageResource(R.drawable.menu_icon1_english);
+            imgDua.setImageResource(R.drawable.menu_icon2_english);
         }
 
 
@@ -107,6 +112,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         layout_setting=(LinearLayout) findViewById(R.id.layout_setting);
         txtTitleSettingUrdu=(UrduTextView)findViewById(R.id.txtTitleSettingUrdu);
         txtTitleSettingGujarati=(GujaratiTextView) findViewById(R.id.txtTitleSettingGujarati);
+        txtTitleSettingEnglish=(CipherNormal)findViewById(R.id.txtTitleSettingEnglish);
 //        changeLanguage();
 
         imgSettingClose=(ImageView)findViewById(R.id.imgSettingClose);
@@ -143,6 +149,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu_urdu, layout_setting, false));
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu_gujarati, layout_setting, false));
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu, layout_setting, false));
 
 
 
@@ -178,7 +186,7 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
 
             txtTitleSettingUrdu.setText("ترتیب");
             txtTitleSettingGujarati.setText("સેટિંગ");
-
+            txtTitleSettingEnglish.setText("Setting");
             resetGeneralSetting(type);
 
             layout_setting.setVisibility(View.VISIBLE);
@@ -240,6 +248,8 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu_urdu, layout_setting, false));
                             else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu_gujarati, layout_setting, false));
+                            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                                layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_menu, layout_setting, false));
 
                         }
                     }, 100);
@@ -314,6 +324,28 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
                 {
                     Constants1.LANGUAGE=Constants1.URDU;
                     Constants1.editor.putString("language",Constants1.URDU);
+                    Constants1.editor.commit();
+                    changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+//                            setTabs();
+                        }
+                    }, 500);
+
+                }
+            }
+        });
+        findViewById(R.id.txtLanguage_English).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                {
+                    Constants1.LANGUAGE=Constants1.ENGLISH;
+                    Constants1.editor.putString("language",Constants1.ENGLISH);
                     Constants1.editor.commit();
                     changeLanguage();
                     final Handler handler = new Handler();
@@ -461,7 +493,12 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown);
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
+
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
             txtTitleSettingGujarati.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
 
             imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
@@ -476,11 +513,37 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown);
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
+            txtTitleSettingEnglish.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
 
             imgQuran.setImageResource(R.drawable.menu_icon1_gujrati);
+
             imgDua.setImageResource(R.drawable.menu_icon2_gujrati);
+
+        }
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+        {
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown_sel);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(Color.parseColor("#ffffff"));
+
+
+            txtTitleSettingGujarati.setVisibility(View.GONE);
+            txtTitleSettingUrdu.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.VISIBLE);
+
+            imgQuran.setImageResource(R.drawable.menu_icon1_english);
+            imgDua.setImageResource(R.drawable.menu_icon2_english);
 
         }
     }
@@ -494,5 +557,12 @@ public class MenuScreenActivity extends FragmentActivity implements ColorPickerD
         {
             finish();
         }
+    }
+    public void specialAyat(View view)
+    {
+        Intent intent=new Intent(Intent.ACTION_VIEW);
+        intent.setClass(MenuScreenActivity.this,BookmarkActivity.class);
+        intent.putExtra("isMuntaKhib",true);
+        startActivity(intent);
     }
 }

@@ -35,7 +35,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-
+        <com.indapp.fonts.CipherNormal
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleEnglish"
+            android:textColor="#ffffff"
+            android:text="શોધો"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/maintitlefont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </RelativeLayout>
 
@@ -56,16 +64,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <TextView
         android:autoLink="email"
         android:layout_margin="10dp"
         android:id="@+id/txtAboutUsUrdu"
         android:textColor="#000000"
         android:text=""
+        android:visibility="gone"
         android:textColorLink="#0000FF"
         android:textSize="@dimen/menuitemsize_urdu"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.indapp.fonts.CipherNormal
+        android:autoLink="email"
+        android:layout_margin="10dp"
+        android:id="@+id/txtAboutUsEnglish"
+        android:textColor="#000000"
+        android:text=""
+        android:textColorLink="#0000FF"
+        android:textSize="@dimen/menuitemsize"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 </ScrollView>
 

@@ -106,7 +106,15 @@
             android:id="@+id/txtPageNo_Urdu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+        <com.indapp.fonts.CipherNormal
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/menuitemsize_urdu"
+            android:id="@+id/txtPageNo_English"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     <com.indapp.smarttablayout.SmartTabLayout
         android:visibility="gone"
@@ -201,6 +209,14 @@
                     android:text="سورتوں کی فہرست"
                     android:textColor="#ffffff"
                     android:textSize="@dimen/menuitemsize_urdu" />
+                <com.indapp.fonts.CipherNormal
+                    android:id="@+id/txtTitleSettingEnglish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="سورتوں کی فہرست"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/menuitemsize" />
 
                 <ImageView
                     android:id="@+id/imgSettingClose"

@@ -17,7 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
+        <ImageView
+            android:onClick="specialAyat"
+            android:visibility="gone"
+            android:paddingTop="5dp"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:src="@drawable/specialicon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
 
         <ImageView
             android:paddingTop="5dp"
@@ -116,6 +124,16 @@ android:layout_toLeftOf="@id/imgSetting"
                 android:text="سورتوں کی فہرست"
                 android:textColor="#ffffff"
                 android:textSize="@dimen/menuitemsize_urdu" />
+
+            <com.indapp.fonts.CipherNormal
+                android:visibility="gone"
+                android:id="@+id/txtTitleSettingEnglish"
+                android:textColor="#ffffff"
+                android:text="અલ્લાહ કી રઝામંદી‌ કૈસે હાસિલ કરે઼ં ?"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/maintitlefont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <ImageView
                 android:id="@+id/imgSettingClose"

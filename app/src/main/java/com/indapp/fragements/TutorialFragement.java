@@ -38,26 +38,35 @@ public class TutorialFragement extends Fragment {
         if(GROUP_NO<Constants1.TUTORIAL_IMAGES_GUJ.length) {
             if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
                 imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES[GROUP_NO]);
-            else imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES_GUJ[GROUP_NO]);
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI) )
+            imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES_GUJ[GROUP_NO]);
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH) )
+                imgTutorial.setImageResource(Constants1.TUTORIAL_IMAGES_ENG[GROUP_NO]);
             last_layout.setVisibility(View.GONE);
         }
         else {
             imgTutorial.setVisibility(View.GONE);
             last_layout.setVisibility(View.VISIBLE);
 
-
-
-
             TextView txtTutorialEndText=(TextView) view1.findViewById(R.id.txtTutorialEndText);
             TextView txtBottomText=(TextView) view1.findViewById(R.id.txtBottomText);
             Typeface face;
 
-            if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+            if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+            {
                 txtTutorialEndText.setText("કુર્આન મજીદને વુઝૂ સાથે પઢવું જોઇયે");
                 txtBottomText.setText("શરૂઆત કરવા માટે અહીં ક્લિક કરો");
                 face = Typeface.createFromAsset(getActivity().getAssets(),
                         "fonts/BHUJ UNICODE.ttf");
-            } else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+            }
+            else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            {
+                txtTutorialEndText.setText("The Quran should be recited while being in a state of \"Wudhu\" (Ablution).");
+                txtBottomText.setText("Click here to start.");
+                face = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/BLKCHCRY.ttf");
+            }
+            else //if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
             {
                 txtTutorialEndText.setText("قرآن مجید کو وضو کے ساتھ پڑھنا چاہیے");
                 txtBottomText.setText("شروع کرنے کے لیے یہاں کلک کریں");

@@ -191,10 +191,16 @@ public class QuranFragement extends Fragment {
                     txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtUrdu);
                     txtTranslationList[i] = (TextView) view_row[i].findViewById(R.id.txtUrduList);
                     txtTafseer[i] = (TextView) view_row[i].findViewById(R.id.txtTafseerUrdu);
-                } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+                }
+                else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                     txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtGujarati);
                     txtTranslationList[i] = (TextView) view_row[i].findViewById(R.id.txtGujaratiList);
                     txtTafseer[i] = (TextView) view_row[i].findViewById(R.id.txtTafseerGujarati);
+                }
+                else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH)) {
+                    txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtEnglish);
+                    txtTranslationList[i] = (TextView) view_row[i].findViewById(R.id.txtEnglishList);
+                    txtTafseer[i] = (TextView) view_row[i].findViewById(R.id.txtTafseerEnglish);
                 }
                 txtTafseer[i].setVisibility(View.VISIBLE);
 
@@ -369,6 +375,9 @@ public class QuranFragement extends Fragment {
                     p.getMenuInflater().inflate(R.menu.pop_up_menu_gujarati, p.getMenu());
                 else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
                     p.getMenuInflater().inflate(R.menu.pop_up_menu_urdu, p.getMenu());
+                else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                    p.getMenuInflater().inflate(R.menu.pop_up_menu, p.getMenu());
+
                 p.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
 

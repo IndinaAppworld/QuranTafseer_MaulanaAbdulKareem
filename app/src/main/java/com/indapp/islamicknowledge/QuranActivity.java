@@ -77,6 +77,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
     TextView lblArabicOnlyText;
     GujaratiTextView txtPageNo_Gujarati;
     UrduTextView txtPageNo_Urdu;
+    CipherNormal txtPageNo_English;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +107,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
         txtPageNo_Gujarati=(GujaratiTextView)findViewById(R.id.txtPageNo_Gujarati);
         txtPageNo_Urdu=(UrduTextView)findViewById(R.id.txtPageNo_Urdu);
+        txtPageNo_English=(CipherNormal) findViewById(R.id.txtPageNo_English);
 
         copydatabase();
 
@@ -133,6 +135,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
         });
         txtTitleSettingUrdu=(UrduTextView)findViewById(R.id.txtTitleSettingUrdu);
         txtTitleSettingGujarati=(GujaratiTextView) findViewById(R.id.txtTitleSettingGujarati);
+        txtTitleSettingEnglish=(CipherNormal) findViewById(R.id.txtTitleSettingEnglish);
 //        changeLanguage();
 
         imgSettingClose=(ImageView)findViewById(R.id.imgSettingClose);
@@ -153,6 +156,8 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdui, layout_setting, false));
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati, layout_setting, false));
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting, layout_setting, false));
 
 
         imgSetting.setOnClickListener(new View.OnClickListener() {
@@ -235,6 +240,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
 
     EditText txtPageNo;
     UrduTextView txtTitleSettingUrdu;
+    CipherNormal txtTitleSettingEnglish;
     GujaratiTextView txtTitleSettingGujarati;
     public void openSettingScreen(int type)
     {
@@ -246,16 +252,19 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             {
                 txtTitleSettingUrdu.setText("پاروں کی فہرست");
                 txtTitleSettingGujarati.setText("પારાની સૂચિ");
+                txtTitleSettingEnglish.setText("Index of \"Sipara\"");
             }
             else if(type==1)
             {
                 txtTitleSettingUrdu.setText("سورتوں کی فہرست");
                 txtTitleSettingGujarati.setText("સૂરતો ની યાદી");
+                txtTitleSettingEnglish.setText("Index of \"Surah\"");
             }
             else if(type==3)
             {
                 txtTitleSettingUrdu.setText("ترتیب");
                 txtTitleSettingGujarati.setText("સેટિંગ");
+                txtTitleSettingEnglish.setText("Setting");
             }
 
             if(type==0  || type==1)
@@ -335,6 +344,8 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdui, layout_setting, false));
                             else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati, layout_setting, false));
+                            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                                layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting, layout_setting, false));
 
                             lblArabicOnlyText=(TextView) findViewById(R.id.lblArabicOnlyText);
 
@@ -346,6 +357,9 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                                     lblArabicOnlyText.setText("તર્જમા/તફસીર સાથે કુર્આન પઢવા માટે નિશાન બોક્સ પર ક્લિક કરો");
                                 else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
                                     lblArabicOnlyText.setText("ترجمہ/تفسیر کے ساتھ قرآن پڑھنے کے لئے نشان پر کلک کریں");
+                                else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                                    lblArabicOnlyText.setText("With the Arabic translation/Tafseer- Click the mark.");
+
 
 
                             }
@@ -356,6 +370,8 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                                     lblArabicOnlyText.setText("માત્ર કુર્આન પઢવા માટે બોક્સ પર થી નિશાન હટાવો");
                                 else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
                                     lblArabicOnlyText.setText("صرف قرآن پڑھنے کے لئے نشان ہٹا دے");
+                                else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                                    lblArabicOnlyText.setText("With the Arabic translation/Tafseer- Remove the mark to recite only the Arabic text.");
 
 
                             }
@@ -569,7 +585,29 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                 }
             }
         });
+        findViewById(R.id.txtLanguage_English).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                {
+                    Constants1.LANGUAGE=Constants1.ENGLISH;
+                    Constants1.editor.putString("language",Constants1.ENGLISH);
+                    Constants1.editor.commit();
+                    changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+                            setTabs();
+                        }
+                    }, 500);
+
+
+                }
+            }
+        });
         CheckBox chkTranslationTarjumal=(CheckBox)findViewById(R.id.chkTranslationTarjuma);
 
         if(Constants1.sp.getBoolean("arabic",false))
@@ -764,11 +802,16 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown);
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
-
+            txtTitleSettingEnglish.setVisibility(View.GONE);
             txtPageNo_Urdu.setVisibility(View.VISIBLE);
             txtPageNo_Gujarati.setVisibility(View.GONE);
+            txtPageNo_English.setVisibility(View.GONE);
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
@@ -778,11 +821,39 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown);
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
 
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.GONE);
 
             txtPageNo_Urdu.setVisibility(View.GONE);
+            txtPageNo_English.setVisibility(View.GONE);
+
             txtPageNo_Gujarati.setVisibility(View.VISIBLE);
+        }
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+        {
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_brown);
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+
+
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_brown_sel);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(Color.parseColor("#ffffff"));
+
+
+            txtTitleSettingGujarati.setVisibility(View.GONE);
+            txtTitleSettingUrdu.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.VISIBLE);
+
+            txtPageNo_Urdu.setVisibility(View.GONE);
+            txtPageNo_Gujarati.setVisibility(View.GONE);
+            txtPageNo_English.setVisibility(View.VISIBLE);
         }
 
     }
@@ -939,6 +1010,7 @@ public class QuranActivity extends FragmentActivity implements ColorPickerDialog
                             .replaceAll("2","૨").replaceAll("3","૩").replaceAll("4","૪")
                             .replaceAll("5","૫").replaceAll("6","૬").replaceAll("7","૭").replaceAll("8","૮").replaceAll("9","૯"));
                 txtPageNo_Urdu.setText(""+Constants1.URDU_NUMBERS[TOTAL-position-1]);
+                txtPageNo_English.setText(""+(TOTAL-position));
             }
 
             @Override

@@ -43,7 +43,7 @@ public class CipherBold extends TextView
 	{
 		if(!isInEditMode() && mTypeFace == null)
 		{
-			mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "BLKCHCRY.ttf");
+			mTypeFace = Typeface.createFromAsset(getContext().getAssets(), "fonts/BLKCHCRY.ttf");
 		}
 
 		if(!isInEditMode())

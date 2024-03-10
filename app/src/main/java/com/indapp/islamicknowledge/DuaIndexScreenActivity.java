@@ -26,6 +26,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.indapp.beans.DataBean;
+import com.indapp.fonts.CipherNormal;
 import com.indapp.fonts.GujaratiBoldTextView;
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
@@ -58,6 +59,7 @@ public class DuaIndexScreenActivity extends Activity  {
     ImageView imgSettingClose;
     ScrollView scroll_setting;
     UrduTextView txtTitleSettingUrdu;
+    CipherNormal txtTitleSettingEnglish;
     GujaratiTextView txtTitleSettingGujarati;
     String type_view="";
 
@@ -110,7 +112,20 @@ public class DuaIndexScreenActivity extends Activity  {
                 }
             }
         });
+        ((TextView)findViewById(R.id.txtDaroodSharifOptionEnglish)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                if(layout_setting.getVisibility()==View.INVISIBLE) {
+
+                    if (type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+                        type_view = Constants1.TYPE_DUA;
+                    else type_view = Constants1.TYPE_DAROOD;
+
+                    updateList();
+                }
+            }
+        });
         layout_quran=(RelativeLayout)findViewById(R.id.layout_quran);
         imgSetting=(ImageView)findViewById(R.id.imgSetting);
 
@@ -144,7 +159,7 @@ public class DuaIndexScreenActivity extends Activity  {
 
         txtTitleSettingUrdu=(UrduTextView)findViewById(R.id.txtTitleSettingUrdu);
         txtTitleSettingGujarati=(GujaratiTextView) findViewById(R.id.txtTitleSettingGujarati);
-
+        txtTitleSettingEnglish=(CipherNormal)findViewById(R.id.txtTitleSettingEnglish);
         imgSettingClose=(ImageView)findViewById(R.id.imgSettingClose);
         imgSettingClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +177,8 @@ public class DuaIndexScreenActivity extends Activity  {
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdu_dua, layout_setting, false));
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
             layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati_dua, layout_setting, false));
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_dua, layout_setting, false));
 
 
         imgSetting.setOnClickListener(new View.OnClickListener() {
@@ -180,6 +197,7 @@ public class DuaIndexScreenActivity extends Activity  {
 
             txtTitleSettingUrdu.setText("ترتیب");
             txtTitleSettingGujarati.setText("સેટિંગ");
+            txtTitleSettingEnglish.setText("Setting");
 
             resetGeneralSetting(type);
 
@@ -242,6 +260,8 @@ public class DuaIndexScreenActivity extends Activity  {
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_urdu_dua, layout_setting, false));
                             else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
                                 layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_gujarati_dua, layout_setting, false));
+                            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                                layout_general_setting.addView(LayoutInflater.from(getApplicationContext()).inflate(R.layout.include_setting_dua, layout_setting, false));
 
                         }
                     }, 100);
@@ -379,6 +399,29 @@ public class DuaIndexScreenActivity extends Activity  {
                 }
             }
         });
+        findViewById(R.id.txtLanguage_English).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(!Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+                {
+                    Constants1.LANGUAGE=Constants1.ENGLISH;
+                    Constants1.editor.putString("language",Constants1.ENGLISH);
+                    Constants1.editor.commit();
+                    changeLanguage();
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // Do something after 5s = 5000ms
+//                            setTabs();
+                            updateList();
+                        }
+                    }, 500);
+
+                }
+            }
+        });
         changeLanguage();
         findViewById(R.id.layout_color).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -423,10 +466,13 @@ public class DuaIndexScreenActivity extends Activity  {
 
         ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.GONE);
         ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.GONE);
+        ((CipherNormal) findViewById(R.id.txtMainTitleEnglish)).setVisibility(View.GONE);
 
+        ((TextView) findViewById(R.id.txtDaroodSharifOption)).setVisibility(View.VISIBLE);
 
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
 
+            ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setVisibility(View.GONE);
             typeface = Typeface.createFromAsset(getAssets(),
                     "fonts/BHUJ UNICODE.ttf");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.VISIBLE);
@@ -463,11 +509,33 @@ public class DuaIndexScreenActivity extends Activity  {
             }
             else ((TextView) findViewById(R.id.txtDaroodSharifOption)).setText("مختلف فضائل والے درود پڑھنے کے لیے کلک کریں");
 
+            ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setVisibility(View.GONE);
+        }
+        else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH)) {
+            typeface = Typeface.createFromAsset(getAssets(), "fonts/BLKCHCRY.ttf");
+
+            ((TextView) findViewById(R.id.txtDaroodSharifOption)).setVisibility(View.GONE);
+
+            ((CipherNormal) findViewById(R.id.txtMainTitleEnglish)).setVisibility(View.VISIBLE);
+            if(type.equalsIgnoreCase("peshlafz"))
+                ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("پیش لفظ");
+            else if(type.equalsIgnoreCase("aboutus"))
+            {
+                ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("ہمارے بارے میں");
+            }
+
+            ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setVisibility(View.VISIBLE);
+            if(type_view.equalsIgnoreCase(Constants1.TYPE_DAROOD))
+            {
+                ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setText("How to get Allah's approval ?");
+            }
+            else ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setText("Click here to recite Durud Sharif of different virtues");
+
         }
         Constants1.setFontTypeFaceLanguage( ((TextView) findViewById(R.id.txtDaroodSharifOption)),getApplicationContext(),false);
 
         ((TextView) findViewById(R.id.txtDaroodSharifOption)).setTextColor(Color.WHITE);
-
+        ((TextView) findViewById(R.id.txtDaroodSharifOptionEnglish)).setTextColor(Color.WHITE);
 
         indexBeanArrayList.clear();
         if(Constants1.databaseHandler==null)
@@ -481,6 +549,8 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DAROOD", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("درود شریف");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("દરૂદ શરીફ");
+            ((CipherNormal) findViewById(R.id.txtMainTitleEnglish)).setText("Durud Sharif");
+
             daroodlayout.setBackgroundResource(R.drawable.background_header_dua);
             layout_header.setBackgroundResource(R.drawable.background_daroodpatti);
             getWindow().setStatusBarColor(getResources().getColor(R.color.daroodprimarycolor));
@@ -489,6 +559,8 @@ public class DuaIndexScreenActivity extends Activity  {
             cursor = Constants1.databaseHandler.getData("SELECT ID,HEADING_" + Constants1.LANGUAGE + " from DUA where  HEADING_" + Constants1.LANGUAGE + " is not null", Constants1.sqLiteDatabase);
             ((UrduTextView) findViewById(R.id.txtMainTitleUrdu)).setText("اللہ کی رضامندی کیسے حاصل کریں ؟");
             ((GujaratiBoldTextView) findViewById(R.id.txtMainTitleGujarati)).setText("અલ્લાહ કી રઝામંદી\u200C કૈસે હાસિલ કરે઼ં ?");
+            ((CipherNormal) findViewById(R.id.txtMainTitleEnglish)).setText("How to get Allah's approval ?");
+
             daroodlayout.setBackgroundResource(R.drawable.background_daroodpatti);
             layout_header.setBackgroundResource(R.drawable.background_header_dua);
             getWindow().setStatusBarColor(getResources().getColor(R.color.duaprimarycolor));
@@ -521,7 +593,10 @@ public class DuaIndexScreenActivity extends Activity  {
             {
                 view[i] = View.inflate(this, R.layout.inflate_duaindex_list_item, null);
             }
-
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+            {
+                view[i] = View.inflate(this, R.layout.inflate_duaindex_list_item_english, null);
+            }
 
             ((TextView)view[i].findViewById(R.id.txtTitle)).setText(indexBeanArrayList.get(i).getTITLE());
             txtNumber[i]=(TextView)view[i].findViewById(R.id.txtNumber);
@@ -568,12 +643,13 @@ public class DuaIndexScreenActivity extends Activity  {
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_green);
             ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
 
+
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
+
             txtTitleSettingGujarati.setVisibility(View.GONE);
             txtTitleSettingUrdu.setVisibility(View.VISIBLE);
-
-//            imgQuran.setImageResource(R.drawable.menu_icon1_urdu);
-//            imgDua.setImageResource(R.drawable.menu_icon2_urdu);
-
+            txtTitleSettingEnglish.setVisibility(View.GONE);
         }
         else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
         {
@@ -583,11 +659,30 @@ public class DuaIndexScreenActivity extends Activity  {
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_green);
             ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
 
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
+
             txtTitleSettingGujarati.setVisibility(View.VISIBLE);
             txtTitleSettingUrdu.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.GONE);
 
-//            imgQuran.setImageResource(R.drawable.menu_icon1_gujrati);
-//            imgDua.setImageResource(R.drawable.menu_icon2_gujrati);
+        }
+        else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.ENGLISH))
+        {
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_Urdu)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
+
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setBackgroundResource(R.drawable.rounded_bg_green);
+            ((TextView)findViewById(R.id.txtLanguage_Gujarati)).setTextColor(getResources().getColor(R.color.duaprimarycolor));
+
+
+            ((TextView)findViewById(R.id.txtLanguage_English)).setBackgroundResource(R.drawable.rounded_bg_green_sel);
+            ((TextView)findViewById(R.id.txtLanguage_English)).setTextColor(Color.parseColor("#ffffff"));
+
+
+            txtTitleSettingGujarati.setVisibility(View.GONE);
+            txtTitleSettingUrdu.setVisibility(View.GONE);
+            txtTitleSettingEnglish.setVisibility(View.VISIBLE);
 
         }
     }

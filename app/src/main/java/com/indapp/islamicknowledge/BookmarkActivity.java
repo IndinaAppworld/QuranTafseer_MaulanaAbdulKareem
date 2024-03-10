@@ -28,17 +28,20 @@ import com.indapp.beans.PageBean;
 import com.indapp.fonts.ArabicTextView;
 import com.indapp.fonts.GujaratiTextView;
 import com.indapp.fonts.UrduTextView;
-import com.indapp.islamicknowledge.databinding.ActivityBookmarkBinding;
 import com.indapp.utils.Constants1;
+import com.indapp.utils.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 
 public class BookmarkActivity extends Activity {
     LinearLayout contentLayout;
     ImageView imgListGridIcon;
+
+    boolean isMuntaKhib=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,15 @@ public class BookmarkActivity extends Activity {
                 parentView.setBackgroundColor(Color.rgb(0x88, 0x33, 0x33));
             }
         }
+
+
+        if(getIntent().getExtras()!=null)
+        {
+            if(getIntent().getExtras().containsKey("isMuntaKhib"))
+            {
+                isMuntaKhib=true;
+            }
+        }
         Constants1.initSharedPref(this);
         Constants1.LANGUAGE=Constants1.sp.getString("language",Constants1.GUJARATI);
         setContentView(R.layout.activity_bookmark);
@@ -65,8 +77,33 @@ public class BookmarkActivity extends Activity {
         {
             ((UrduTextView)findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.VISIBLE);
         }
-        mScaleDetector = new ScaleGestureDetector(this, new ScaleManager());
 
+        if(isMuntaKhib)
+        {
+            if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI))
+            {
+                ((GujaratiTextView)findViewById(R.id.txtMainTitleGujarati)).setVisibility(View.VISIBLE);
+                ((GujaratiTextView)findViewById(R.id.txtMainTitleGujarati)).setText("ખાસ આયત");
+            }
+            else if(Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU))
+            {
+                ((UrduTextView)findViewById(R.id.txtMainTitleUrdu)).setVisibility(View.VISIBLE);
+                ((UrduTextView)findViewById(R.id.txtMainTitleUrdu)).setText("خصوصی آیات");
+            }
+
+        }
+        mScaleDetector = new ScaleGestureDetector(this, new ScaleManager());
+        try
+        {
+            if (Constants1.databaseHandler == null)
+                Constants1.databaseHandler = new DatabaseHandler(this);
+            if (Constants1.sqLiteDatabase == null)
+                Constants1.sqLiteDatabase = Constants1.databaseHandler.opendatabase(getApplicationContext());
+        }
+        catch (Exception e)
+        {
+            Log.e(Constants1.TAG,"Error in Opening Database----->"+e);
+        }
         contentLayout=(LinearLayout) findViewById(R.id.contentLayout);
         resetBookmarkList();
 
@@ -115,15 +152,30 @@ public class BookmarkActivity extends Activity {
 
     String temp_translation="";
     String finalTasfeeer="";
+    Vector<String> muntakhibUniqeName=new Vector<>();
+    String tafseerLineSeperator="\n\n";
+
     public void resetBookmarkList() {
+        muntakhibUniqeName.clear();
         Constants1.initSharedPref(this);
         Map<String, ?> allEntries = Constants1.sp.getAll();
         String IDs = "";
-        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            if (entry.getKey().startsWith("bookmark_")) {
-                IDs = IDs + "" + (Integer.parseInt(Constants1.sp.getString(entry.getKey().toString(), ""))) + ",";
+
+
+        if(isMuntaKhib==false) {
+            for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+                if (entry.getKey().startsWith("bookmark_")) {
+                    IDs = IDs + "" + (Integer.parseInt(Constants1.sp.getString(entry.getKey().toString(), ""))) + ",";
+                }
             }
         }
+        else {
+            for (int i = 0; i < Constants1.SPECAIL_INDEX.length; i++) {
+                IDs = IDs + "" + Constants1.SPECAIL_INDEX[i] + ",";
+
+            }
+        }
+
         if(IDs.trim().length()>0) {
             IDs = IDs.substring(0, IDs.lastIndexOf(","));
 
@@ -190,6 +242,7 @@ public class BookmarkActivity extends Activity {
                 final LinearLayout layout_list[] = new LinearLayout[TOTAL_ROW];
                 final TextView txtTranslationList[] = new TextView[TOTAL_ROW];
                 final ArabicTextView txtArabicList[] = new ArabicTextView[TOTAL_ROW];
+                final TextView txtTafseer[] = new TextView[TOTAL_ROW];
 
                 String temp_translation = "";
                 String finalTasfeeer = "";
@@ -203,31 +256,57 @@ public class BookmarkActivity extends Activity {
                     viewLineVertical[i] = view_row[i].findViewById(R.id.viewLineVertical);
 
                     layout_bookmarkContent[i] = view_row[i].findViewById(R.id.layout_bookmarkContent);
-                    layout_bookmarkContent[i].setVisibility(View.VISIBLE);
+
                     txtBookmarkSurahName[i] = view_row[i].findViewById(R.id.txtBookmarkSurahName);
                     txtBookmarkParaName[i] = view_row[i].findViewById(R.id.txtBookmarkParaName);
+
+                    if(muntakhibUniqeName.contains(pageBeanArrayList.get(i).getSURA_NAME())==false)
+                    {muntakhibUniqeName.add(pageBeanArrayList.get(i).getSURA_NAME());
+                        layout_bookmarkContent[i].setVisibility(View.VISIBLE);
+
+                    }
 
                     if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
                         txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtUrdu);
                         txtTranslationList[i] = (TextView) view_row[i].findViewById(R.id.txtUrduList);
+                        txtTafseer[i] = (TextView) view_row[i].findViewById(R.id.txtTafseerUrdu);
 
 
                     } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                         txtTranslation[i] = (TextView) view_row[i].findViewById(R.id.txtGujarati);
                         txtTranslationList[i] = (TextView) view_row[i].findViewById(R.id.txtGujaratiList);
+                        txtTafseer[i] = (TextView) view_row[i].findViewById(R.id.txtTafseerGujarati);
 
                     }
+
+                    if(isMuntaKhib)
+                    txtTafseer[i].setVisibility(View.VISIBLE);
 
                     txtArabicTextView[i] = (ArabicTextView) view_row[i].findViewById(R.id.txtArabic);
                     txtArabicList[i] = (ArabicTextView) view_row[i].findViewById(R.id.txtArabicList);
 
                     temp_translation = pageBeanArrayList.get(i).getTRANSALATION();
-//                if (pageBeanArrayList.get(i).getTAFSEER() != null && pageBeanArrayList.get(i).getTAFSEER().trim().length() > 0 &&
-//                        pageBeanArrayList.get(i).getTAFSEER().trim().equalsIgnoreCase("null") == false) {
-//                    if (finalTasfeeer.length() > 0)
-//                        finalTasfeeer = finalTasfeeer + tafseerLineSeperator + pageBeanArrayList.get(i).getTAFSEER();
-//                    else finalTasfeeer = pageBeanArrayList.get(i).getTAFSEER();
-//                }
+                    finalTasfeeer = "";
+                    if(isMuntaKhib) {
+                        if (pageBeanArrayList.get(i).getTAFSEER() != null && pageBeanArrayList.get(i).getTAFSEER().trim().length() > 0 &&
+                                pageBeanArrayList.get(i).getTAFSEER().trim().equalsIgnoreCase("null") == false) {
+                            if (finalTasfeeer.length() > 0)
+                                finalTasfeeer = finalTasfeeer + tafseerLineSeperator + pageBeanArrayList.get(i).getTAFSEER();
+                            else finalTasfeeer = pageBeanArrayList.get(i).getTAFSEER();
+                        }
+
+                        if (finalTasfeeer.trim().length() > 0) {
+                            if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
+                                finalTasfeeer = finalTasfeeer.replaceAll("0", "૦").replaceAll("1", "૧")
+                                        .replaceAll("2", "૨").replaceAll("3", "૩").replaceAll("4", "૪")
+                                        .replaceAll("5", "૫").replaceAll("6", "૬").replaceAll("7", "૭").replaceAll("8", "૮").replaceAll("9", "૯");
+                            }
+                            txtTafseer[i].setText(finalTasfeeer.trim());
+                            viewLineHorizontal[i].setVisibility(View.GONE);
+                        } else txtTafseer[i].setVisibility(View.GONE);
+                    }
+
+
 
                     if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
                         temp_translation = temp_translation.replaceAll("0", "૦").replaceAll("1", "૧")
@@ -293,6 +372,7 @@ public class BookmarkActivity extends Activity {
 
                                     viewLineVertical[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
                                     viewLineHorizontal[i].setBackgroundColor(Color.parseColor("#" + Constants1.sp.getString("perf_line_color", "000000")));
+                                    txtTafseer[i].setTextSize(2, (float) Constants1.sp.getInt("perf_font_size", Constants1.DEFAULT_FONT));
 
 
                                     if (Constants1.sp.getString("format", "list").equalsIgnoreCase("grid")) {

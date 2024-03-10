@@ -70,6 +70,15 @@
             android:textSize="@dimen/menuitemsize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <com.indapp.fonts.CipherNormal
+            android:visibility="gone"
+            android:id="@+id/txtMainTitleEnglish"
+            android:textColor="#ffffff"
+            android:text="Tutorial"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/menuitemsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <com.indapp.fonts.UrduTextView
             android:visibility="visible"

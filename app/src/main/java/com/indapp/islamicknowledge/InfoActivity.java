@@ -36,19 +36,20 @@ public class InfoActivity extends Activity {
         Constants1.LANGUAGE = Constants1.sp.getString("language", Constants1.GUJARATI);
         if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.GUJARATI)) {
 
-            typeface = Typeface.createFromAsset(getAssets(),
-                    "fonts/BHUJ UNICODE.ttf");
-
-                txtAboutusUrdu.setText("અગર આપકો ઇસ એપ સે ફાઇદા હો યા આપ કોઈ મશવરા દેના ચાહતે હોં તો નીચે દિયે ગએ ઈ-મેઈલ એડ્રેસ પર હમસે રાબતા કર સકતે હૈં, આપ કા દીની ભાઈ અફરોઝ ફત્તા (સુરત)" +
+            typeface = Typeface.createFromAsset(getAssets(), "fonts/BHUJ UNICODE.ttf");
+            txtAboutusUrdu.setText("અગર આપકો ઇસ એપ સે ફાઇદા હો યા આપ કોઈ મશવરા દેના ચાહતે હોં તો નીચે દિયે ગએ ઈ-મેઈલ એડ્રેસ પર હમસે રાબતા કર સકતે હૈં, આપ કા દીની ભાઈ અફરોઝ ફત્તા (સુરત)" +
                         "");
 
         } else if (Constants1.LANGUAGE.equalsIgnoreCase(Constants1.URDU)) {
-            typeface = Typeface.createFromAsset(getAssets(), "fonts/jameelnoorinastaleeq.ttf");
 
-                txtAboutusUrdu.setText("" +
+            typeface = Typeface.createFromAsset(getAssets(), "fonts/jameelnoorinastaleeq.ttf");
+            txtAboutusUrdu.setText("" +
                         "اگر آپ کو اس ایپ سے فائدہ ہو یا آپ کوئی مشورہ دینا چاہتے ہو تو نیچے دیے گئے ای میل ایڈریس پر ہم سے رابطہ کر سکتے ہیں ، آپ کا دینی بھائی افروز فتہ (سورت)" +
                         "");
-
+        }
+        else {
+            typeface = Typeface.createFromAsset(getAssets(), "fonts/BLKCHCRY.ttf");
+            txtAboutusUrdu.setText("If you have benefited from this app or want to give any advice, you can always contact us at the below e-mail address, Aap ka dini Bhai Afroz Fatta (Surat).\n");
         }
         txtAboutusUrdu.setTypeface(typeface);
         findViewById(R.id.ok).setOnClickListener(new View.OnClickListener() {
@@ -57,15 +58,11 @@ public class InfoActivity extends Activity {
                 finish();
             }
         });
-
-//        finish();
     }
 
     public void back(View v)
     {
-
         this.finish();
-
     }
 
     @Override
